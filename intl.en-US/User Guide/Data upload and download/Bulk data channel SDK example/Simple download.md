@@ -1,8 +1,8 @@
-# 简单下载示例 {#concept_jzt_3ng_vdb .concept}
+# Simple download {#concept_jzt_3ng_vdb .concept}
 
-本文通过代码示例向您介绍如何使用MaxCompute Java SDK实现数据下载。
+This topic describes how to use MaxCompute Java SDK to download data.
 
-## 使用TableTunnel的DownloadSession接口实现数据下载 {#section_o3f_5cz_3hb .section}
+## Download data by using the DownloadSession interface of TableTunnel {#section_5ri_tji_vad .section}
 
 ```language-java
 import java.io.IOException;
@@ -23,7 +23,7 @@ import java.io.IOException;
      private static String accessKey = "<your access Key>";
      private static String odpsUrl = "http://service.odps.aliyun.com/api";
      private static String tunnelUrl = "http://dt.cn-shanghai.maxcompute.aliyun-inc.com";
-     //设置tunnelUrl，若需要走内网时必须设置，否则默认公网。
+     //tunnelUrl specifies the tunnel URL. This parameter is mandatory when you download data over your intranet. If this parameter is set to null, your data is downloaded via the Internet.
      private static String project = "<your project>";
      private static String table = "<your table name>";
      private static String partition = "<your partition spec>";
@@ -33,7 +33,7 @@ import java.io.IOException;
          odps.setEndpoint(odpsUrl);
          odps.setDefaultProject(project);
          TableTunnel tunnel = new TableTunnel(odps);
-         tunnel.setEndpoint(tunnelUrl);//设置tunnelUrl。
+         tunnel.setEndpoint(tunnelUrl);//Set tunnelUrl.
          PartitionSpec partitionSpec = new PartitionSpec(partition);
            try {
                   DownloadSession downloadSession = tunnel.createDownloadSession(project, table,
@@ -98,50 +98,54 @@ import java.io.IOException;
  }
 ```
 
-**说明：** 
+**Note:** 
 
-文中给出的是华东2经典网络Tunnel Endpoint，其他region的Tunnel Endpoint设置可以参考文档[访问域名和数据中心](../../../../intl.zh-CN/准备工作/配置Endpoint.md#)。
+-   In the preceding command, a tunnel endpoint on the classic network in the China East 2 \(Shanghai\) region is used as an example. For more information about how to configure tunnel endpoints in the other regions, see [Access domains and data centers](../../../../reseller.en-US/Prepare/Configure Endpoint.md#).
+-   To make the test easier, we use System.out.printl to output data. You can choose to output data as a file in TXT format.
 
-本示例中，为了方便测试，数据通过`System.out.println`直接打印出来，在实际使用时，您可改写为直接输出到文本文件。
-
-## 使用InstanceTunnel的DownloadSession接口实现数据下载 {#section_mrb_bdz_3hb .section}
+## Download data by using the DownloadSession interface of InstanceTunnel {#section_al5_lg7_a3a .section}
 
 ```language-java
-Odps odps = OdpsUtils.newDefaultOdps(); // 初始化Odps对象。
+Odps odps = OdpsUtils.newDefaultOdps(); //Initialize Open Data Processing Service (ODPS) objects.
     Instance i = SQLTask.run(odps, "select * from wc_in;");
     i.waitForSuccess();
-    //创建InstanceTunnel。
+
+    //Create an instance tunnel.
     InstanceTunnel tunnel = new InstanceTunnel(odps);
-    //根据instance id，创建DownloadSession。
+    //Create a download session based on the specified instance ID.
     InstanceTunnel.DownloadSession session = tunnel.createDownloadSession(odps.getDefaultProject(), i.getId());
+
     long count = session.getRecordCount();
-    //输出结果条数。
+     //Specify the number of records that will be presented.
     System.out.println(count);
-    //获取数据的写法与TableTunnel一样。
+
+    //Obtain data by using the same method as you do with TableTunnel.
     TunnelRecordReader reader = session.openRecordReader(0, count);
     Record record;
     while ((record = reader.read()) != null) {
       for (int col = 0; col < session.getSchema().getColumns().size(); ++col) {
-        //wc_in表字段均为 STRING，这里直接打印输出。
+        //Specify that all the fields in the wc_in table are strings and will be directly printed.
         System.out.println(record.get(col));
       }
     }
     reader.close();
 ```
 
-## 通过使用SQLTask.getResultSet\(\)静态方法实现数据下载 {#section_uzr_nvf_jhb .section}
+## Download data by using SQLTask.getResultSet\(\) {#section_ypz_rch_t1s .section}
 
 ```language-java
-Odps odps = OdpsUtils.newDefaultOdps(); //初始化Odps对象。
+Odps odps = OdpsUtils.newDefaultOdps(); //Initialize ODPS objects.
     Instance i = SQLTask.run(odps, "select * from wc_in;");
     i.waitForSuccess();
-    //根据instance对象，获取结果迭代器。
+
+    //Obtain the result iterator based on the specified instance object.
     ResultSet rs = SQLTask.getResultSet(i);
     for (Record r : rs) {
-      //输出结果条数。
+      //Specify the number of records that will be presented.
       System.out.println(rs.getRecordCount());
+
       for (int col = 0; col < rs.getTableSchema().getColumns().size(); ++col) {
-        //wc_in表字段均为STRING，这里直接打印输出。
+        //Specify that all the fields in the wc_in table are strings and will be directly printed.
         System.out.println(r.get(col));
       }
     }
