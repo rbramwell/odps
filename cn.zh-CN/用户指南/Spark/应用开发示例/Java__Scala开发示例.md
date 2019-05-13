@@ -67,8 +67,8 @@ pom.xml须知：用户构建Spark应用时，通过MaxCompute提供的Spark客�
 
 **说明：** scope的定义：
 
--   spark-core、spark-sql等所有Spark社区发布的包，使用providedscope。
--   odps-spark-datasource使用默认的compilescope。
+-   spark-core、spark-sql等所有Spark社区发布的包，使用provided scope。
+-   odps-spark-datasource使用默认的compile scope。
 
 ## Spark-1.x案例说明 {#section_r1l_jix_3z0 .section}
 
