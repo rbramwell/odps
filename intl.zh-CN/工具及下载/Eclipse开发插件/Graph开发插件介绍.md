@@ -4,23 +4,23 @@
 
 在此示例中，我们选用插件提供的PageRank.java来完成本地调试工作。选中**examples**下的PageRank.java文件，如下图。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12154/15450228673218_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12154/15577294843218_zh-CN.png)
 
 右键单击，选择**Debug As** \> **ODPS MapReduce|Graph**，如下图。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12154/15450228673220_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12154/15577294853220_zh-CN.png)
 
 单击后出现对话框，作如下配置。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12154/15450228673221_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12154/15577294853221_zh-CN.png)
 
 查看作业运行结果，如下图。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12154/15450228673222_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12154/15577294853222_zh-CN.png)
 
 可以查看在本地的计算结果，如下图。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12154/15450228673223_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12154/15577294853223_zh-CN.png)
 
 调试通过后，用户可以将程序打包，并以Jar资源的形式上传到ODPS，并提交Graph作业。
 
