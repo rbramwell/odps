@@ -25,7 +25,21 @@ MaxCompute Spark是MaxCompute提供的兼容开源的Spark计算服务，它在�
 
 MaxCompute Spark是阿里云通过Spark on MaxCompute的解决方案，让原生Spark能够运行在MaxCompute当中。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/92656/155618033636635_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/92656/155771378236635_zh-CN.png)
 
 左侧是原生Spark的架构图，右边Spark on MaxCompute运行在阿里云自研的Cupid的平台之上，该平台可以原生支持开源社区Yarn所支持的计算框架，如Spark等。
+
+## 约束与限制 {#section_m7n_xoy_5ik .section}
+
+目前MaxCompute Spark支持以下适用场景：
+
+-   Java/Scala所有离线场景，GraphX、Mllib、RDD、Spark-SQL、PySpark等。
+-   读写MaxCompute Table。
+-   OSS非结构化存储支持。
+
+暂不支持以下场景\(后续版本陆续支持\)：
+
+-   读写VPC环境下的服务，如RDS、Redis、ECS上部署的服务等。
+-   Streaming场景。
+-   交互式类需求Spark-Shell Spark-SQL-Shell PySpark-Shell等。
 
