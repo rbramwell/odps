@@ -2,6 +2,22 @@
 
 本文为您介绍Java/Scala的开发示例。
 
+## 下载示例工程 {#section_5ee_u7b_69f .section}
+
+您可以执行如下指令下载示例工程。
+
+``` {#codeblock_cdl_1q8_s97}
+git clone git@github.com:aliyun/aliyun-cupid-sdk.git
+cd aliyun-cupid-sdk
+git checkout 3.3.3-public
+# Spark-2.x示例工程目录
+cd spark/spark-2.x/spark-examples
+# Spark-1.x示例工程目录
+cd spark/spark-1.x/spark-examples
+# 打包，将在target目录生成shaded jar包
+mvn clean package
+```
+
 ## 配置Spark-1.x的依赖 {#section_eup_qmp_ec4 .section}
 
 pom.xml须知：用户构建Spark应用时，通过MaxCompute提供的Spark客户端提交应用，因此需要添加以下依赖。
