@@ -2,6 +2,8 @@
 
 本文为您介绍MaxCompute数据开发规范。
 
+在进行数据开发前，请做好数据仓库研发流程的阶段规划，了解各种角色及其职责。具体内容请参见[数据仓库研发规范概述](../../../../cn.zh-CN/研发规范/数据仓库研发规范概述.md#)。
+
 ## 项目空间管理规范 {#section_8lc_esg_o8v .section}
 
 关于项目划分和命名规范的详解，请参见[MaxCompute Project分配](cn.zh-CN/数仓建设指南/公共规范.md#section_ocv_imw_bwu)、[项目命名规范](cn.zh-CN/数仓建设指南/公共规范.md#section_v60_ej0_v2e)。
@@ -115,7 +117,7 @@ DataWorks项目空间目录构建建议：
         -   其它字段前导二个缩进量再跟一个逗号（‘，’）后放置字段名。
         -   两个字段之间的逗号（‘，’）分割符紧跟在第二个字段的前面。
         -   ‘AS‘语句应与相应的字段在同一行，多个字段的‘AS’建议尽量对齐在同一列上。
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/190040/155712764946109_zh-CN.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/190040/155783152946109_zh-CN.jpg)
 
     -   SELECT子句排列要求
 
@@ -126,13 +128,13 @@ DataWorks项目空间目录构建建议：
         -   子句后续的代码离子句首字母二个缩进量起编写。
         -   WHERE子句下的逻辑判断符AND、OR等与WHERE左对齐编排。
         -   超过两个缩进量长度的子句加一空格后编写后续代码，如：ORDER BY、 GROUP BY等。
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/190040/155712764946114_zh-CN.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/190040/155783152946114_zh-CN.jpg)
 
     -   运算符前后间隔要求
 
         算术运算符、逻辑运算符的前后要保留一个空格。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/190040/155712764946110_zh-CN.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/190040/155783152946110_zh-CN.jpg)
 
     -   CASE语句的编写
 
@@ -141,13 +143,13 @@ DataWorks项目空间目录构建建议：
         -   WHEN子语在CASE语句的同一行并缩进一个缩进量后开始编写。
         -   每个WHEN子语一行编写，如果语句较长可换行编写。
         -   CASE语句必须包含ELSE子语，ELSE子句与WHEN子句对齐。
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/190040/155712764946111_zh-CN.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/190040/155783152946111_zh-CN.jpg)
 
     -   子查询嵌套编写规范
 
         在数据仓库系统ETL开发中经常需要用到子查询嵌套，因此代码的分层编排变得非常重要。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/190040/155712764946112_zh-CN.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/190040/155783152946112_zh-CN.jpg)
 
     -   表别名定义约定
 
@@ -156,7 +158,7 @@ DataWorks项目空间目录构建建议：
         -   表别名采用简单字符命名。
         -   多层次的嵌套子查询别名之前要体现层次关系，SQL语句别名或分层的命 名，从第一层次至第四层次，分别用P、S、U、D表示，取意为Part，Segment，Unit，Detail。也可用a、b、c、d来表示第一层次到第四层次。对于同一层次的多个子句，可以在字母后加1、2、3、4…区分。
         -   必要时，为表别名添加注释。
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/190040/155712764946113_zh-CN.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/190040/155783152946113_zh-CN.jpg)
 
     -   SQL注释
         -   每条SQL语句均应添加注释说明。
