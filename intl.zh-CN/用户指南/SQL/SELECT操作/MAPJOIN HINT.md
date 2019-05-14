@@ -12,7 +12,7 @@ MAPJOIN的基本原理：在小数据量情况下，SQL会将您指定的小表�
 -   FULL OUTER JOIN不能使用MAPJOIN。
 -   MAPJOIN支持小表为子查询。
 -   使用MAPJOIN时，在引用小表或是子查询时，需要引用别名。
--   在MAPJOIN中，可以使用不等值连接或者使用OR连接多个条件。您也可以不写ON语句，通过`mapjoin on 1 = 1`表示笛卡尔乘积，例如`select /* + mapjoin(a) */ a.id from shop a join table_name b on 1=1`，但这样可能带来数据量膨胀问题。
+-   在MAPJOIN中，可以使用不等值连接或者使用OR连接多个条件。您可以通过不写ON语句或通过`mapjoin on 1 = 1`的形式，实现笛卡尔乘积的计算，例如`select /* + mapjoin(a) */ a.id from shop a join table_name b on 1=1`，但这样可能带来数据量膨胀问题。
 -   目前，MaxCompute在MAPJOIN中最多支持指定256张小表，否则报语法错误。MAPJOIN HINT中多个小表用逗号隔开，例如`/*+mapjoin(a,b,c)*/`。
 -   如果使用MAPJOIN，则小表占用的总内存不得超过640MB。由于MaxCompute是压缩存储，因此小表在被加载到内存后，数据大小会急剧膨胀。此处的640MB限制是加载到内存后的空间大小。
 
