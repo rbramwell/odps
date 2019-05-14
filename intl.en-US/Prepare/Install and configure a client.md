@@ -1,17 +1,19 @@
 # Install and configure a client {#concept_qbk_1kv_tdb .concept}
 
+MaxCompute console is also called odpscmd MaxCompute CLI tool.
+
 Once you install and configure the MaxCompute console, you can access all functions of MaxCompute through the console. For more information, see [Client](../../../../reseller.en-US/Tools and Downloads/Client.md).
 
 **Note:** 
 
 -   We recommend that you use the MaxCompute Studio tool. This tool integrates with the Java environment and allows MaxCompute SQL script development and execution, data management, visual log analysis, and Java \(UDF, MR\) development. For more information. see [What is Studio](../../../../reseller.en-US/Tools and Downloads/MaxCompute Studio/What is Studio.md).
--   You can also use MaxCompute through DataWorks. After creating a project in the console, you can click on **Enter Workspace** of the specified project in the project list to operate projects with MaxCompute. For more information, see .
+-   You can also use MaxCompute through DataWorks. After creating a project in the console, you can click on **Enter Workspace** of the specified project in the project list to operate projects with MaxCompute. For more information, see [DataWorks](../../../../reseller.en-US/Product Introduction/What is DataWorks?.md#).
 
 ## Install the console {#section_cnm_c5v_tdb .section}
 
 **Note:** Make sure you have JRE 1.7 or a later version installed to properly use the MaxCompute console.
 
-1.  Download [MaxCompute console](http://repo.aliyun.com/odpscmd/)\(For Windows or MAC, download [MaxCompute console](http://repo.aliyun.com/download/odpscmd/latest/odpscmd_public.zip).\)
+1.  If you are using Linux, download the [odpscmd MaxCompute CLI tool](http://repo.aliyun.com/odpscmd/). For Windows or MAC, download the [MaxCompute console](http://repo.aliyun.com/download/odpscmd/latest/odpscmd_public.zip).
 2.  Decompress it into a folder. After decompression, you can see four following folders:
 
     ```
@@ -52,5 +54,5 @@ insert overwrite table tbl1 select count(*) from tbl1;
 select 'welcome to MaxCompute!' from tbl1;
 ```
 
-For more information about SQL statements, see [SQL Summary](../../../../reseller.en-US/User Guide/SQL/SQL summary.md).
+For more information about SQL statements, see [SQL Summary](../../../../reseller.en-US/Developer Guide/SQL/SQL summary.md).
 
