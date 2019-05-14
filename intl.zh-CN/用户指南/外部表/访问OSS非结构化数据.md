@@ -8,7 +8,7 @@
 
 MaxCompute需要直接访问OSS的数据，前提需要将OSS的数据相关权限赋给MaxCompute的访问账号，您可通过以下方式授予权限：
 
--   当MaxCompute和OSS的owner是同一个账号时，可以直接登录阿里云账号后，[点击此处完成一键授权](https://ram.console.aliyun.com/?spm=5176.100239.blogcont281191.24.uJg9dR#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunODPSDefaultRole%22,%20%22TemplateId%22:%20%22DefaultRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fram.console.aliyun.com%2F%22,%20%22Service%22:%20%22ODPS%22%7D)。
+-   当MaxCompute和OSS的owner是同一个账号时，可以直接登录阿里云账号后，[点击此处完成一键授权](https://account.alibabacloud.com/login/login.htm)。
 -   自定义授权。
     1.  首先需要在[RAM](https://www.alibabacloud.com/zh/product/ram)中授予MaxCompute访问OSS的权限。登录[RAM控制台](https://account.alibabacloud.com/login/login.html)（若MaxCompute和OSS不是同一个账号，此处需由OSS账号登录进行授权），通过控制台中的[角色管理](https://ram.console.aliyun.com/#/role/list)创建角色 ，角色名如`AliyunODPSDefaultRole`或`AliyunODPSRoleForOtherUser`。
     2.  修改角色策略内容设置，如下所示。
@@ -265,7 +265,7 @@ select recordId, patientId, direction from ambulance_data_csv_external where pat
 
     与使用内置Extractor相似，首先需要创建一张外部表，不同的是在指定外部表访问数据的时候，需要使用自定义的StorageHandler。
 
-    创建外部表语句如下，其中delimeter是您自定义的分割方法名称:
+    创建外部表语句如下，其中delimeter是您自定义的分割方法名称：
 
     ```
     CREATE EXTERNAL TABLE IF NOT EXISTS ambulance_data_txt_external
@@ -325,7 +325,7 @@ USING 'odps-udf-example.jar,sm_random_5_utterance.text.label';
 -   一个语音文件中的语句信噪比（SNR）：sentence\_snr。
 -   对应语音文件的名字：id。
 
-创建外部表后，通过标准的Select语句进行查询，则会触发Extractor运行计算。此处便可感受到，在读取处理OSS数据时，除了可以对文本文件做简单的反序列化处理，还可以通过自定义Extractor实现更复杂的数据处理抽取逻辑。比如：在此示例中，通过自定义的`com.aliyun.odps.udf.example.speech.SpeechStorageHandler` 中封装的Extractor，实现了对语音文件计算平均有效语句信噪比的功能，并将抽取出来的结构化数据直接进行SQL运算（WHERE sentence\_snr \> 10），最终返回所有信噪比大于10的语音文件以及对应的信噪比值。
+创建外部表后，通过标准的Select语句进行查询，则会触发Extractor运行计算。此处便可感受到，在读取处理OSS数据时，除了可以对文本文件做简单的反序列化处理，还可以通过自定义Extractor实现更复杂的数据处理抽取逻辑。在此示例中，通过自定义的`com.aliyun.odps.udf.example.speech.SpeechStorageHandler` 中封装的Extractor，实现了对语音文件计算平均有效语句信噪比的功能，并将抽取出来的结构化数据直接进行SQL运算（`WHERE sentence_snr > 10`），最终返回所有信噪比大于10的语音文件以及对应的信噪比值。
 
 在OSS地址`oss://oss-cn-hangzhou-zmf.aliyuncs.com/oss-odps-test/dev/SpeechSentenceTest/`上，存储了原始的多个WAV格式的语音文件，MaxCompute框架将读取该地址上的所有文件，并在必要的时候进行文件级别的分片，自动将文件分配给多个计算节点处理。每个计算节点上的Extractor则负责处理通过InputStreamSet分配给该节点的文件集。具体的处理逻辑则与用户单机程序相仿，您不需关心分布计算中的种种细节，按照类单机方式实现其用户算法即可。
 
@@ -353,7 +353,7 @@ public SpeechSentenceSnrExtractor(){
       throw new RuntimeException("reading model from mlf failed with exception " + e.getMessage());
     }
   }
-
+				
 ```
 
 Extractor\(\)接口中，实现了对语音文件的具体读取和处理逻辑，对读取的数据根据语音模型进行信噪比的计算，并且将结果填充成\[snr, id\]格式的Record。
@@ -433,7 +433,7 @@ where sentence_snr > 10.0;
 
 本章节主要介绍EXTERNAL TABLE的分区功能。
 
--   分区数据在OSS上的标准组织方式和路径格式
+-   分区数据在OSS上的标准组织方式和路径格式 
 
     与MaxCompute内部表不同，对于存放在外部存储上\(如OSS\)上面的数据，MaxComput没有数据的管理权，因此如果需要使用分区表功能，在OSS上数据文件的存放路径必须符合一定的格式，路径格式如下：
 
@@ -441,7 +441,7 @@ where sentence_snr > 10.0;
     partitionKey1=value1\partitionKey2=value2\...
     ```
 
-    场景示例
+    场景示例 
 
     将每天产生的LOG文件存放在OSS上，并需要通过MaxCompute进行数据处理，数据处理时需按照粒度为“天”来访问一部分数据。假设这些LOG文件为CSV格式且可以用内置extractor访问（复杂自定义格式用法也类似），那么外部分区表定义数据如下：
 
@@ -491,7 +491,7 @@ where sentence_snr > 10.0;
     ...
     ```
 
-    **说明：** 以上这些操作与标准的MaxCompute内部表操作一样，分区的详情请参见[分区](../../../../../intl.zh-CN/用户指南/基本概念/分区.md#)。在数据准备好并且PARTITION信息引入MaxCompute之后，即可通过SQL语句对OSS外表数据的分区进行操作。
+    **说明：** 以上这些操作与标准的MaxCompute内部表操作一样，分区的详情请参见[分区](../../../../intl.zh-CN/用户指南/基本概念/分区.md#)。在数据准备好并且PARTITION信息引入MaxCompute之后，即可通过SQL语句对OSS外表数据的分区进行操作。
 
     此时分析数据时，可以指定指需分析某天的数据，如只想分析2016年6月1号当天，有多少不同的IP出现在LOG里面，可以通过如下语句实现。
 
@@ -499,7 +499,7 @@ where sentence_snr > 10.0;
     SELECT count(distinct(ip)) FROM log_table_external WHERE year = '2016' AND month = '06' AND day = '01';
     ```
 
-    该语句对log\_table\_external这个外表对应的目录，将只访问`log_data/year=2016/month=06/day=01`子目录下的文件（logfile和logfile.1），不会对整个log\_data/，避免大量无用的I/O操作。
+    该语句对log\_table\_external这个外表对应的目录，将只访问`log_data/year=2016/month=06/day=01`子目录下的文件（logfile和logfile.1），不会对整个log\_data/ ，避免大量无用的I/O操作。
 
     同样如果只希望对2016年下半年的数据做分析，则执行如下语句。
 
@@ -510,7 +510,7 @@ where sentence_snr > 10.0;
 
     只访问OSS上面存储的下半年的LOG数据。
 
--   分区数据在OSS上的自定义路径
+-   分区数据在OSS上的自定义路径 
 
     如果事先存在OSS上的历史数据，但是又不是根据`partitionKey1=value1\partitionKey2=value2\...`路径格式来组织存放，也需要通过MaxCompute的分区方式来进行访问计算时，MaxCompute也提供了通过自定义路径来引入partition的方法。
 
