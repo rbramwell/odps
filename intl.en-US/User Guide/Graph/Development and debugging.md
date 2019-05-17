@@ -7,24 +7,24 @@ MaxCompute does not provide Graph development plugins for users. However, you ca
 
 ## Example {#section_zvq_z4m_vdb .section}
 
-This section uses the [SSSP](intl.en-US/User Guide/Graph/Examples/SSSP.md) algorithm as an example to describe how to use Eclipse to develop and debug a Graph program.
+This section uses the [SSSP](reseller.en-US/User Guide/Graph/Examples/SSSP.md) algorithm as an example to describe how to use Eclipse to develop and debug a Graph program.
 
 **Procedure**
 
 1.  Create a Java project, for example, graph\_examples.
 2.  Add the JAR package in the lib directory of the MaxCompute client to Build Path of the Eclipse project. The following figure shows a configured Eclipse project:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12048/15580593952233_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12048/15580610072233_en-US.png)
 
 3.  Develop a MaxCompute Graph program.
 
-    In the actual development process, an example \(such as [SSSP](intl.en-US/User Guide/Graph/Examples/SSSP.md)\) is often copied and then modified. In this example, only the package path is changed to package com.aliyun.odps.graph.example.
+    In the actual development process, an example \(such as [SSSP](reseller.en-US/User Guide/Graph/Examples/SSSP.md)\) is often copied and then modified. In this example, only the package path is changed to package com.aliyun.odps.graph.example.
 
 4.  Compile and build the package.
 
     In an Eclipse environment, right-click the source code directory \(the src directory in the figure\) and select Export \> Java \> JAR file to generate a JAR package. Select the path for storing the target JAR package, for example, `D:\\odps\\clt\\odps-graph-example-sssp.jar`.
 
-5.  Use the MaxCompute console to run SSSP. For more information about the related operations, see [Run Graph](../../../../intl.en-US/Quick Start/(Optional) Submit Graph jobs.md) in “Quick start”.
+5.  Use the MaxCompute console to run SSSP. For more information about the related operations, see [Run Graph](../../../../reseller.en-US/Quick Start/(Optional) Submit Graph jobs.md) in “Quick start”.
 
 **Note:** For more information about the related development procedure, see Introduction on the [Graph development plug-in](https://www.alibabacloud.com/help/doc-detail/27985.html)*.*
 
@@ -48,7 +48,7 @@ MaxCompute Graph supports the local debugging mode. Use Eclipse to perform break
     						
     ```
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12048/15580593952234_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12048/15580610072234_en-US.png)
 
 5.  If MapReduce is in local mode \(the value of odps.end.point is not specified\), you must create the sssp\_in and sssp\_out tables in the warehouse and add data for sssp\_in. Input data is listed as follows:
 
@@ -60,7 +60,7 @@ MaxCompute Graph supports the local debugging mode. Use Eclipse to perform break
     5,"3:1,4:1"
     ```
 
-    For more information about the warehouse, see [MapReduce local running](intl.en-US/User Guide/MapReduce/Function Introduction/Local run.md).
+    For more information about the warehouse, see [MapReduce local running](reseller.en-US/User Guide/MapReduce/Function Introduction/Local run.md).
 
 6.  Click **Run**.
 
@@ -92,7 +92,7 @@ MaxCompute Graph supports the local debugging mode. Use Eclipse to perform break
 
 A temporary directory is created in the Eclipse project directory when local debugging runs each time, as shown in the following figure.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12048/15580593952235_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12048/15580610072235_en-US.png)
 
 The temporary directory of a locally running Graph job contains the following directories and files:
 
@@ -115,7 +115,7 @@ After local debugging, submit the job to a cluster for testing.
 2.  Run the `add jar /path/work.jar -f;` command to update the JAR package.
 3.  Run a JAR command to run the job, and view the running log and result data.
 
-**Note:** For more information about how to run Graph in a cluster, see [Run Graph](../../../../intl.en-US/Quick Start/(Optional) Submit Graph jobs.md) in “Quick start”.
+**Note:** For more information about how to run Graph in a cluster, see [Run Graph](../../../../reseller.en-US/Quick Start/(Optional) Submit Graph jobs.md) in “Quick start”.
 
 ## Performance Tuning {#section_pxb_fsm_vdb .section}
 
