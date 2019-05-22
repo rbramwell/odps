@@ -14,7 +14,6 @@ Script Mode SQL supports the following tools:
 
 -   MaxCompute Studio: For more information, see [What is Studio](../../../../reseller.en-US/Tools and Downloads/MaxCompute Studio/What is Studio.md#).
 -   MaxCompute command line interface \(CLI\): For more information, see [Install and configure a client](../../../../reseller.en-US/Prepare/Install and configure a client.md#).
--   [DataWorks](https://workbench.data.aliyun.com/consolenew#/): For more information, see [MaxCompute SCRIPT node](../../../../reseller.en-US/.md#).
 
 ## Syntax {#section_mrl_g4c_bfb .section}
 
@@ -116,7 +115,7 @@ To edit the myscript.sql source code file in script mode, run the following comm
 
 You can create a node that runs in script mode, as shown in the following figure.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/20231/155833509544790_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/20231/155850687844790_en-US.png)
 
 On this node, you can compile your script in script mode and then click **Run** on the toolbar to submit your script to MaxCompute. You can visit the URL of Logview in the command output to obtain the script execution plan and result.
 
