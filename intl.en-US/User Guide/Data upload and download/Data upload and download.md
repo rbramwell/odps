@@ -22,7 +22,7 @@ Underlying data tunnels used by these tools include:
     -   Kettle
     -   MaxCompute client
 
-A wide range of data upload and download tools are applicable to most of the cloud data migration scenarios. The subsequent topics introduce the tools, [Hadoop data migration](../../../../reseller.en-US/Best Practices/Data migration/Migrate data from Hadoop to MaxCompute.md#), database data synchronization, [log collection](reseller.en-US/User Guide/Data upload and download/Real-time data tunnel of DataHub.md#), and other cloud migration scenarios. We recommend that you refer to these topics when you select the technical solutions.
+A wide range of data upload and download tools are applicable to most of the cloud data migration scenarios. The subsequent topics introduce the tools, [Hadoop data migration](../../../../reseller.en-US/Best Practices/Data migration/Migrate data from Hadoop to MaxCompute.md#), database data synchronization, log collection, and other cloud migration scenarios. We recommend that you refer to these topics when you select the technical solutions.
 
 **Note:** For information about how to synchronize data in offline mode, we recommend that you see [Data integration overview](../../../../reseller.en-US/User Guide/Data integration/Data integration introduction/Data integration overview.md#).
 
