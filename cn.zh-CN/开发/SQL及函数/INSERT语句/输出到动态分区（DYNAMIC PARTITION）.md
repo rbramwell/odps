@@ -1,6 +1,6 @@
 # 输出到动态分区（DYNAMIC PARTITION） {#concept_b1p_qdb_wdb .concept}
 
-在使用INSERT OVERWRITE语句插入到一张分区表时，您可以在分区中指定一个分区列名但不提供具体的值，并在SELECT子句中提供对应分区列的值。
+在使用insert overwrite语句插入到一张分区表时，您可以在分区中指定一个分区列名但不提供具体的值，并在select子句中提供对应分区列的值。
 
 ## 动态分区语法 {#section_aky_dyy_bgb .section}
 
@@ -22,8 +22,8 @@ insert overwrite table tablename partition (partcol1, partcol2 ...) select_state
     province=xxx
     ```
 
--   如果目标表有多级分区，在运行Insert语句时允许指定部分分区为静态，但是静态分区必须是高级分区。
--   如果目标表为Hash Clustering table，暂时不支持动态分区。
+-   如果目标表有多级分区，在运行insert语句时允许指定部分分区为静态，但是静态分区必须是高级分区。
+-   如果目标表为hash clustering table，暂时不支持动态分区。
 
 ## 动态分区示例 {#section_shg_fyy_bgb .section}
 
@@ -79,7 +79,7 @@ create table sale_detail_dypart like sale_detail;--创建示例目标表。
     ```
 
 
-旧版MaxCompute在进行动态分区时，如果分区列的类型与对应select列表中列的类型不严格一致，会报错。MaxCompute 2.0则支持[隐式类型转换](intl.zh-CN/开发/基本概念/数据类型.md#)，示例如下：
+旧版MaxCompute在进行动态分区时，如果分区列的类型与对应select列表中列的类型不严格一致，会报错。MaxCompute 2.0则支持[隐式类型转换](cn.zh-CN/开发/基本概念/数据类型.md#)，示例如下：
 
 ```
 create table parttable(a int, b double) partitioned by (p string);
@@ -94,7 +94,7 @@ select * from parttable;
 |0|NULL|2017-01-23 22:30:47.130406621|
 |0|NULL|2017-01-23 22:30:47.130406621|
 
-**说明：** 如果您的数据是有序的，动态分区插入会把数据随机打散，导致压缩率较低。推荐您使用[Tunnel命令](intl.zh-CN/开发/数据上传下载/上传下载命令.md#)上传数据到动态分区，可以获取较好的压缩率。
+**说明：** 如果您的数据是有序的，动态分区插入会把数据随机打散，导致压缩率较低。推荐您使用[Tunnel命令](cn.zh-CN/开发/数据上传下载/上传下载命令.md#)上传数据到动态分区，可以获取较好的压缩率。
 
-使用该命令的详细示例请参见[RDS迁移到MaxCompute实现动态分区](../../../../intl.zh-CN/实践经验/数据迁移/RDS迁移到MaxCompute实现动态分区.md#)。
+使用该命令的详细示例请参见[RDS迁移到MaxCompute实现动态分区](../../../../cn.zh-CN/最佳实践/数据迁移/RDS迁移到MaxCompute实现动态分区.md#)。
 
