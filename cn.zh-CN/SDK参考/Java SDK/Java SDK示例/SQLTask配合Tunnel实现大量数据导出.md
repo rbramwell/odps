@@ -1,10 +1,12 @@
 # SQLTask配合Tunnel实现大量数据导出 {#concept_388499 .concept}
 
+本文为您介绍如何通过使用SQLTask配合Tunnel实现大量数据导出。
+
 ## SQLTask {#section_pd4_rqe_ew3 .section}
 
-SQLTask是MaxCompute SQL的SDK接口。借助SQLTask，您可以方便地运行SQL并获得其返回结果。关于SQLTask的详细描述，请参见[Java SDK概述](cn.zh-CN/SDK参考/Java SDK/Java SDK概述.md#)。
+SQLTask是MaxCompute SQL的SDK接口。借助SQLTask，您可以方便地运行SQL并获得其返回结果。关于SQLTask的详细描述，请参见[Java SDK概述](cn.zh-CN/SDK参考/Java SDK/Java SDK介绍.md#)。
 
-SQLTask.getResult\(i\)返回的是一个list，您可以循环迭代这个list以获得完整的SQL计算返回结果。但是，此方法有限制条件：目前select语句返回至客户端的数据条数最大值为1万（参见[其他操作](../../../../cn.zh-CN/开发/常用命令/其他操作.md#)中READ\_TABLE\_MAX\_ROW的取值范围）。即如果在客户端上（包括使用SQLTask SDK）直接select，相当于查询结果上最后加上了limit 10000（如果使用CREATE TABLE XX AS SELECT或用INSERT INTO/OVERWRITE TABLE把结果固化到具体的表里，则无这项限制）。
+`SQLTask.getResult(i)`返回的是一个list，您可以循环迭代这个list以获得完整的SQL计算返回结果。但是，此方法有限制条件：目前select语句返回至客户端的数据条数最大值为1万（参见[其他操作](../../../../cn.zh-CN/开发/常用命令/其他操作.md#)中READ\_TABLE\_MAX\_ROW的取值范围）。即如果在客户端上（包括使用SQLTask SDK）直接select，相当于查询结果上最后加上了limit 10000（如果使用CREATE TABLE XX AS SELECT或用INSERT INTO/OVERWRITE TABLE把结果固化到具体的表里，则无这项限制）。
 
 ## Tunnel {#section_9x7_6y4_o0t .section}
 
