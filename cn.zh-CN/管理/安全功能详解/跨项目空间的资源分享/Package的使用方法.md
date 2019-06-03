@@ -38,7 +38,7 @@ package的使用涉及到两个主体：package创建者和package使用者。
     **说明：** 
 
     -   目前支持的对象类型不包括project类型，也就是不允许通过package在其它project中创对象。
-    -   添加资源时，对象名称不能加项目名前缀。例如当前roject为prj1，需要添加表table\_test到某个package中，则进行add操作时，表名不能写成prj1.table\_test，应该直接写表名table\_test。
+    -   添加资源时，对象名称不能加项目名前缀。例如当前project为prj1，需要添加表table\_test到某个package中，则进行add操作时，表名不能写成prj1.table\_test，应该直接写表名table\_test。
     -   添加到package中的不仅仅是对象本身，还包括相应的操作权限。当没有通过\[with privileges privileges\]来指定操作权限时，默认为只读权限，即read/describe/select。 对象及其权限被看作一个整体，添加后不可被更新。如果有需要，则只能删除和重新添加。
     -   对象添加到package时，并非快照打包，因此后续对象数据有变更，通过package授权访问对象也是访问该对象的当前数据。
 -   许可其他项目空间使用package
