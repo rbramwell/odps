@@ -1,16 +1,16 @@
 # MaxCompute术语表 {#concept_wxh_rxv_tdb .concept}
 
-本文列举了MaxCompute常见的概念和术语。详细的描述请参见文中链接。
+本文列举了MaxCompute常见的概念和术语。详细的描述请参见文中的链接。
 
 ## A {#section_utx_txv_tdb .section}
 
 -   AccessKey
 
-    AccessKey（简称AK，包括Access Key Id和Access Key Secret），是访问阿里云API的密钥，在阿里云官网注册云账号后，可在[accesskeys管理](https://ak-console.aliyun.com/#/)页面生成，用于标识用户，为访问MaxCompute或者其他云产品做签名验证。Access Key Secret必须保密。
+    AccessKey（简称AK，包括AccessKey ID和AccessKey Secret），是访问阿里云API的密钥，在阿里云官网注册云账号后，可在[accesskeys管理](https://ak-console.aliyun.com/#/)页面生成，用于标识用户，为访问MaxCompute或者其他云产品做签名验证。AccessKey Secret必须保密。
 
 -   安全
 
-    MaxCompute多租户数据安全体系，主要包括用户认证、项目空间的用户与授权管理、跨项目空间的资源分享以及项目空间的数据保护。关于MaxCompute安全操作的更多详情请参见[安全指南](cn.zh-CN/管理/安全指南/安全功能详解/目标用户.md)。
+    MaxCompute多租户数据安全体系，主要包括用户认证、项目空间的用户与授权管理、跨项目空间的资源分享以及项目空间的数据保护。关于MaxCompute安全操作的更多详情请参见[安全指南](cn.zh-CN/管理/安全功能详解/目标用户.md)。
 
 
 ## C {#section_rhc_vxv_tdb .section}
@@ -22,17 +22,17 @@
 
 ## D {#section_o1d_vxv_tdb .section}
 
--   Data type
+-   Data Type
 
-    MaxCompute表中所有列对应的数据类型。目前支持的数据类型详情请参见[基本概念\>数据类型](cn.zh-CN/开发/基本概念/数据类型.md)。
+    MaxCompute表中所有列对应的数据类型。目前支持的数据类型详情请参见[数据类型](cn.zh-CN/开发/基本概念/数据类型.md#)。
 
 -   DDL
 
-    Data Definition Language（数据定义语言）。比如创建表、创建视图等操作，MaxCompute DDL语法请参见[用户指南\>DDL语句](cn.zh-CN/开发/SQL及函数/DDL语句/表操作.md#)。
+    Data Definition Language（数据定义语言）。例如创建表、创建视图等操作，MaxCompute DDL语法请参见[DDL语句](cn.zh-CN/开发/SQL及函数/DDL语句/表操作.md#)。
 
 -   DML
 
-    Data Manipulation Language（数据操作语言）。比如INSERT操作，MaxCompute DML语法请参见[用户指南\>INSERT操作](cn.zh-CN/开发/SQL及函数/INSERT语句/更新表数据（INSERT OVERWRITE and INTO）.md#)。
+    Data Manipulation Language（数据操作语言）。例如INSERT操作，MaxCompute DML语法请参见[INSERT语句](cn.zh-CN/开发/SQL及函数/INSERT语句/更新表数据（INSERT OVERWRITE and INTO）.md#)。
 
 
 ## F {#section_ptd_vxv_tdb .section}
@@ -46,7 +46,7 @@
 
 -   Instance（实例）
 
-    作业的一个具体实例，表示实际运行的Job，类同Hadoop中Job的概念。详情请参见[基本概念\>任务实例](cn.zh-CN/开发/基本概念/任务实例.md)。
+    作业的一个具体实例，表示实际运行的Job，类同Hadoop中Job的概念。详情请参见[任务实例](cn.zh-CN/开发/基本概念/任务实例.md#)。
 
 
 ## M {#section_f2f_vxv_tdb .section}
@@ -69,33 +69,33 @@
 
 -   Partition（分区）
 
-    分区Partition是指一张表下，根据分区字段（一个或多个组合）对数据存储进行划分。也就是说，如果表没有分区，数据是直接放在表所在的目录下。如果表有分区，每个分区对应表下的一个目录，数据是分别存储在不同的分区目录下。关于分区的更多介绍请参见[基本概念\>分区](cn.zh-CN/开发/基本概念/分区.md)。
+    分区Partition是指一张表下，根据分区字段（一个或多个组合）对数据存储进行划分。也就是说，如果表没有分区，数据是直接放在表所在的目录下。如果表有分区，每个分区对应表下的一个目录，数据是分别存储在不同的分区目录下。关于分区的更多介绍请参见[分区](cn.zh-CN/开发/基本概念/分区.md#)。
 
 -   Project（项目/项目空间）
 
-    项目空间（Project）是MaxCompute的基本组织单元，它类似于传统数据库的Database或Scheme的概念，是进行多用户隔离和访问控制的主要边界。详情请参见[基本概念\>项目空间](cn.zh-CN/开发/基本概念/项目空间.md)。
+    项目空间（Project）是MaxCompute的基本组织单元，它类似于传统数据库的Database或Scheme的概念，是进行多用户隔离和访问控制的主要边界。详情请参见[项目空间](cn.zh-CN/开发/基本概念/项目空间.md#)。
 
 
 ## R {#section_tp2_vxv_tdb .section}
 
 -   Role（角色）
 
-    角色是MaxCompute安全功能里使用的概念，可以看成是拥有相同权限的用户的集合。多个用户可以同时存在于一个角色下，一个用户也可以隶属于多个角色。给角色授权后，该角色下的所有用户拥有相同的权限。关于角色管理的更多介绍请参见[安全指南\>角色管理](cn.zh-CN/管理/安全指南/安全功能详解/用户及授权管理/角色管理.md)。
+    角色是MaxCompute安全功能里使用的概念，可以看成是拥有相同权限的用户的集合。多个用户可以同时存在于一个角色下，一个用户也可以隶属于多个角色。给角色授权后，该角色下的所有用户拥有相同的权限。关于角色管理的更多介绍请参见[角色管理](../../../../cn.zh-CN/管理/安全功能详解/用户及授权管理/角色管理.md#)。
 
 -   Resource（资源）
 
-    资源（Resource）是MaxCompute中特有的概念。您如果想使用MaxCompute的自定义函数（UDF）或MapReduce功能，都需要依赖资源来完成。详情请参见[基本概念\>资源](cn.zh-CN/开发/基本概念/资源.md)。
+    资源（Resource）是MaxCompute中特有的概念。如果您想使用MaxCompute的自定义函数（UDF）或MapReduce功能，则需要依赖资源来完成。详情请参见[资源](cn.zh-CN/开发/基本概念/资源.md#)。
 
 
 ## S {#section_n3h_vxv_tdb .section}
 
 -   SDK
 
-    Software Development Kits软件开发工具包。一般都是一些被软件工程师用于为特定的软件包、软件实例、软件框架、硬件平台、操作系统、文档包等建立应用软件的开发工具的集合。MaxCompute目前支持[Java SDK](../../../../cn.zh-CN/SDK参考/Java SDK.md#)和[Python SDK](cn.zh-CN/SDK参考/Python SDK.md)。
+    Software Development Kits软件开发工具包。一般都是一些被软件工程师用于为特定的软件包、软件实例、软件框架、硬件平台、操作系统、文档包等建立应用软件的开发工具的集合。MaxCompute目前支持[Java SDK介绍](../../../../cn.zh-CN/SDK参考/Java SDK/Java SDK介绍.md#)和[Python SDK](cn.zh-CN/SDK参考/Python SDK.md)。
 
 -   授权
 
-    项目空间管理员或者project owner授予您对MaxCompute中的Object（或称之为客体，例如表，任务，资源等）进行某种操作的权限，包括读、写、查看等。授权的具体操作请参见[安全指南\>用户管理](cn.zh-CN/管理/安全指南/安全功能详解/用户及授权管理/用户管理.md)。
+    项目空间管理员或者Project Owner授予您对MaxCompute中的Object（或称之为客体，例如表、任务、资源等）进行某种操作的权限，包括读、写、查看等。授权的具体操作请参见[用户管理](../../../../cn.zh-CN/管理/安全功能详解/用户及授权管理/用户管理.md#)。
 
 -   沙箱
 
@@ -106,27 +106,27 @@
 
 -   Table（表）
 
-    表是MaxCompute的数据存储单元，详情请参见[基本概念\>表](cn.zh-CN/开发/基本概念/表.md)。
+    表是MaxCompute的数据存储单元，详情请参见[表](cn.zh-CN/开发/基本概念/表.md#)。
 
 -   Tunnel
 
-    MaxCompute的数据通道，提供高并发的离线数据上传下载服务。您可以使用Tunnel服务向MaxCompute批量上传数据或者将数据下载。相关命令请参见[Tunnel命令操作](cn.zh-CN/开发/数据上传下载/上传下载命令.md)或[批量数据通道SDK](cn.zh-CN/开发/数据上传下载/批量数据通道SDK介绍/批量数据通道概要.md)。
+    MaxCompute的数据通道，提供高并发的离线数据上传下载服务。您可以使用Tunnel服务向MaxCompute批量上传数据或者将数据下载。相关命令请参见[上传下载命令](cn.zh-CN/开发/数据上传下载/上传下载命令.md#)或[批量数据通道SDK](cn.zh-CN/开发/数据上传下载/批量数据通道SDK介绍/批量数据通道概要.md)。
 
 
 ## U {#section_e53_vxv_tdb .section}
 
 -   UDF
 
-    广义的UDF，即User Defined Function，MaxCompute提供的Java编程接口开发自定义函数，详情请参见[用户指南\>UDF](cn.zh-CN/开发/SQL及函数/UDF/UDF概述.md)。
+    广义的UDF，即User Defined Function，MaxCompute提供的Java编程接口开发自定义函数，详情请参见[UDF概述](cn.zh-CN/开发/SQL及函数/UDF/UDF概述.md#)。
 
     狭义的UDF指用户自定义标量值函数（User Defined Scalar Function），它的输入与输出是一对一的关系，即读入一行数据，写出一条输出值。
 
 -   UDAF
 
-    User Defined Aggregation Function，自定义聚合函数，它的输入与输出是多对一的关系， 即将多条输入记录聚合成一条输出值。可以与SQL中的Group By语句联用。详情请参见[UDAF](cn.zh-CN/开发/SQL及函数/UDF/Java UDF.md#section_vdy_4kf_vdb)。
+    User Defined Aggregation Function，自定义聚合函数，它的输入与输出是多对一的关系， 即将多条输入记录聚合成一条输出值。可以与SQL中的GROUP BY语句联用。详情请参见[UDAF](cn.zh-CN/开发/SQL及函数/UDF/Java UDF.md#section_vdy_4kf_vdb)。
 
 -   UDTF
 
-    User Defined Table Valued Function，自定义表值函数，用来解决一次函数调用输出多行数据的场景，也是唯一能返回多个字段的自定义函数。而UDF只能一次计算输出一条返回值。详情请参见[UDTF](cn.zh-CN/开发/SQL及函数/UDF/Java UDF.md#section_a4t_34f_vdb)。
+    User Defined Table Valued Function，自定义表值函数，用来解决一次函数调用输出多行数据的场景。它是唯一能返回多个字段的自定义函数，而UDF只能一次计算输出一条返回值。详情请参见[UDTF](cn.zh-CN/开发/SQL及函数/UDF/Java UDF.md#section_a4t_34f_vdb)。
 
 
