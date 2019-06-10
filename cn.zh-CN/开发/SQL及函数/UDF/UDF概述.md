@@ -21,11 +21,11 @@ MaxCompute支持的UDF有三种，如下表所示。
 
 ## 跨项目分享 {#section_uw6_u3e_4yz .section}
 
-MaxCompute的UDF支持跨项目分享，即在project\_a中可以使用project\_b的UDF。具体的授权方式参见[跨项目空间Table、Resource、Function分享示例](../../../../cn.zh-CN/管理/安全功能详解/用户及授权管理/授权.md#section_fba_w66_us6)。使用代码举例：`select other_project:udf_in_other_project(arg0, arg1) as res from table_t;`。
+MaxCompute的UDF支持跨项目分享，即在project\_a中可以使用project\_b的UDF。对应的语句为`select other_project:udf_in_other_project(arg0, arg1) as res from table_t;`。具体示例请参见[跨项目空间Table、Resource、Function分享示例](../../../../cn.zh-CN/管理/安全功能详解/用户及授权管理/授权.md#section_fba_w66_us6)。
 
 ## UDF SDK依赖安装 {#section_2sd_vmn_fpd .section}
 
-如果您使用[Maven](http://search.maven.org/)，可以从 [Maven 库](http://search.maven.org/)中搜索odps-sdk-udf，从而获取不同版本的Java SDK，相关配置信息如下所示：
+如果您使用[Maven](http://search.maven.org/)，可以从 [Maven 库](http://search.maven.org/)中搜索odps-sdk-udf，从而获取不同版本的Java SDK，相关配置信息如下所示。
 
 ``` {#codeblock_1y6_9eo_sjp .language-xml}
 <dependency>
