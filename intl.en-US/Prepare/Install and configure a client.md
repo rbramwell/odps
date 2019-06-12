@@ -13,10 +13,10 @@ Once you install and configure the MaxCompute console, you can access all functi
 
 **Note:** Make sure you have JRE 1.7 or a later version installed to properly use the MaxCompute console.
 
-1.  If you are using Linux, download the [odpscmd MaxCompute CLI tool](http://repo.aliyun.com/odpscmd/). For Windows or MAC, download the [MaxCompute console](http://repo.aliyun.com/download/odpscmd/latest/odpscmd_public.zip).
+1.  [Click here](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/119118/cn_zh/1559120057202/odpscmd_public_May.zip) to download the MaxCompute client.
 2.  Decompress it into a folder. After decompression, you can see four following folders:
 
-    ```
+    ``` {#codeblock_ykk_etz_971}
     bin/ conf/ lib/ plugins/
     ```
 
@@ -25,7 +25,7 @@ Once you install and configure the MaxCompute console, you can access all functi
 
 A file called odps\_config.ini is in the conf folder. Edit it by filling in corresponding information to configure the console:
 
-```
+``` {#codeblock_t8n_j8z_48k}
 access_id=*******************
 access_key=********************* 
  #Your AccessKeyId and AccessKeySecret. You can apply for an AccessKey through the official Alibaba Cloud console.
@@ -48,11 +48,11 @@ https_check=true  # Determine whether to enable HTTPS access.
 
 After the configuration file has been modified, run MaxCompute in bin directory\(For Linux, run ./bin/odpscmd, for Windows, run ./bin/odpscmd.bat\). For example:
 
-```
+``` {#codeblock_8mq_2wv_jnz}
 create table tbl1(id bigint);
 insert overwrite table tbl1 select count(*) from tbl1;
 select 'welcome to MaxCompute!' from tbl1;
 ```
 
-For more information about SQL statements, see [SQL Summary](../../../../reseller.en-US/Developer Guide/SQL/SQL summary.md).
+For more information about SQL statements, see [SQL Summary](../../../../reseller.en-US/User Guide/SQL/SQL summary.md).
 
