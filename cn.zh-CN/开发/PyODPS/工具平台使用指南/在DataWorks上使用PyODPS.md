@@ -6,7 +6,7 @@
 
 在工作流节点中会包含PYODPS类型节点。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21169/156025208511645_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21169/156041230111645_zh-CN.png)
 
 ## ODPS入口 {#section_rfp_skg_cfb .section}
 
@@ -36,7 +36,7 @@ with instance.open_reader() as reader:
 
 ``` {#codeblock_lc6_71m_sfj .language-python}
 with instance.open_reader(tunnel=True, limit=False) as reader:
-    # 本次open_reader使用instance tunnel接口，且能读取全部数据。
+# 本次open_reader使用instance tunnel接口，且能读取全部数据。
 ```
 
 **说明：** 若您未开启instance tunnel，可能导致获取数据格式错误，解决方法请参见[PyODPS常见问题](https://help.aliyun.com/knowledge_detail/88457.html)。
@@ -100,9 +100,8 @@ o.get_table('table_name').get_partition('ds=' + args['ds'])
 
 ## 使用限制 {#section_ixn_ypg_cfb .section}
 
-在DataWorks上使用PyODPS时，为了防止对DataWorks的Gate Way造成压力，对内存和CPU都有限制。该限制由DataWorks统一管理。
-
-如果您发现有**Got killed**报错，即表名内存使用超限，进程被Kill。因此，请尽量避免本地的数据操作。
-
-通过PyODPS发起的SQL和DataFrame任务（除to\_pandas外\) 不受此限制。
+-   PyODPS节点底层的Python版本为2.7。
+-   PyODPS节点获取到本地处理的数据不能超过50MB，节点运行时占用内存不能超过1G，否则节点任务会被系统Kill。请避免在PyODPS任务中写额外的Python数据处理代码。 
+-   在DataWorks上编写代码并进行调试效率较低，为提升运行效率，建议本地安装IDE进行代码开发，详情请参见[安装指南](cn.zh-CN/开发/PyODPS/安装指南.md#)。
+-   在DataWorks上使用PyODPS时，为了防止对DataWorks的Gate Way造成压力，对内存和CPU都有限制。该限制由DataWorks统一管理。如果您发现有**Got killed**报错，即表名内存使用超限，进程被Kill。因此，请尽量避免本地的数据操作。通过PyODPS发起的SQL和DataFrame任务（除to\_pandas外\) 不受此限制。
 
