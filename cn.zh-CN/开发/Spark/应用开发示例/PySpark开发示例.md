@@ -4,7 +4,7 @@
 
 若需要访问MaxCompute表，则需要编译datasource包。具体步骤请参见[配置依赖](cn.zh-CN/开发/Spark/搭建开发环境.md#section_oey_mqy_cq1)。
 
-## SparkSQL应用示例（spark1.6） {#section_839_eh0_s8n .section}
+## SparkSQL应用示例（Spark1.6） {#section_839_eh0_s8n .section}
 
 详细代码
 
@@ -30,7 +30,7 @@ if __name__ == '__main__':
 example.py
 ```
 
-## SparkSQL应用示例（spark2.3） {#section_9rs_9yt_o5a .section}
+## SparkSQL应用示例（Spark2.3） {#section_9rs_9yt_o5a .section}
 
 详细代码
 
@@ -45,7 +45,7 @@ if __name__ == '__main__':
     spark.sql("SELECT COUNT(*) FROM spark_sql_test_table").show()
 ```
 
-提交运行
+Cluster模式提交运行
 
 ``` {#codeblock_9q8_mgk_ppc}
 spark-submit --master yarn-cluster \
@@ -53,7 +53,7 @@ spark-submit --master yarn-cluster \
 example.py
 ```
 
-local模式运行
+Local模式运行
 
 ``` {#codeblock_0bq_n58_nfe}
 cd $SPARK_HOME
@@ -69,7 +69,7 @@ cd $SPARK_HOME
 
 ## Package依赖 {#section_0q7_5da_5vt .section}
 
-由于MaxCompute集群无法自由安装Python库，PySpark依赖其他Python库/插件/项目时，通常需在本地打包后通过spark-submit上传。对于特定依赖，打包环境需与线上环境保持一致。您可根据依赖复杂度使用以下两种打包方式。
+由于MaxCompute集群无法自由安装Python库，PySpark依赖其它Python库/插件/项目时，通常需在本地打包后通过Spark-submit上传。对于特定依赖，打包环境需与线上环境保持一致。您可根据依赖复杂度使用以下两种打包方式。
 
 -   本地打egg包
 
@@ -79,8 +79,8 @@ cd $SPARK_HOME
 
     1.  制作numpy、setuptools egg包。具体操作步骤如下：
         1.  [下载](https://pypi.org/)numpy和setuptools安装包。
-        2.  进入setuptools源码路径，执行python setup.py bdist\_egg后，会在dist目录生成egg文件。
-        3.  进入numpy源码路径，执行python setupeggs.py bdist\_egg后，会在dist目录生成egg文件。
+        2.  进入setuptools源码路径，执行Python setup.py bdist\_egg后，会在dist目录生成egg文件。
+        3.  进入numpy源码路径，执行Python setupeggs.py bdist\_egg后，会在dist目录生成egg文件。
     2.  提交Spark作业
 
         ``` {#codeblock_o3l_n9x_uh4}
@@ -101,7 +101,7 @@ cd $SPARK_HOME
         spark.pyspark.python=./public.python-2.7-ucs4.zip/python-2.7-ucs4/bin/python2.7
         ```
 
-    2.  提交spark作业
+    2.  提交Spark作业
 
         ``` {#codeblock_a9l_jnn_9oh}
         cd $SPARK_HOME
@@ -119,7 +119,7 @@ cd $SPARK_HOME
         spark.pyspark.python=./public.python-2.7-ucs4.zip/python-2.7-ucs4/bin/python2.7
         ```
 
-    2.  提交spark作业
+    2.  提交Spark作业
 
         ``` {#codeblock_fy8_zr0_hbt}
         cd $SPARK_HOME
