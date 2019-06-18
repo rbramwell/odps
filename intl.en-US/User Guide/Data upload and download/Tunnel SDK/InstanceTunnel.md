@@ -4,7 +4,7 @@ This topic describes the interface, parameters, and limits of InstanceTunnel. Yo
 
 The InstanceTunnel interface is defined as follows:
 
-```language-java
+``` {#codeblock_c6u_k9p_zwm .language-java}
 public class InstanceTunnel{
  public DownloadSession createDownloadSession(String projectName, String instanceID);
  public DownloadSession createDownloadSession(String projectName, String instanceID, boolean limitEnabled);
@@ -12,15 +12,15 @@ public class InstanceTunnel{
  }
 ```
 
-**Parameters**
+For more information, see [Java-sdk-doc](https://www.javadoc.io/doc/com.aliyun.odps/odps-sdk-core/0.31.3-public).
+
+Parameter description:
 
 -   projectName: the name of the project where the specified instance resides.
 -   instanceID: the ID of the specified instance.
 
-**Limits**
+Limits:
 
-For data security purposes, InstanceTunnel has the following limits:
-
--   If the number of records does not exceed 10,000, all users who have the permissions to read the specified instance can call this instance. This is the same as when you use a RESTful API to query data.
+-   If the number of records does not exceed 10,000, all users who have the permissions to read the specified instance can call this instance. This is the same for when calling a RESTful API to query data.
 -   If the number of records exceeds 10,000, only users who have the permissions to read all the source tables from which the specified instance queries data can call this instance.
 
