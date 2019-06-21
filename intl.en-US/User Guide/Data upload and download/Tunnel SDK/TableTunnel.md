@@ -1,10 +1,12 @@
 # TableTunnel {#concept_exm_f3g_vdb .concept}
 
-TableTunnel is an ingress class that accesses the MaxCompute Tunnel service.  The TableTunnel.UploadSession interface is a session that uploads data to the MaxCompute table. The TableTunnel.DownloadSession interface is a session that downloads data to the MaxCompute table.
+This topic provides a definition and describes the processes and limits of TableTunnel, which itself provides an ingress class for you to use the MaxCompute Tunnel service to upload and download tables.
 
-**This interface is defined as follows:**
+## Definition {#section_p3f_id8_sge .section}
 
-```
+The TableTunnel interface is defined as follows:
+
+``` {#codeblock_dtv_f71_eum .language-java}
 public class TableTunnel {
  public DownloadSession createDownloadSession(String projectName, String tableName);
  public DownloadSession createDownloadSession(String projectName, String tableName, PartitionSpec partitionSpec);
@@ -14,34 +16,36 @@ public class TableTunnel {
  public DownloadSession getDownloadSession(String projectName, String tableName, String id);
  public UploadSession getUploadSession(String projectName, String tableName, PartitionSpec partitionSpec, String id);
  public UploadSession getUploadSession(String projectName, String tableName, String id);
- }
+}
 ```
 
-**Description:**
+For more information, see [Java-sdk-doc](https://www.javadoc.io/doc/com.aliyun.odps/odps-sdk-core/0.31.3-public).
 
--   Lifecycle: It is the TableTunnel life cycle, begins with a TableTunnel instance creation and ends with the completion of the process.
--   PublicClassTableTunnel: A method of creating uploading and downloading objects.
--   Session: It is a process for uploading and downloading table or a partition. A session consists of one or more HTTP  Requests to the Tunnel RESTful API.
--   Uploading session: The uploading session of TableTunnel is INSERT  INTO semantics, which means that sessions that upload the same table or partition do not affect each other. The upload of each session is located in different directories.
--   Block ID: It is the corresponding file name. In an uploading session, each RecordWriter corresponds to an HTTP Request, identified by a block ID and corresponds to a file on the service side.
--   RecordWriter: In a session, opening RecordWriter multiple times with the same block ID results in overwriting. The data uploaded by the last RecordWriter calling close\(\) is retained.  This feature can be used for retransmissions when block uploading fails.
+Parameter description:
 
-**TableTunnel Interface implementation process:**
+-   lifecycle: the period of time that starts when a TableTunnel instance is created and ends when the service process is completed.
+-   UploadSession and DownloadSession: the objects that you can create by using TableTunnel. After creating an UploadSession or DownloadSession object, you can call a session, TableTunnel.UploadSession or TableTunnel.DownloadSession, to upload or download data.
+-   Session: the period of time in which a table or partition is uploaded or downloaded. A session consists of one or more HTTP requests to the Tunnel RESTful API actions that you call.
+-   TableTunnel.UploadSession: This session offers the same capabilities as the `INSERT INTO` statement. You can create multiple sessions to upload the same table or partition, and these sessions do not affect each another. The data uploaded by each session is stored to a unique directory.
+-   RecordWriter: In TableTunnel.UploadSession, each RecordWriter class corresponds to an HTTP request and is uniquely identified by its block ID. The block ID is the name of the file corresponding to the RecordWriter class.
+-   blockId: If you use the same block ID to open a RecordWriter class multiple times in the same session, the data uploaded by the RecordWriter class that is the last to call the `close()` function overwrites all previous data. This is helpful in retransmitting data of a block in case that the block data fails to be transmitted.
 
-1.  RecordWriter.write\(\) uploads data to a file in a temporary directory.
-2.  RecordWriter.close\(\) moves the preceding file from the temporary directory to the data directory.
-3.  Session.commit\(\) moves all files in the corresponding data directory to directory where the corresponding table is located, and updates the table meta. This means that data moving into the table is visible to other MaxCompute tasks \(including SQL, MR\).
+## Process {#section_o8x_xyi_n93 .section}
 
-**Limits:**
+1.  The `RecordWriter.write()` function uploads your data as files to a temporary directory.
+2.  The `RecordWriter.close()` function moves the files from the temporary directory to the Data directory.
+3.  The `session.commit()` function moves each file in the Data directory to the directory where the corresponding table is located, and updates the table metadata accordingly. In this way, data moved into a table by the current task can be visible to the other MaxCompute tasks such as SQL and MapReduce.
 
--   The range of block id is 0 to 20000. The data size uploaded by a single block is limited to 100 GB.
--   The session timeout is 24 hours.  Split the massive data into multiple sessions, if the transmission time is supposed to exceed the threshold that is 24 hours.
--   The HTTP Request timeout for RecordWriter  is 120 seconds.  If no data flow through the HTTP connection is observed within 120 seconds, the service automatically closes the connection.
+## Limits {#section_59l_nph_a9l .section}
 
-    **Note:** By default, HTTP has a buffer of 8 KB.  Therefore, it is difficult to determine the data flow through an HTTP connection when you call RecordWriter.write\(\) each time.   Moreover, TunnelRecordWriter.flush\(\) can forcibly clear the data from the buffer.
+-   The number used for the block ID must be greater than or equal to 0 and less than 20000. The size of data to be uploaded in a block cannot exceed 100 GB.
+-   A session is uniquely identified by its ID. The lifecycle of a session is 24 hours. If your session times out due to large data uploads, you will need to split your data into multiple sessions to mitigate the chance of session timeouts.
+-   The lifecycle of an HTTP request of a RecordWriter class is 120s. If there is no inbound traffic over an HTTP connection within 120 seconds, the server closes the connection.
 
--   When logs are being written into MaxCompute, the RecordWriter can be easily timed out as the flow of the data is unpredictable.  Note:
-    -   We do not recommend using a RecordWriter for all types of data. Because each RecordWriter corresponds to a file resulting into numerous small files, critically impacting MaxCompute performance.
-    -   We recommend calling a RecordWriter to write data in a batch when your code cache data size exceeds 64 MB.
--   The threshold for RecordReader timeout is 300 seconds.
+    **Note:** HTTP provides an 8-KB buffer. When you call the `RecordWriter.write()` function, your data can be saved to the buffer with no inbound traffic over the corresponding HTTP connection. In such a case, you can call the `TunnelRecordWriter.flush()` function to make this data stored in the buffer into inbound traffic over the HTTP connection.
+
+-   When you create RecordWriter classes to write logs to MaxCompute, the `RecordWriter` classes are likely to time out due to unexpected traffic fluctuations. Therefore, we recommend that you:
+    -   Do not create a RecordWriter class for each of your data records because each `RecordWriter` class corresponds to a file. If you create a `RecordWriter` class for every data record, a large number of small files are produced, degrading the overall performance of MaxCompute.
+    -   Do not create a RecordWriter class to write data in batches until the size of cached code reaches 65 MB.
+-   The lifecycle of a RecordReader class is 300s.
 
