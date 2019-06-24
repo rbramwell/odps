@@ -92,9 +92,9 @@ select /*+mapjoin(b)*/ x.add(y).toString() from @a a join @b b;   -- 实例方�
 
 上述示例还体现了一种用UDF比较不好实现的功能：子查询的结果允许UDT类型的列。例如上面变量a的x列是`java.math.BigInteger`类型，而不是内置类型。UDT类型的数据可以被带到下一个Operator中再调用其它方法，甚至可以参与数据Shuffle。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22183/156109497313239_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22183/156137027813239_zh-CN.png)
 
-如上图可知，该UDT共有三个Stage：M1、R2和J3。如果您熟悉MapReduce原理便会知道，由于Join的存在需要做数据Reshuffle，所以会出现多个Stage。通常，不同的Stage是在不同的进程、不同的物理机器上运行的。
+如上图可知，该UDT共有三个Stage：M1、R2和J3。如果您熟悉MapReduce原理便会知道，由于`join`的存在需要做数据Reshuffle，所以会出现多个Stage。通常，不同的Stage是在不同的进程、不同的物理机器上运行的。
 
 查看M1，可以看到M1只执行了`new java.math.BigInteger(x)`操作。
 
@@ -115,7 +115,7 @@ select /*+mapjoin(b)*/ x.add(y).toString() from @a a join @b b;   -- 实例方�
         select new com.aliyun.odps.test.IntegerMaxValue().evaluate();
         ```
 
-    -   `odps.sql.session.java.imports`指定默认的Java Package，可以指定多个，用逗号隔开。和Java的import语句类似，可以提供完整类路径，例如java.math.BigInteger，也可以使用`*`。暂不支持`static import`。
+    -   `odps.sql.session.java.imports`指定默认的Java Package，可以指定多个，用逗号隔开。和Java的`import`语句类似，可以提供完整类路径，例如`java.math.BigInteger`，也可以使用`*`。暂不支持`static import`。
 
         UDT概述中UDF的Jar包，用UDT使用还可以有如下写法。
 
@@ -129,8 +129,8 @@ select /*+mapjoin(b)*/ x.add(y).toString() from @a a join @b b;   -- 实例方�
 
 -   UDT支持的操作如下：
 
-    -   实例化对象的new操作。
-    -   实例化数组的new操作，包括使用初始化列表创建数组，例如`new Integer[] { 1, 2, 3 }`。
+    -   实例化对象的`new`操作。
+    -   实例化数组的`new`操作，包括使用初始化列表创建数组，例如`new Integer[] { 1, 2, 3 }`。
     -   方法调用，包括静态方法调用（因此能用工厂方法构建对象）。
     -   域访问，包括静态域。
     **说明：** 
@@ -159,15 +159,15 @@ select /*+mapjoin(b)*/ x.add(y).toString() from @a a join @b b;   -- 实例方�
 
     **说明：** 构造函数需要指定类型参数，否则使用`java.lang.Object`，这一点和Java保持一致。`new java.util.ArrayList(java.util.Arrays.asList('1', '2'))`的结果是`java.util.ArrayList<Object>`类型，而`new java.util.ArrayList<String>(java.util.Arrays.asList('1', '2'))`的结果是`java.util.ArrayList<String>`类型。
 
--   UDT对同一对象的概念是模糊的。这是由数据的Reshuffle导致的。从第一部分Join的示例可以看出，对象有可能会在不同进程、不同物理机器之间传输，在传输过程中同一个对象的两个引用后面可能分别引用了不同的对象（例如对象先被Shuffle到两台机器，然后下次又Shuffle回一起）。
+-   UDT对同一对象的概念是模糊的。这是由数据的Reshuffle导致的。从第一部分`join`的示例可以看出，对象有可能会在不同进程、不同物理机器之间传输，在传输过程中同一个对象的两个引用后面可能分别引用了不同的对象（例如对象先被Shuffle到两台机器，然后下次又Shuffle回一起）。
 
-    所以在使用UDT时，应该使用equals方法判断相等，避免使用`=`判断相等。
+    所以在使用UDT时，应该使用`equals`方法判断相等，避免使用`=`判断相等。
 
     某行某列的对象，其内部包含的各个数据对象的相关性是可以保证的。不同行或者不同列的对象的数据相关性是不保证的。
 
--   目前UDT不能用作Shuffle Key，包括Join、Group By、Distribute By、Sort By、Order By、Cluster By等结构的Key。
+-   目前UDT不能用作Shuffle Key，包括`join`、`group by`、`distribute by`、`sort by`、`order by`、cluster by等结构的Key。
 
-    并不是说UDT不能用在这些结构中，UDT可以在Expression中间的任意阶段使用，但不能作为最终输出。例如，不可以使用语句`group by new java.math.BigInteger('123')`，但可以使用语句`group by new java.math.BigInteger('123').hashCode()`。因为hashCode方法的返回值是`int.class`类型，可以当做内置类型INT来使用（应用上述内置类型与特定Java类型规则）。
+    并不是说UDT不能用在这些结构中，UDT可以在Expression中间的任意阶段使用，但不能作为最终输出。例如，不可以使用语句`group by new java.math.BigInteger('123')`，但可以使用语句`group by new java.math.BigInteger('123').hashCode()`。因为`hashCode`方法的返回值是`int.class`类型，可以当做内置类型INT来使用（应用上述内置类型与特定Java类型规则）。
 
 -   UDT扩展了类型转换规则：
     -   UDT对象可以被隐式类型转换为其基类对象。
@@ -179,7 +179,7 @@ select /*+mapjoin(b)*/ x.add(y).toString() from @a a join @b b;   -- 实例方�
 
     内置类型支持BINARY，因此支持自己实现序列化的过程，将byte\[\]的数据落盘。下次读出时再还原回来。
 
-    某些类可能自带序列化和反序列化的方法，例如Protobuffer。目前UDT依旧不支持落盘，需要您自己调用序列化反序列化方法，变成BINARY数据类型来落盘。
+    某些类可能自带序列化和反序列化的方法，例如`Protobuffer`。目前UDT依旧不支持落盘，需要您自己调用序列化反序列化方法，变成BINARY数据类型来落盘。
 
 -   UDT不仅可以实现Scalar函数的功能，配合内置函数[collect list](cn.zh-CN/开发/SQL及函数/内建函数/聚合函数.md#)和[explode](cn.zh-CN/开发/SQL及函数/内建函数/其他函数.md#)，UDT还可以实现Aggregator和Table Function功能。
 -   UDT支持资源（Resource）的访问，您可以在SQL中通过`com.aliyun.odps.udf.impl.UDTExecutionContext.get()`静态方法获取ExecutionContext对象，从而访问当前的Execution Context，进而访问资源（例如文件资源和表格资源）。
@@ -252,9 +252,9 @@ set odps.sql.session.java.imports=java.math.*;
 select med.toString() from @c;
 ```
 
-由于collect\_list会先把所有数据都收集到一块，是没有办法实现Partial Aggregate的，所以这个做法的效率会比内置的Aggregator或者UDAF低，所以在内置Aggregator能实现的情况下，应尽量使用内置的Aggregator。同时把一个Group的所有数据都收集到一起，会增加数据倾斜的风险。
+由于`collect_list`会先把所有数据都收集到一块，是没有办法实现Partial Aggregate的，所以这个做法的效率会比内置的Aggregator或者UDAF低，所以在内置Aggregator能实现的情况下，应尽量使用内置的Aggregator。同时把一个Group的所有数据都收集到一起，会增加数据倾斜的风险。
 
-但是另一方面，如果UDAF本身的逻辑就是要将所有数据收集到一块（例如类似内置函数wm\_concat的功能），此时使用上述方法，反而可能比UDAF（注意不是内置Aggregator）高。
+但是另一方面，如果UDAF本身的逻辑就是要将所有数据收集到一块（例如类似内置函数`wm_concat`的功能），此时使用上述方法，反而可能比UDAF（注意不是内置Aggregator）高。
 
 ## 表值函数的实现示例 {#section_lmh_m8r_pxj .section}
 
@@ -276,7 +276,7 @@ select a.toString() a, b.toString() b from @d; -- 最终结果输出（注意变
 
 ## 函数重载实现示例 {#section_uap_og3_qgs .section}
 
-MaxCompute的UDF使用重载evaluate方法的方式来重载函数。这种方式不支持泛型，所以当您需要定义一个可以接受任何数据类型的函数时，就必须为每种类型都写一个evaluate函数。即使这样，这种方法依然无法实现个别输入类型（例如ARRAY）的重载函数。在没有提供Resolve注解（Annotation）的情况下，Python UDF或UDTF会根据参数个数决定输入参数，同时支持变长参数，但这种过于灵活的机制也会导致编译器无法静态找到某些错误。
+MaxCompute的UDF使用重载`evaluate`方法的方式来重载函数。这种方式不支持泛型，所以当您需要定义一个可以接受任何数据类型的函数时，必须为每种类型都写一个`evaluate`函数。但是，这种方法依然无法实现个别输入类型（例如ARRAY）的重载函数。在没有提供Resolve注解（Annotation）的情况下，Python UDF或UDTF会根据参数个数决定输入参数，同时支持变长参数，但这种过于灵活的机制也会导致编译器无法静态找到某些错误。
 
 通过UDT实现函数重载，可以很好地解决以上问题。 UDT支持泛型、类继承、变长参数，为您提供灵活的函数定义方式，示例如下。
 
@@ -303,7 +303,7 @@ public class UDTClass {
 }
 ```
 
-特定场景下，UDF需要通过`com.aliyun.odps.udf.ExecutionContext`（在setup方法中传入）获取一些上下文；UDT也可以通过`com.aliyun.odps.udt.UDTExecutionContext.get()`方法获取这样的一个ExecutionContext对象。
+特定场景下，UDF需要通过`com.aliyun.odps.udf.ExecutionContext`（在`setup`方法中传入）获取一些上下文；UDT也可以通过`com.aliyun.odps.udt.UDTExecutionContext.get()`方法获取这样的一个`ExecutionContext`对象。
 
 ## 功能/性能/安全性 {#section_mxl_mq4_hfb .section}
 
@@ -317,14 +317,14 @@ UDT在功能方面的优势如下：
 
 后续待完善功能如下：
 
--   支持无返回值的函数调用，或支持（有返回值但忽略返回值）直接取操作数本身的函数调用。例如，调用List的Add方法会返回执行完Add操作的List。
+-   支持无返回值的函数调用，或支持（有返回值但忽略返回值）直接取操作数本身的函数调用。例如，调用List的`add`方法会返回执行完`add`操作的List。
 -   支持匿名类和Lambda表达式。
 -   支持用作Shuffle Key。
 -   支持Java外的其他语言，例如Python。
 
 因为UDT和UDF的执行过程非常接近，所以UDT与UDF的性能几乎一致。优化后的计算引擎使得UDT在特定场景下的性能更高。
 
--   UDT对象只有在跨进程时才需要做序列化和反序列化，因此在执行不需要数据Reshuffle的操作（如Join或Aggregate）时，UDT可节省序列化和反序列化的开销。
+-   UDT对象只有在跨进程时才需要做序列化和反序列化，因此在执行不需要数据Reshuffle的操作（如`join`或`ggregate`）时，UDT可节省序列化和反序列化的开销。
 -   因为UDT的Runtime基于Codegen而非反射实现的，所以不存在反射带来的性能损失。在您使用过程中，连续多个UDT操作会合并在一个FunctionCall里一起执行。例如在之前的示例中，`values[x].add(values[y]).divide(java.math.BigInteger.valueOf(2))`实际上只会发生一次的UDT方法调用。所以，UDT操作的单元虽然较小，却并不会因多次函数调用而造成接口额外开销。
 
 在安全控制方面，UDT和UDF完全一样，都会受到[Java沙箱](cn.zh-CN/开发/Java沙箱.md#)Policy的限制。所以如果要使用受限的操作，需要打开沙箱隔离，或者申请沙箱白名单。
