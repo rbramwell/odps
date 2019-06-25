@@ -92,7 +92,7 @@ select /*+mapjoin(b)*/ x.add(y).toString() from @a a join @b b;   -- 实例方�
 
 上述示例还体现了一种用UDF比较不好实现的功能：子查询的结果允许UDT类型的列。例如上面变量a的x列是`java.math.BigInteger`类型，而不是内置类型。UDT类型的数据可以被带到下一个Operator中再调用其它方法，甚至可以参与数据Shuffle。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22183/156137027813239_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22183/156143080613239_zh-CN.png)
 
 如上图可知，该UDT共有三个Stage：M1、R2和J3。如果您熟悉MapReduce原理便会知道，由于`join`的存在需要做数据Reshuffle，所以会出现多个Stage。通常，不同的Stage是在不同的进程、不同的物理机器上运行的。
 
@@ -173,16 +173,16 @@ select /*+mapjoin(b)*/ x.add(y).toString() from @a a join @b b;   -- 实例方�
     -   UDT对象可以被隐式类型转换为其基类对象。
     -   UDT对象可以被强制类型转换为其基类或子类对象。
     -   没有继承关系的两个对象之间遵守原来的类型转换规则，注意这时可能会导致内容的变化。例如`java.lang.Long`类型的数据是可以强制转换为`java.lang.Integer`的，应用的是内置类型的BIGINT强制转换为INT的过程，而这个过程会导致数据内容的变化，甚至可能导致精度的损失。
--   目前UDT对象不能落盘，这意味着不能将UDT对象insert到表中（实际上DDL不支持UDT，创建不出这样的表），当然，隐式类型转换变成了内置类型的除外。同时，屏显的最终结果也不能是UDT类型，对于屏显的场景，由于所有的Java类都有`toString()`方法，而`java.lang.String`类型是合法的。所以Debug时，可以用这种方法观察UDT的内容。
+-   目前UDT对象不能落盘，这意味着不能将UDT对象`insert`到表中（实际上DDL不支持UDT，创建不出这样的表），当然，隐式类型转换变成了内置类型的除外。同时，屏显的最终结果也不能是UDT类型，对于屏显的场景，由于所有的Java类都有`toString()`方法，而`java.lang.String`类型是合法的。所以Debug时，可以用这种方法观察UDT的内容。
 
-    您也可以设置`set odps.sql.udt.display.tostring=true;`，这样MaxCompute会自动帮您把所有以UDT为最终输出的列Wrap上`java.util.Objects.toString(...)`，以方便调试。这个Flag只对屏显语句生效，对Insert语句不生效，所以它只用在调试的过程中。
+    您也可以设置`set odps.sql.udt.display.tostring=true;`，这样MaxCompute会自动帮您把所有以UDT为最终输出的列Wrap上`java.util.Objects.toString(...)`，以方便调试。这个Flag只对屏显语句生效，对`insert`语句不生效，所以它只用在调试的过程中。
 
     内置类型支持BINARY，因此支持自己实现序列化的过程，将byte\[\]的数据落盘。下次读出时再还原回来。
 
     某些类可能自带序列化和反序列化的方法，例如`Protobuffer`。目前UDT依旧不支持落盘，需要您自己调用序列化反序列化方法，变成BINARY数据类型来落盘。
 
 -   UDT不仅可以实现Scalar函数的功能，配合内置函数[collect list](cn.zh-CN/开发/SQL及函数/内建函数/聚合函数.md#)和[explode](cn.zh-CN/开发/SQL及函数/内建函数/其他函数.md#)，UDT还可以实现Aggregator和Table Function功能。
--   UDT支持资源（Resource）的访问，您可以在SQL中通过`com.aliyun.odps.udf.impl.UDTExecutionContext.get()`静态方法获取ExecutionContext对象，从而访问当前的Execution Context，进而访问资源（例如文件资源和表格资源）。
+-   UDT支持资源（Resource）的访问，您可以在SQL中通过`com.aliyun.odps.udf.impl.UDTExecutionContext.get()`静态方法获取`ExecutionContext`对象，从而访问当前的`ExecutionContext`，进而访问资源（例如文件资源和表格资源）。
 
 ## 使用Java数组示例 {#section_0d3_sbx_khg .section}
 
