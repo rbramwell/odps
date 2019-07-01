@@ -6,38 +6,38 @@
 
 1.  从菜单栏选择**Run** \> **Run Configurations…**弹出如下对话框：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12153/3192_zh-CN.PNG)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12153/15619527293192_zh-CN.PNG)
 
 2.  用户可以新建一个Run Configuration，选择运行的UDF类及类型、选择ODPS Project、填写输入表信息，如：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12153/3193_zh-CN.JPG)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12153/15619527303193_zh-CN.JPG)
 
     上述配置中，Table表示UDF的输入表，Partitions表示读取某个分区下的数据，分区由逗号分隔，Columns表示列，将依次作为UDF函数的参数被传入，列名由逗号分隔。
 
-3.  点击**Run**运行，运行结果将显示在控制台中：
+3.  单击**Run**运行，运行结果将显示在控制台中：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12153/3194_zh-CN.JPG)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12153/15619527303194_zh-CN.JPG)
 
 
 ## 右键单击快速运行 {#section_ap3_ckx_wdb .section}
 
 1.  选中一个udf.java文件（比如：UDFExample.java）并单击鼠标右键，选择**Run As** \> **Run UDF|UDAF|UDTF**。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12153/3196_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12153/15619527303196_zh-CN.png)
 
 2.  配置信息如下：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12153/3197_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12153/15619527303197_zh-CN.png)
 
     上述配置中，Table表示UDF的输入表，Partitions表示读取某个分区下的数据，分区由逗号分隔，Columns表示列，将依次作为UDF函数的参数被传入，列名由逗号分隔。
 
-3.  点击**Finish**后，运行UDF，获得输出结果。
+3.  单击**Finish**后，运行UDF，获得输出结果。
 
 ## 运行用户自定义UDF程序 {#section_gp3_ckx_wdb .section}
 
 右击一个工程并选择**New** \> **UDF**（或者选择菜单栏**File** \> **New** \> **UDF**\)。
 
-填写UDF类名然后点击**Finish**。在对应的src目录下生成与UDF类名同名的Java文件，编辑该java文件内容：
+填写UDF类名然后单击**Finish**。在对应的src目录下生成与UDF类名同名的Java文件，编辑该java文件内容：
 
 ```
 package odps;
@@ -57,13 +57,13 @@ public class UserUDF extends UDF {
 
 右击该java文件（如UserUDF.java），选择**Run As**，再选择**ODPS UDF|UDTF|UDAF**:
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12153/3200_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12153/15619527313200_zh-CN.png)
 
 配置如下对话框：
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12153/3201_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12153/15619527313201_zh-CN.png)
 
-点击**Finish**，得出结果：
+单击**Finish**，得出结果：
 
 ```
 ss2s:A1,A2
