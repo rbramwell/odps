@@ -7,6 +7,13 @@ PyODPS DataFrame支持MapReduce API，您可以分别编写`map`和`reduce`函�
 `wordcount`的示例如下。
 
 ``` {#codeblock_b77_720_bf3}
+>>> #encoding=utf-8
+>>> from odps import ODPS
+>>> from odps import options
+>>> options.verbose = True
+>>> o = ODPS('your-access-id', 'your-secret-access-key',project='DMP_UC_dev', endpoint='http://service-corp.odps.aliyun-inc.com/api')
+>>> from odps.df import DataFrame
+
 >>> def mapper(row):
 >>>     for word in row[0].split():
 >>>         yield word.lower(), 1
@@ -20,20 +27,26 @@ PyODPS DataFrame支持MapReduce API，您可以分别编写`map`和`reduce`函�
 >>>             yield keys[0], cnt[0]
 >>>     return h
 >>>
->>> words_df.map_reduce(mapper, reducer, group=['word', ],
->>>                     mapper_output_names=['word', 'cnt'],
->>>                     mapper_output_types=['string', 'int'],
->>>                     reducer_output_names=['word', 'cnt'],
->>>                     reducer_output_types=['string', 'int'])
-     word  cnt
-0   hello    2
-1       i    1
-2      is    1
-3    life    1
-4  python    2
-5   short    1
-6     use    1
-7   world    1
+>>> word_count = DataFrame(o.get_table('zx_word_count'))
+>>> table = word_count.map_reduce(mapper, reducer, group=['word', ],
+                        mapper_output_names=['word', 'cnt'],
+                        mapper_output_types=['string', 'int'],
+                        reducer_output_names=['word', 'cnt'],
+                        reducer_output_types=['string', 'int'])
+         word  cnt
+0         are    1
+1         day    1
+2      doing?    1
+3   everybody    1
+4       first    1
+5       hello    2
+6         how    1
+7          is    1
+8          so    1
+9         the    1
+10       this    1
+11      world    1
+12        you    1
 ```
 
 `group`参数用于指定`reduce`按哪些字段做分组，如果不指定，会按全部字段做分组。`reducer`需要接收聚合的`keys`进行初始化，并能继续处理按这些`keys`聚合的每行数据。`done`表示与这些`keys`相关的所有行是否都迭代完成。
@@ -71,16 +84,22 @@ class reducer(object):
 >>>             yield keys.word, cnt[0]
 >>>     return h
 >>>
->>> words_df.map_reduce(mapper, reducer, group='word')
-     word  cnt
-0   hello    2
-1       i    1
-2      is    1
-3    life    1
-4  python    2
-5   short    1
-6     use    1
-7   world    1
+>>> word_count = DataFrame(o.get_table('zx_word_count'))
+>>> table = word_count.map_reduce(mapper, reducer, group='word')
+         word  cnt
+0         are    1
+1         day    1
+2      doing?    1
+3   everybody    1
+4       first    1
+5       hello    2
+6         how    1
+7          is    1
+8          so    1
+9         the    1
+10       this    1
+11      world    1
+12        you    1
 ```
 
 在迭代的时候，可以使用`sort`参数实现按指定列排序，通过`ascending`参数指定升序降序。`ascending`参数可以是一个BOOL值，表示所有的`sort`字段是相同升序或降序， 也可以是一个列表，长度必须和`sort`字段长度相同。
@@ -178,7 +197,7 @@ class reducer(object):
 
 PyODPS DataFrame提供了`bloom_filter`接口进行布隆过滤器的计算。
 
-给定某个Collection和它的某个列计算的`sequence1`，对另外一个`sequence2`进行布隆过滤时，`sequence1`不存在于`sequence2`中的数据一定会被过滤掉， 但可能不会完全过滤掉不存在于`sequence2`中的数据，所以这种过滤方式是一种近似的过滤方法。这样的好处是对Collection进行快速过滤一些无用数据。这在一边数据量远大过另一边数据量（大部分数据并不会参与`join`运算）时的大规模`join`场景很有用。例如，在`join`用户的浏览数据和交易数据时，用户的浏览数据量远大于交易数据量，可以利用交易数据先对浏览数据进行布隆过滤， 然后再`join`可以很好地提升性能。
+给定某个Collection和它的某个列计算的`sequence1`，对另外一个`sequence2`进行布隆过滤时，`sequence1`不存在于`sequence2`中的数据一定会被过滤掉， 但可能无法完全过滤。所以这种过滤方式是一种近似的过滤方法。这样的好处是对Collection进行快速过滤一些无用数据。这在一边数据量远大过另一边数据量（大部分数据并不会参与`join`运算）时的大规模`join`场景很有用。例如，在`join`用户的浏览数据和交易数据时，用户的浏览数据量远大于交易数据量，可以利用交易数据先对浏览数据进行布隆过滤， 然后再`join`可以很好地提升性能。
 
 ``` {#codeblock_7r5_qjz_9nd}
 >>> df1 = DataFrame(pd.DataFrame({'a': ['name1', 'name2', 'name3', 'name1'], 'b': [1, 2, 3, 4]}))
