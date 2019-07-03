@@ -161,7 +161,7 @@ class reducer(object):
 
 ## 使用第三方Python库 {#section_np5_n5n_cfb .section}
 
-使用方法类似[MAP中使用第三方Python库](cn.zh-CN/开发/PyODPS/DataFrame/使用自定义函数.md#) 。
+使用方法类似在MAP中使用第三方Python库。
 
 -   在全局指定使用的库。
 
