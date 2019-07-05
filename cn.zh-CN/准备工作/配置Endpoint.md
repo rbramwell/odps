@@ -2,7 +2,7 @@
 
 本文将为您介绍MaxCompute Region的开通情况和连接方式，解答您在与其他云产品（ECS、TableStore、OSS）互访场景中遇到的网络连通性和下载数据收费等问题。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/11949/15553926871423_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/11949/15622927591423_zh-CN.png)
 
 由上图可知，从服务层面来看，MaxCompute为您提供了两大类服务连接地址，如下所示：
 
@@ -40,7 +40,7 @@ Tunnel数据上传无论走哪一种网络形态都免费，如上文示意图�
 
 ## MaxCompute访问外部表的连通性 {#section_d2d_51y_5db .section}
 
-MaxCompute2.0支持读写OSS对象存储数据，同时也支持读写TableStore表格存储数据，详情请参见[访问OSS非结构化数据](../../../../cn.zh-CN/用户指南/外部表/访问OSS非结构化数据.md)和[访问OTS非结构化数据](../../../../cn.zh-CN/用户指南/外部表/访问OTS非结构化数据.md)。
+MaxCompute2.0支持读写OSS对象存储数据，同时也支持读写TableStore表格存储数据，详情请参见[访问OSS非结构化数据](../../../../cn.zh-CN/开发/外部表/访问OSS非结构化数据.md)和[访问OTS非结构化数据](../../../../cn.zh-CN/开发/外部表/访问OTS非结构化数据.md)。
 
 网络连通性的配置说明，如下所示：
 
@@ -63,6 +63,7 @@ MaxCompute2.0支持读写OSS对象存储数据，同时也支持读写TableStore
     |华北2|北京|已开服|http://service.cn.maxcompute.aliyun.com/api|http://dt.cn-beijing.maxcompute.aliyun.com|
     |华北2政务云|北京|已开服|http://service.cn-north-2-gov-1.maxcompute.aliyun.com/api|http://dt.cn-north-2-gov-1.maxcompute.aliyun.com|
     |华南1|深圳|已开服|http://service.cn.maxcompute.aliyun.com/api|http://dt.cn-shenzhen.maxcompute.aliyun.com|
+    |西南1|成都|已开服|http://service.cn.maxcompute.aliyun.com/api|http://dt.cn-chengdu.maxcompute.aliyun.com|
     |香港|香港|已开服|http://service.cn-hongkong.maxcompute.aliyun.com/api|http://dt.cn-hongkong.maxcompute.aliyun.com|
     |亚太东南1|新加坡|已开服|http://service.ap-southeast-1.maxcompute.aliyun.com/api|http://dt.ap-southeast-1.maxcompute.aliyun.com|
     |亚太东南2|悉尼|已开服|http://service.ap-southeast-2.maxcompute.aliyun.com/api|http://dt.ap-southeast-2.maxcompute.aliyun.com|
@@ -85,6 +86,7 @@ MaxCompute2.0支持读写OSS对象存储数据，同时也支持读写TableStore
     |华北2|北京|已开服|http://service.cn.maxcompute.aliyun-inc.com/api|http://dt.cn-beijing.maxcompute.aliyun-inc.com|
     |华北2政务云|北京|已开服|http://service.cn-north-2-gov-1-all.maxcompute.aliyun-inc.com/api|http://dt.cn-north-2-gov-1-all.maxcompute.aliyun-inc.com|
     |华南1|深圳|已开服|http://service.cn.maxcompute.aliyun-inc.com/api|http://dt.cn-shenzhen.maxcompute.aliyun-inc.com|
+    |西南1|成都|已开服|http://service.cn.maxcompute.aliyun-inc.com/api|http://dt.cn-chengdu.maxcompute.aliyun-inc.com|
     |香港|香港|已开服|http://service.cn-hongkong.maxcompute.aliyun-inc.com/api|http://dt.cn-hongkong.maxcompute.aliyun-inc.com|
     |亚太东南1|新加坡|已开服|http://service.ap-southeast-1.maxcompute.aliyun-inc.com/api|http://dt.ap-southeast-1.maxcompute.aliyun-inc.com|
     |亚太东南2|悉尼|已开服|http://service.ap-southeast-2.maxcompute.aliyun-inc.com/api|http://dt.ap-southeast-2.maxcompute.aliyun-inc.com|
@@ -127,11 +129,11 @@ MaxCompute2.0支持读写OSS对象存储数据，同时也支持读写TableStore
 
 -   MaxCompute客户端（console）配置。请参见[安装并配置客户端](cn.zh-CN/准备工作/安装并配置客户端.md#)。
 -   MaxCompute studio project连接配置。请参见[项目空间连接管理](../../../../cn.zh-CN/工具及下载/MaxCompute Studio/项目空间连接管理.md#)。
--   SDK连接MaxCompute配置。请参见[Java SDK](../../../../cn.zh-CN/SDK 参考/Java SDK.md#)和[Python SDK](../../../../cn.zh-CN/SDK 参考/Python SDK.md#)连接MaxCompute接口配置。
--   PyODPS创建MaxCompute入口对象、通用配置、数据上传下载配置。请参见[配置选项](../../../../cn.zh-CN/用户指南/PyODPS/配置选项.md#)。
+-   SDK连接MaxCompute配置。请参见[Java SDK介绍](../../../../cn.zh-CN/SDK参考/Java SDK/Java SDK介绍.md#)和[Python SDK](../../../../cn.zh-CN/SDK参考/Python SDK.md#)连接MaxCompute接口配置。
+-   PyODPS创建MaxCompute入口对象、通用配置、数据上传下载配置。请参见[配置选项](../../../../cn.zh-CN/开发/PyODPS/配置选项.md#)。
 -   DataWorks的数据集成脚本模式连接MaxCompute数据源配置和使用DataX开源工具连接MaxCompute数据源。请参见[配置MaxCompute数据源](https://help.aliyun.com/knowledge_detail/74280.html)和[导出SQL的运行结果](../../../../cn.zh-CN/最佳实践/SQL/导出SQL的运行结果.md#)。
 
-## 访问原则 { .section}
+## 访问原则 {#section_pbt_7py_3s9 .section}
 
 -   对于已开服的Region，您可以通过公网、经典网络、VPC网络方式连接MaxCompute服务。
 -   通过配置外网Tunnel Endpoint地址下载数据进行收费，价格为0.8元/GB。
