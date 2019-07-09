@@ -1,6 +1,6 @@
 # SELECT语法介绍 {#concept_i1q_lkb_wdb .concept}
 
-本文为您介绍MaxCompute `select`语法格式及使用`select`语法执行嵌套查询、排序操作、分组查询等操作的注意事项。
+本文为您介绍MaxCompute SELECT语法格式及使用SELECT语法执行嵌套查询、排序操作、分组查询等操作的注意事项。
 
 ## SELECT语法格式 {#section_dcq_y11_hfb .section}
 
@@ -24,13 +24,13 @@ FROM table_reference
 select * from sale_detail;
 ```
 
-只读取`sale_detail`的一列`shop_name`，如下所示。
+只读取`sale_detail`的一列`shop_name`。
 
 ``` {#codeblock_syu_7hu_3c4}
 select shop_name from sale_detail;
 ```
 
-在`where`中可以指定过滤的条件，如下所示。
+在`where`中可以指定过滤的条件。
 
 ``` {#codeblock_gdw_at7_w2q}
 select * from sale_detail where shop_name like 'hang%';
@@ -38,15 +38,15 @@ select * from sale_detail where shop_name like 'hang%';
 
 当使用`select`语句屏显时，目前最多只能显示10000行结果。当`select`作为子句时，无此限制，`select`子句会将全部结果返回给上层查询。
 
-注意：
+使用说明：
 
--    `select`分区表时禁止全表扫描。
+-   `select`分区表时禁止全表扫描。
 
     2018-01-10 20点后创建的新项目，默认情况下执行SQL时，针对该Project里的分区表不允许全表扫描，必须有分区条件指定需要扫描的分区，由此减少SQL的不必要I/O，从而减少计算资源的浪费，同时也减少了不必要的后付费模式的计算费用（后付费模式中，数据输入量是计量计费参数之一）。
 
     例如表定义是`t1(c1,c2) partitioned by(ds)`，在新项目里执行如下语句会被禁止，返回Error。
 
-    ``` {#codeblock_f9k_yfh_btx}
+    ``` {#codeblock_q75_f3w_u8r}
     select * from t1 where c1=1;
     select * from t1 where (ds=‘20180202’ or c2=3);
     select * from t1 left outer join t2 on a.id =b.id and a.ds=b.ds and b.ds=‘20180101’);  
@@ -55,20 +55,20 @@ select * from sale_detail where shop_name like 'hang%';
 
     如果您需要对分区表进行全表扫描，可以在对分区表全表扫描的SQL语句前加`set odps.sql.allow.fullscan=true;`，并和SQL语句一起提交执行。假设`sale_detail`表为分区表，则要全表扫描需同时提交以下的简单查询命令。
 
-    ``` {#codeblock_acp_pjd_k84}
+    ``` {#codeblock_4vf_btn_0zq}
     set odps.sql.allow.fullscan=true;
     select * from sale_detail;
     ```
 
     如果需要整个项目都允许全表扫描，可以通过开关自行打开或关闭（True/False），命令如下。
 
-    ``` {#codeblock_469_v7n_gm6}
+    ``` {#codeblock_ckn_kwn_i3r}
     setproject odps.sql.allow.fullscan=true;
     ```
 
 -   在`table_reference`中支持使用嵌套子查询，如下所示。
 
-    ``` {#codeblock_0bx_zb0_mwi}
+    ``` {#codeblock_icv_49p_5wg}
     select * from (select region from sale_detail) t where region = 'shanghai';
     ```
 
@@ -91,12 +91,12 @@ select distinct region, sale_date from sale_detail;
 
 MaxCompute SQL支持使用正则表达式`select_expr`选列。
 
-使用正则表达式`select_expr` 
+使用正则表达式`select_expr`：
 
--    `SELECT `abc.*` FROM t;`选出`t`表中所有列名以`abc`开头的列。
--    `SELECT `(ds)?+.+` FROM t;`选出`t`表中列名不为`ds`的所有列。
--    `SELECT `(ds|pt)?+.+` FROM t;`选出`t`表中排除`ds`和`pt`两列的其它列。
--    `SELECT `(d.*)?+.+` FROM t;`选出`t`表中排除列名以`d`开头的其它列。
+-   `SELECT `abc.*` FROM t;`选出`t`表中所有列名以`abc`开头的列。
+-   `SELECT `(ds)?+.+` FROM t;`选出`t`表中列名不为`ds`的所有列。
+-   `SELECT `(ds|pt)?+.+` FROM t;`选出`t`表中排除`ds`和`pt`两列的其它列。
+-   `SELECT `(d.*)?+.+` FROM t;`选出`t`表中排除列名以`d`开头的其它列。
 
 **说明：** 
 
@@ -135,7 +135,7 @@ UDF支持分区裁剪，支持的方式是将UDF语句先当做一个小作业�
 
 -   在SQL语句前设置Flag：`set odps.sql.udf.ppr.deterministic = true;`，此时SQL中所有的UDF均被视为`deterministic`。该操作执行的原理是做执行结果回填，但是结果回填存在限制，即最多回填1000个Partition。因此，如果UDF类加入Annotation，则可能会导致出现超过1000个回填结果的报错。此时您如果需要忽视此错误，可以通过设置Flag：`set odps.sql.udf.ppr.to.subquery = false;`全局关闭此功能。关闭后，UDF分区裁剪也会失效。
 
-MaxCompute SQL的`where`子句支持`between…and`条件查询。示例如下。
+MaxCompute SQL的`where`子句支持`between…and`条件查询。
 
 ``` {#codeblock_kt1_83l_f33}
 SELECT sale_detail.* 
@@ -175,7 +175,7 @@ select region, total_price from sale_detail group by region, total_price;
 **说明：** 
 
 -   关于聚合函数的详情请参见[聚合函数](cn.zh-CN/开发/SQL及函数/内建函数/聚合函数.md)。
--    `order by`用于对所有数据按照某几列进行全局排序。如果您希望按照降序对记录进行排序，可以使用`desc`关键字。由于是全局排序，`order by`必须与`limit`共同使用。在使用`order by`排序时，NULL会被认为比任何值都小，这个行为与MySQL一致，但是与Oracle不一致。
+-   `order by`用于对所有数据按照某几列进行全局排序。如果您希望按照降序对记录进行排序，可以使用`desc`关键字。由于是全局排序，`order by`必须与`limit`共同使用。在使用`order by`排序时，NULL会被认为比任何值都小，这个行为与MySQL一致，但是与Oracle不一致。
 
     与`group by`不同，`order by`后面必须加`select`列的别名。当`select`某列时，如果没有指定列的别名，则列名会被作为列的别名。
 
@@ -195,7 +195,7 @@ select region, total_price from sale_detail group by region, total_price;
 
 ## ORDER BY/SORT BY/DISTRIBUTE BY {#section_elb_wx2_ggb .section}
 
--    `distribute by`用于对数据按照某几列的值做Hash分片，必须使用`select`的输出列别名。
+-   `distribute by`用于对数据按照某几列的值做Hash分片，必须使用`select`的输出列别名。
 
     ``` {#codeblock_sl8_mn3_mcb}
     select region from sale_detail distribute by region;
@@ -205,7 +205,7 @@ select region, total_price from sale_detail group by region, total_price;
     select region as r from sale_detail distribute by r;
     ```
 
--    `sort by`用于局部排序，语句前必须加`distribute by`。实际上`sort by`是对`distribute by`的结果进行局部排序。必须使用`select`的输出列别名。
+-   `sort by`用于局部排序，语句前必须加`distribute by`。实际上`sort by`是对`distribute by`的结果进行局部排序。必须使用`select`的输出列别名。
 
     ``` {#codeblock_c1y_39g_lwo}
     select region from sale_detail distribute by region sort by region;
@@ -213,10 +213,10 @@ select region, total_price from sale_detail group by region, total_price;
     -- 没有distribute by，报错退出。
     ```
 
--    `order by`不和`distribute by/sort by`共用，同时`group by`也不和`distribute by/sort by`共用，必须使用`select`的输出列别名。
+-   `order by`不和`distribute by/sort by`共用，同时`group by`也不和`distribute by/sort by`共用，必须使用`select`的输出列别名。
 
 **说明：** 
 
--    `order by/sort by/distribute by`的Key必须是`select`语句的输出列，即列的别名。列的别名可以为中文。
+-   `order by/sort by/distribute by`的Key必须是`select`语句的输出列，即列的别名。列的别名可以为中文。
 -   在MaxCompute SQL解析中，`order by/sort by/distribute by`是后于`select`操作的，因此它们只能接受`select`语句的输出列为Key。
 
