@@ -2,9 +2,9 @@
 
 本文将为您介绍MaxCompute Region的开通情况和连接方式，解答您在与其他云产品（ECS、TableStore、OSS）互访场景中遇到的网络连通性和下载数据收费等问题。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/11949/15622927591423_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/11949/15627240731423_zh-CN.png)
 
-由上图可知，从服务层面来看，MaxCompute为您提供了两大类服务连接地址，如下所示：
+从服务层面来看，MaxCompute为您提供了两大类服务连接地址：
 
 -   MaxCompute服务本身的连接地址：您可以向MaxCompute发出除数据上传、下载外的所有请求，例如创建表、删除某个函数、创建一个作业等。
 -   MaxCompute Tunnel服务的连接地址：上传、下载数据的能力是通过MaxCompute Tunnel服务提供的。当您想通过Tunnel上传、下载数据时，可以通过Tunnel提供的链接地址发起请求。
@@ -16,7 +16,7 @@
 
 ## 访问来源及下载数据收费规则说明 {#section_ydd_51y_5db .section}
 
-从阿里云各Region部署及网络情况来看，通常情况下分为三种连接方式，如下所示：
+根据阿里云各Region的部署及网络情况，您可以通过以下三种连接方式访问MaxCompute服务和Tunnel服务：
 
 -   从外网访问MaxCompute服务和Tunnel服务。
 -   从阿里云经典网络访问MaxCompute服务和Tunnel服务。
@@ -40,15 +40,15 @@ Tunnel数据上传无论走哪一种网络形态都免费，如上文示意图�
 
 ## MaxCompute访问外部表的连通性 {#section_d2d_51y_5db .section}
 
-MaxCompute2.0支持读写OSS对象存储数据，同时也支持读写TableStore表格存储数据，详情请参见[访问OSS非结构化数据](../../../../cn.zh-CN/开发/外部表/访问OSS非结构化数据.md)和[访问OTS非结构化数据](../../../../cn.zh-CN/开发/外部表/访问OTS非结构化数据.md)。
+MaxCompute 2.0版支持读写OSS对象存储数据，同时也支持读写TableStore表格存储数据，详情请参见[访问OSS非结构化数据](../../../../cn.zh-CN/开发/外部表/访问OSS非结构化数据.md)和[访问OTS非结构化数据](../../../../cn.zh-CN/开发/外部表/访问OTS非结构化数据.md)。
 
 网络连通性的配置说明，如下所示：
 
 -   MaxCompute和TableStore/OSS在同一Region情况下，建议配置阿里云经典网络或VPC网络连接方式，其外网也可以进行连通。
--   MaxCompute和TableStore/OSS不在同一Region情况下，配置外网访问方式进行连通。在跨Region的情况下，您可选择配置阿里云经典网络或VPC网络则不保证其连通性。
+-   MaxCompute和TableStore/OSS不在同一Region情况下，配置外网访问方式进行连通。在跨Region的情况下，您可选择配置阿里云经典网络或VPC网络，否则不保证其连通性。
 -   对于通过物理专线访问VPC的场景，请参见[通过物理专线访问VPC中的云服务](https://www.alibabacloud.com/help/zh/doc-detail/57195.html)保证网络连通性。
 
-## MaxCompute开通Region和服务连接对照表 {#section_f2d_51y_5db .section}
+## MaxCompute已开服的Region和服务连接对照表 {#section_f2d_51y_5db .section}
 
 从Region部署情况来看，MaxCompute目前国内国外陆续开服，您可以申请使用对应区域的MaxCompute，您的数据存储和计算消耗均发生在开通使用的区域。
 
@@ -128,13 +128,13 @@ MaxCompute2.0支持读写OSS对象存储数据，同时也支持读写TableStore
 **说明：** 需要配置Endpoint、Tunnel Endpoint的场景：
 
 -   MaxCompute客户端（console）配置。请参见[安装并配置客户端](cn.zh-CN/准备工作/安装并配置客户端.md#)。
--   MaxCompute studio project连接配置。请参见[项目空间连接管理](../../../../cn.zh-CN/工具及下载/MaxCompute Studio/项目空间连接管理.md#)。
+-   MaxCompute studio project连接配置，请参见[项目空间连接管理](../../../../cn.zh-CN/工具及下载/MaxCompute Studio/项目空间连接管理.md#)。
 -   SDK连接MaxCompute配置。请参见[Java SDK介绍](../../../../cn.zh-CN/SDK参考/Java SDK/Java SDK介绍.md#)和[Python SDK](../../../../cn.zh-CN/SDK参考/Python SDK.md#)连接MaxCompute接口配置。
 -   PyODPS创建MaxCompute入口对象、通用配置、数据上传下载配置。请参见[配置选项](../../../../cn.zh-CN/开发/PyODPS/配置选项.md#)。
--   DataWorks的数据集成脚本模式连接MaxCompute数据源配置和使用DataX开源工具连接MaxCompute数据源。请参见[配置MaxCompute数据源](https://help.aliyun.com/knowledge_detail/74280.html)和[导出SQL的运行结果](../../../../cn.zh-CN/最佳实践/SQL/导出SQL的运行结果.md#)。
+-   以DataWorks的数据集成脚本模式连接MaxCompute数据源配置和使用DataX开源工具连接MaxCompute数据源。请参见[配置MaxCompute数据源](https://help.aliyun.com/knowledge_detail/74280.html)和[导出SQL的运行结果](../../../../cn.zh-CN/最佳实践/SQL/导出SQL的运行结果.md#)。
 
 ## 访问原则 {#section_pbt_7py_3s9 .section}
 
 -   对于已开服的Region，您可以通过公网、经典网络、VPC网络方式连接MaxCompute服务。
--   通过配置外网Tunnel Endpoint地址下载数据进行收费，价格为0.8元/GB。
+-   通过配置外网Tunnel Endpoint地址下载数据，价格为0.8元/GB。
 
