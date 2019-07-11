@@ -67,9 +67,9 @@ MaxCompute计算服务访问Table Store数据需要有一个安全的授权通�
 
         **说明：** 您可以单击右上角的头像，进入账号管理页面查看云账号的UID。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12076/156099353849672_zh-CN.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12076/156283555049672_zh-CN.jpg)
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12076/156099353849673_zh-CN.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/12076/156283555049673_zh-CN.jpg)
 
     3.  编辑该角色的授权策略AliyunODPSRolePolicy。
 
@@ -132,7 +132,7 @@ LOCATION 'tablestore://odps-ots-dev.cn-shanghai.ots-internal.aliyuncs.com'; -- �
     1.  tablestore.columns.mapping：用于描述MaxCompute将访问的Table Store表的列，包括主键和属性列。
         -   以冒号（：）开头用于表示Table Store主键，例如示例中的`:o_orderkey`和`:o_orderdate`，其它的均为属性列。
         -   Table Store支持1~4个主键，主键类型为STRING、INTEGER和BINARY，其中第一个主键为分区键。
-        -   在指定映射时，您必须提供指定Table Store表的所有主键，对于属性列则没有必要全部提供，可以只提供需要通过MaxCompute来访问的属性列。
+        -   在指定映射时，您必须提供指定Table Store表的所有主键，无需提供全部的属性列，只需提供需要通过MaxCompute访问的属性列。提供的属性列必须是Table Store表的列，否则即使外表可以创建成功，查询时也会报错。
     2.  tablestore.table.name：需要访问的Table Store表名。如果指定的Table Store表名错误（不存在），则会报错，MaxCompute不会主动创建Table Store表。
     3.  odps.properties.rolearn中的信息是RAM中AliyunODPSDefaultRole的ARN信息。您可以通过RAM控制台中的**RAM角色管理**进行获取。
 -   LOCATION Clause：用来指定Table Store的Instance名、Endpoint等具体信息。这里的Table Store数据的安全访问建立在前文介绍的RAM/STS授权的前提上。
