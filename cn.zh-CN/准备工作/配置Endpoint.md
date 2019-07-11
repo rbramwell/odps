@@ -2,7 +2,7 @@
 
 本文将为您介绍MaxCompute Region的开通情况和连接方式，解答您在与其他云产品（ECS、TableStore、OSS）互访场景中遇到的网络连通性和下载数据收费等问题。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/11949/15627240731423_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/11949/15628089741423_zh-CN.png)
 
 从服务层面来看，MaxCompute为您提供了两大类服务连接地址：
 
@@ -127,11 +127,11 @@ MaxCompute 2.0版支持读写OSS对象存储数据，同时也支持读写TableS
 
 **说明：** 需要配置Endpoint、Tunnel Endpoint的场景：
 
--   MaxCompute客户端（console）配置。请参见[安装并配置客户端](cn.zh-CN/准备工作/安装并配置客户端.md#)。
+-   MaxCompute客户端（console）配置，请参见[安装并配置客户端](cn.zh-CN/准备工作/安装并配置客户端.md#)。
 -   MaxCompute studio project连接配置，请参见[项目空间连接管理](../../../../cn.zh-CN/工具及下载/MaxCompute Studio/项目空间连接管理.md#)。
--   SDK连接MaxCompute配置。请参见[Java SDK介绍](../../../../cn.zh-CN/SDK参考/Java SDK/Java SDK介绍.md#)和[Python SDK](../../../../cn.zh-CN/SDK参考/Python SDK.md#)连接MaxCompute接口配置。
--   PyODPS创建MaxCompute入口对象、通用配置、数据上传下载配置。请参见[配置选项](../../../../cn.zh-CN/开发/PyODPS/配置选项.md#)。
--   以DataWorks的数据集成脚本模式连接MaxCompute数据源配置和使用DataX开源工具连接MaxCompute数据源。请参见[配置MaxCompute数据源](https://help.aliyun.com/knowledge_detail/74280.html)和[导出SQL的运行结果](../../../../cn.zh-CN/最佳实践/SQL/导出SQL的运行结果.md#)。
+-   SDK连接MaxCompute配置，请参见[Java SDK介绍](../../../../cn.zh-CN/SDK参考/Java SDK/Java SDK介绍.md#)和[Python SDK](../../../../cn.zh-CN/SDK参考/Python SDK.md#)连接MaxCompute接口配置。
+-   PyODPS创建MaxCompute入口对象、通用配置、数据上传下载配置，请参见[配置选项](../../../../cn.zh-CN/开发/PyODPS/配置选项.md#)。
+-   以DataWorks的数据集成脚本模式连接MaxCompute数据源配置和使用DataX开源工具连接MaxCompute数据源，请分别参见[配置MaxCompute数据源](https://help.aliyun.com/knowledge_detail/74280.html)和[导出SQL的运行结果](../../../../cn.zh-CN/最佳实践/SQL/导出SQL的运行结果.md#)。
 
 ## 访问原则 {#section_pbt_7py_3s9 .section}
 
