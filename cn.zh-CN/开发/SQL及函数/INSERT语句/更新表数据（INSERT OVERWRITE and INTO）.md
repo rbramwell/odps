@@ -18,7 +18,6 @@ FROM from_statement;
 -   当`insert`的目标表是分区表时，指定分区值`[PARTITION (partcol1=val1, partcol2=val2 …)]`语法中不允许使用函数等表达式。
 -   目前`insert overwrite`不支持指定插入列的功能，暂时只能用`insert into`。
 -   不支持`insert into`到Hash Clustering表。
--   当遇到并发写入时，MaxCompute会根据ACID进行并发写的保障。关于ACID的具体语义，请参见[ACID语义](../../../../intl.zh-CN/产品简介/基本概念/ACID语义.md#)。
 
 在MaxCompute SQL处理数据的过程中，`insert overwrite/into`用于将计算的结果保存目标表中。
 
