@@ -139,6 +139,6 @@ Use the following script to configure synchronization tasks. Other configuration
 
 ## Referenes {#section_hzj_qf1_fe6 .section}
 
--   For the Reader configurations about different types of data sources, see [Configure Reader Plug-ins](https://www.alibabacloud.com/help/faq-list/74300.htm).
--   For the Writer configurations about different types of data sources, see [Configure Writer Plug-ins](https://www.alibabacloud.com/help/faq-list/74301.htm).
+-   For the Reader configurations about different types of data sources, see [Configure Reader Plug-ins](https://partners-intl.aliyun.com/help/faq-list/74300.htm).
+-   For the Writer configurations about different types of data sources, see [Configure Writer Plug-ins](https://partners-intl.aliyun.com/help/faq-list/74301.htm).
 
