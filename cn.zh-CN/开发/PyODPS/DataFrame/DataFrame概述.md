@@ -16,3 +16,5 @@ PyODPS提供了DataFrame API，它提供了类似pandas的接口，但是能充�
 -   [绘图](cn.zh-CN/开发/PyODPS/DataFrame/绘图.md#)
 -   [调试指南](cn.zh-CN/开发/PyODPS/DataFrame/调试指南.md#)
 
+您可以参见[此文](https://yq.aliyun.com/articles/596296)了解Python数据处理库pandas。
+
