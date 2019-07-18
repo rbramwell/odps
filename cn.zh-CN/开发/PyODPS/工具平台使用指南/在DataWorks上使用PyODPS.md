@@ -2,11 +2,13 @@
 
 本文为您介绍如何在DataWorks上使用PyODPS和使用限制。
 
+使用示例请参见[PyODPS节点实现结巴中文分词](../../../../cn.zh-CN/最佳实践/数据开发/PyODPS节点实现结巴中文分词.md#)。
+
 ## 新建工作流节点 {#section_kbb_lkg_cfb .section}
 
 在工作流节点中会包含PYODPS类型节点。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21169/156041230111645_zh-CN.png)
+![新建节点](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21169/156341515311645_zh-CN.png)
 
 ## ODPS入口 {#section_rfp_skg_cfb .section}
 
@@ -45,7 +47,7 @@ with instance.open_reader(tunnel=True, limit=False) as reader:
 
 -   执行
 
-    在DataWorks的环境里，[DataFrame概述](cn.zh-CN/开发/PyODPS/DataFrame/快速开始.md#) 的执行需要显式调用[立即执行的方法（如execute，head等）](cn.zh-CN/开发/PyODPS/DataFrame/执行.md#) 。
+    在DataWorks的环境里，[DataFrame概述](cn.zh-CN/开发/PyODPS/DataFrame/快速入门.md#) 的执行需要显式调用[立即执行的方法（如execute，head等）](cn.zh-CN/开发/PyODPS/DataFrame/执行.md#) 。
 
     ``` {#codeblock_5eg_qf5_zdz .language-python}
     from odps.df import DataFrame
@@ -70,13 +72,10 @@ with instance.open_reader(tunnel=True, limit=False) as reader:
 
 ## 获取调度参数 {#section_f5s_lmg_cfb .section}
 
-与DataWorks中的SQL节点不同，为了避免侵入代码，PyODPS节点不会在代码中替换 $\{param\_name\}这样的字符串，而是在执行代码前，在全局变量中增加一个名为`args`的dict，调度参数可以在此获取。例如，在**节点基本属性** \> **参数**中设置`ds=${yyyymmdd}`，则可以通过以下方式在代码中获取该参数。
+与DataWorks中的SQL节点不同，为了避免影响代码，PyODPS节点不会在代码中替换 $\{param\_name\}这样的字符串，而是在执行代码前，在全局变量中增加一个名为`args`的dict，调度参数可以在此获取。例如，在**节点基本属性** \> **参数**中设置`ds=${yyyymmdd}`，则可以通过以下方式在代码中获取该参数。
 
 ``` {#codeblock_vv7_lyt_5hn .language-sql}
 print('ds=' + args['ds'])
-```
-
-``` {#codeblock_72p_3x1_ly6 .language-sql}
 ds=20161116
 ```
 
@@ -101,7 +100,7 @@ o.get_table('table_name').get_partition('ds=' + args['ds'])
 ## 使用限制 {#section_ixn_ypg_cfb .section}
 
 -   PyODPS节点底层的Python版本为2.7。
--   PyODPS节点获取到本地处理的数据不能超过50MB，节点运行时占用内存不能超过1G，否则节点任务会被系统Kill。请避免在PyODPS任务中写额外的Python数据处理代码。 
+-   PyODPS节点获取到本地处理的数据不能超过50MB，节点运行时占用内存不能超过1G，否则节点任务会被系统Kill。请避免在PyODPS任务中写额外的Python数据处理代码。
 -   在DataWorks上编写代码并进行调试效率较低，为提升运行效率，建议本地安装IDE进行代码开发，详情请参见[安装指南](cn.zh-CN/开发/PyODPS/安装指南.md#)。
 -   在DataWorks上使用PyODPS时，为了防止对DataWorks的Gate Way造成压力，对内存和CPU都有限制。该限制由DataWorks统一管理。如果您发现有**Got killed**报错，即表名内存使用超限，进程被Kill。因此，请尽量避免本地的数据操作。通过PyODPS发起的SQL和DataFrame任务（除to\_pandas外\) 不受此限制。
 
