@@ -6,7 +6,7 @@
 
 [淘宝IP地址库](http://ip.taobao.com/)的查询接口为[IP地址字串](http://ip.taobao.com/service/getIpInfo.php?ip=[ip%E5%9C%B0%E5%9D%80%E5%AD%97%E4%B8%B2])，使用示例如下。
 
-![查询接口](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/63437/156379529331905_zh-CN.png)
+![查询接口](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/63437/156384812831905_zh-CN.png)
 
 由于在MaxCompute中禁止使用HTTP请求，目前可以通过以下三种方式，实现在MaxCompute中查询IP。
 
@@ -28,7 +28,7 @@
 1.  首先您需要获取地址库数据。地址库您可以自行获取，本文仅提供一个[UTF8格式的不完整的地址库demo](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/102762/cn_zh/1547530733280/ipdata.txt.utf8)。
 2.  下载UTF-8地址库数据到本地后，检查数据格式，示例如下。
 
-    ![检查格式](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/63437/156379529331907_zh-CN.png)
+    ![检查格式](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/63437/156384812831907_zh-CN.png)
 
     前四个数据是IP地址的起始地址与结束地址：前两个是十进制整数形式，后两个是点分形式。这里我们使用整数形式，以便计算IP是否属于这个网段。
 
@@ -37,7 +37,7 @@
 
 ## 上传IP地址库数据 {#section_eqh_pjl_5fb .section}
 
-1.  创建表DDL，您可以使用[MaxCompute客户端](../../../../intl.zh-CN/工具及下载/客户端.md#)进行操作，也可以使用DataWorks进行[图形化建表](../../../../intl.zh-CN/使用指南/数据开发/表管理.md#)。
+1.  创建表DDL，您可以使用[MaxCompute客户端](../../../../cn.zh-CN/工具及下载/客户端.md#)进行操作，也可以使用DataWorks进行[图形化建表](../../../../cn.zh-CN/使用指南/数据开发/表管理.md#)。
 
     ``` {#codeblock_ndw_ic6_png .language-sql}
     DROP TABLE IF EXISTS ipresource ;
@@ -56,24 +56,26 @@
     );
     ```
 
-2.  使用[Tunnel上传下载命令](../../../../intl.zh-CN/开发/数据上传下载/Tunnel上传下载命令.md#)上传您的文件，本例中ipdata.txt.utf8文件存放在D盘。
+2.  使用[Tunnel上传下载命令](../../../../cn.zh-CN/开发/数据上传下载/Tunnel上传下载命令.md#)上传您的文件，本例中ipdata.txt.utf8文件存放在D盘。
 
     ``` {#codeblock_lx6_w29_6b4 .language-sql}
     odps@ workshop_demo>tunnel upload D:/ipdata.txt.utf8 ipresource;
     ```
 
-    可以通过SQL语句`select count(*) from ipresource;`查看到表中上传的数据条数（通常地址库由于有人更新维护，条目数会不断增长）。
+    可以通过SQL语句`select count(*) from ipresource;`查看表中上传的数据条数（由于地址库有人更新维护，所以条目数会不断增长）。
 
 3.  使用SQL语句`select * from ipresource limit 10;`查看ipresource表前10条的样本数据，示例如下。
 
-    ![查看样本](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/63437/156379529331909_zh-CN.png)
+    ![查看样本](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/63437/156384812831909_zh-CN.png)
 
 
 ## 编写UDF函数 {#section_uht_3kl_5fb .section}
 
+通过编写Python UDF，将点号分割的IP地址转化为整数类型的IP地址，本示例使用ataWorks的[PyODPS节点](../../../../cn.zh-CN/最佳实践/数据开发/在PyODPS任务中调用第三方包.md#)完成。
+
 1.  右键单击相应业务流程下的**资源**，选择**新建资源** \> **Python**。
 
-    ![确定](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/63437/156379529431910_zh-CN.png)
+    ![确定](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/63437/156384812831910_zh-CN.png)
 
 2.  在**新建资源**对话框中，填写**资源名称**，并勾选**上传为ODPS资源**，单击**确定**。
 3.  在新建的Python资源内，编写Python资源代码，示例如下。
@@ -91,29 +93,29 @@
 
     单击**提交并解锁**。
 
-    ![提交并解锁](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/63437/156379529431911_zh-CN.png)
+    ![提交并解锁](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/63437/156384812831911_zh-CN.png)
 
 4.  右键单击相应业务流程下的**函数**，选择**新建函数**。
 5.  在新建函数对话框中，填写**函数名称**，单击**提交**。
 6.  编辑函数配置，单击**提交并解锁**。
 
-    ![提交并解锁](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/63437/156379529431913_zh-CN.png)
+    ![提交并解锁](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/63437/156384812931913_zh-CN.png)
 
     本示例中，函数的类名为`ipint.ipint`，资源列表填写上文提交的资源的名称。
 
 7.  验证ipint函数是否生效并满足预期，您可以在DataWorks上新建一个ODPS SQL类型节点，执行SQL语句进行查询，示例如下。
 
-    ![执行SQL](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/63437/156379529431914_zh-CN.png)
+    ![执行SQL](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/63437/156384812931914_zh-CN.png)
 
 
-您也可以在本地创建ipint.py文件，使用[MaxCompute客户端](../../../../intl.zh-CN/工具及下载/客户端.md#)上传资源。
+您也可以在本地创建ipint.py文件，使用[MaxCompute客户端](../../../../cn.zh-CN/工具及下载/客户端.md#)上传资源。
 
 ``` {#codeblock_ara_p7n_zpi .language-sql}
 odps@ MaxCompute_DOC>add py D:/ipint.py;
 OK: Resource 'ipint.py' have been created.
 ```
 
-完成上传后，使用客户端[注册函数](../../../../intl.zh-CN/开发/常用命令/函数操作.md#)。
+完成上传后，使用客户端[注册函数](../../../../cn.zh-CN/开发/常用命令/函数操作.md#)。
 
 ``` {#codeblock_u0j_21j_gnc .language-sql}
 odps@ MaxCompute_DOC>create function ipint as ipint.ipint using ipint.py;
@@ -122,7 +124,7 @@ Success: Function 'ipint' have been created.
 
 完成注册后，即可使用该函数。您可以在客户端运行`select ipint('1.2.24.2');`进行测试。
 
-**说明：** 如果同一主账号下其他项目需要使用这个UDF，您可以进行[跨项目授权](../../../../intl.zh-CN/管理/安全功能详解/跨项目空间的资源分享/基于Package的跨项目空间的资源分享.md#)。
+**说明：** 如果同一主账号下其他项目需要使用这个UDF，您可以进行[跨项目授权](../../../../cn.zh-CN/管理/安全功能详解/跨项目空间的资源分享/基于Package的跨项目空间的资源分享.md#)。
 
 1.  创建名为ipint的package。
 
@@ -172,7 +174,7 @@ WHERE ipint('1.2.24.2') >= start_ip
 AND ipint('1.2.24.2') <= end_ip
 ```
 
-![执行](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/63437/156379529431915_zh-CN.png)
+![执行](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/63437/156384812931915_zh-CN.png)
 
 通过为保证数据准确性，您可以定期从淘宝IP库获取数据来维护ipresource表。
 
