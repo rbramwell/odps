@@ -7,7 +7,7 @@
 3.  在命令窗口运行pip install pyodps，安装pyodps库。
 
 1.  准备数据 
-    1.  登录Dataworks控制台，以**DDL模式**创建分区表user\_detail。![创建分区表](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156376537252370_zh-CN.jpg)
+    1.  登录Dataworks控制台，以**DDL模式**创建分区表user\_detail。![创建分区表](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156384872852566_zh-CN.jpg)
 
  代码如下。
 
@@ -21,7 +21,7 @@
         partitioned by (dt STRING comment '日期',region STRING comment '地区');
         ```
 
-    2.  以**DDL模式**创建源数据表user\_detail\_ods。![源数据表](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156376537252371_zh-CN.jpg)
+    2.  以**DDL模式**创建源数据表user\_detail\_ods。![创建源数据表](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156384872852567_zh-CN.jpg)
 
  代码如下。
 
@@ -45,10 +45,10 @@
         0004,互联网,硕士,20190715,beijing
         ```
 
-    4.  将user\_detail.txt中的数据导入到表user\_detail\_ods。![数据导入](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156376537252373_zh-CN.jpg)
+    4.  将user\_detail.txt中的数据导入到表user\_detail\_ods。![数据导入](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156384872952373_zh-CN.jpg)
 
 
-    5.  在**业务流程** \> **数据开发**中，新建ODPS SQL节点，并将节点命名为test。![新建SQL节点](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156376537352375_zh-CN.jpg)
+    5.  在**业务流程** \> **数据开发**中，新建ODPS SQL节点，并将节点命名为test。![新建SQL节点](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156384872952375_zh-CN.jpg)
 
  test.sql代码如下。
 
@@ -57,11 +57,11 @@
         select userid,job,education,dt,region from user_detail_ods;
         ```
 
-    6.  单击运行按钮，将动态分区插入到分区表user\_detail。![数据插入](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156376537352376_zh-CN.jpg)
+    6.  单击运行按钮，将动态分区插入到分区表user\_detail。![数据插入](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156384873052376_zh-CN.jpg)
 
 
 2.  通过DataWorks读取分区表数据 
-    1.  在**业务流程** \> **数据开发**中，新建PyODPS节点，并将节点命名为读取分区表数据。![新建节点](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156376537452361_zh-CN.jpg)
+    1.  在**业务流程** \> **数据开发**中，新建PyODPS节点，并将节点命名为读取分区表数据。![新建节点](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156384873052361_zh-CN.jpg)
 
  代码如下。
 
@@ -97,26 +97,26 @@
             print record["userid"],record["job"],record["education"]
         ```
 
-    2.  在调度配置窗口中，将**参数**设置为dt=20190715。![调度配置](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156376537452362_zh-CN.jpg)
+    2.  在调度配置窗口中，将**参数**设置为dt=20190715。![调度配置](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156384873052362_zh-CN.jpg)
 
 
-    3.  单击运行按钮。![单击运行](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156376537452363_zh-CN.jpg)
+    3.  单击运行按钮。![单击运行](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156384873152363_zh-CN.jpg)
 
 
-    4.  在**运行日志**中查看运行结果。![运行日志](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156376537552364_zh-CN.jpg)
+    4.  在**运行日志**中查看运行结果。![运行日志](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156384873152364_zh-CN.jpg)
 
 
 3.  通过MaxCompute Studio读取分区表数据 
-    1.  单击**File** \> **New** \> **Project**。![py文件](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156376537552368_zh-CN.png)
+    1.  单击**File** \> **New** \> **Project**。![py文件](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156384873152368_zh-CN.png)
 
 
-    2.  在弹出的New Project对话框中，勾选Python。单击**Next**。![选择Python](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156376537552367_zh-CN.jpg)
+    2.  在弹出的New Project对话框中，勾选Python。单击**Next**。![选择Python](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156384873252367_zh-CN.jpg)
 
 
-    3.  将**Project Name**设置为PythonPartition。单击**Finish**。![设置项目名称](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156376537552366_zh-CN.jpg)
+    3.  将**Project Name**设置为PythonPartition。单击**Finish**。![设置项目名称](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156384873252366_zh-CN.jpg)
 
 
-    4.  右键单击**scripts**。再单击**New** \> **MaxCompte Python**创建PythonThree.py文件。![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156376537652369_zh-CN.png)
+    4.  右键单击**scripts**。再单击**New** \> **MaxCompte Python**创建PythonThree.py文件。![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156384873252369_zh-CN.png)
 
  代码如下。
 
@@ -149,7 +149,7 @@
             print record["userid"],record["job"],record["education"]
         ```
 
-    5.  查看运行结果。![运行结果](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156376537652365_zh-CN.jpg)
+    5.  查看运行结果。![运行结果](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156384873252365_zh-CN.jpg)
 
 
 
