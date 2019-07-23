@@ -8,7 +8,7 @@ Correspondingly, the columns in Select clause are used to specify these partitio
 
 Statement format:
 
-```
+``` {#codeblock_0cq_ziy_agi}
 insert overwrite table tablename partition (partcol1, partcol2 ...) select_statement from from_statement;
 ```
 
@@ -19,7 +19,7 @@ insert overwrite table tablename partition (partcol1, partcol2 ...) select_state
 -   Currently, any dynamic partition SQL cannot generate more than 2,000 dynamic partitions; otherwise it causes abnormality.
 -   The value of dynamic partition cannot be NULL, and also does not support special or Chinese characters, otherwise an exception is thrown. The exception is as follows:
 
-    ```
+    ``` {#codeblock_iix_8g5_shh}
     FAILED: ODPS-0123031:Partition exception - invalid dynamic partition value:
                   province=xxx
     ```
@@ -30,7 +30,7 @@ insert overwrite table tablename partition (partcol1, partcol2 ...) select_state
 
 A simple example to explain dynamic partition is as follows:
 
-```
+``` {#codeblock_u0l_6eg_pym}
 create table total_revenues (revenue bigint) partitioned by (region string);
     insert overwrite table total_revenues partition(region)
         select total_price as revenue, region
@@ -41,13 +41,13 @@ As mentioned in the preceding example, user is unable to know which partitions a
 
 Other Examples:
 
-```
+``` {#codeblock_sbr_am3_bc3}
 create table sale_detail_dypart like sale_detail; --Create target table.
 ```
 
 -   --Example 1:
 
-    ```
+    ``` {#codeblock_3lb_kf0_rjy}
     insert overwrite table sale_detail_dypart partition (sale_date, region)
     select shop_name,customer_id,total_price,sale_date,region from sale_detail;
         -- Return successfully.
@@ -56,16 +56,16 @@ create table sale_detail_dypart like sale_detail; --Create target table.
     -   In ‘sales\_detail’ table, the value of the sale\_date determines the sales\_date partition value of the target table, and the value of the region determines the region partition value of the target table.
     -   In a dynamic partition, the correspondence between the select\_statement field and the dynamic partition of the target table is determined by the order of the fields. In this example, if the Select statement is written as the following:
 
-        ```
+        ``` {#codeblock_oi5_pcl_32e}
         select shop_name,customer_id,total_price,region,sale_date from
                   sale_detail;
         ```
 
-        the region value determines the sale\_date partition value of the target table, and the value of  sale\_date determines the region partition value of the target table.
+        the region value determines the sale\_date partition value of the target table, and the value of sale\_date determines the region partition value of the target table.
 
 -   --Example 2:
 
-    ```
+    ``` {#codeblock_1py_niy_qgw}
     insert overwrite table sale_detail_dypart partition (sale_date='2013', region)
             select shop_name,customer_id,total_price,region from sale_detail;
         -- Return successfully; multiple partitions; specify a secondary partition.
@@ -73,7 +73,7 @@ create table sale_detail_dypart like sale_detail; --Create target table.
 
 -   --Example 3:
 
-    ```
+    ``` {#codeblock_q3g_bwq_t3e}
     insert overwrite table sale_detail_dypart partition (sale_date='2013', region)
             select shop_name,customer_id,total_price from sale_detail;
         -- Return failure information. When inserting a dynamic partition, the dynamic partition column must appear in Select list.
@@ -81,16 +81,16 @@ create table sale_detail_dypart like sale_detail; --Create target table.
 
 -   --Example 4:
 
-    ```
+    ``` {#codeblock_g1e_3ao_dzt}
     insert overwrite table sales partition (region='china', sale_date)
-    select shop_name,customer_id,total_price,region from sale_detail;
+    select shop_name,customer_id,total_price,sale_date from sale_detail;
         -- Return failure information. User cannot specify the lowsubpartition only, but needs to insert advanced partition dynamically.
     ```
 
 
-When the old version of MaxCompute performs dynamic partitioning, if the partition column type is not exactly the same as the column type in the corresponding select list, an error is reported.  MaxCompute 2.0 supports implicit conversion, as shown in the following :
+When the old version of MaxCompute performs dynamic partitioning, if the partition column type is not exactly the same as the column type in the corresponding select list, an error is reported. MaxCompute 2.0 supports implicit conversion, as shown in the following :
 
-```
+``` {#codeblock_36p_l2d_vzy}
 create table parttable(a int, b double) partitioned by (p string);
 insert into parttable partition(p) select key, value, current_timestmap() from src;
 select * from parttable;

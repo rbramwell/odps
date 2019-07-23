@@ -1,6 +1,6 @@
 # 输出到动态分区（DYNAMIC PARTITION） {#concept_b1p_qdb_wdb .concept}
 
-在使用INSERT OVERWRITE语句插入到一张分区表时，您可以在语句中指定分区的值，也可以在分区中指定一个分区列名（但不提供具体的值），并在SELECT子句中提供对应分区列的值。
+在使用INSERT OVERWRITE语句将数据插入到一张分区表时，您可以在语句中指定分区的值，也可以在分区中指定一个分区列名（但不提供具体的值），并在SELECT子句中提供对应分区列的值。这种指定分区列名的数据插入方式即为输出到动态分区。本文为您介绍输出到动态分区的基本语法和使用示例。
 
 ## 动态分区语法 {#section_aky_dyy_bgb .section}
 
@@ -68,12 +68,12 @@ create table sale_detail_dypart like sale_detail; --创建示例目标表。
 
     ``` {#codeblock_ylb_fze_u3y}
     insert overwrite table sales partition (region='china', sale_date)
-    select shop_name,customer_id,total_price,region from sale_detail;
+    select shop_name,customer_id,total_price,sale_date from sale_detail;
     -- 失败返回，不能仅指定低级子分区，而动态插入高级分区。
     ```
 
 
-旧版MaxCompute在进行动态分区时，如果分区列的类型与对应`select`列表中列的类型不严格一致，会发生报错。MaxCompute 2.0则支持[隐式类型转换](intl.zh-CN/开发/数据类型.md#)，示例如下。
+MaxCompute 1.0在进行动态分区时，如果分区列的类型与对应`select`列表中列的类型不严格一致，会发生报错。MaxCompute 2.0则支持[隐式类型转换](intl.zh-CN/开发/数据类型.md#)，示例如下。
 
 ``` {#codeblock_0kz_5vu_gh6}
 create table parttable(a int, b double) partitioned by (p string);
