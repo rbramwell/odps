@@ -1,74 +1,48 @@
 # Renewal management {#concept_xpc_gxm_xdb .concept}
 
-If your instance expires, the corresponding items in the expired instance are immediately locked by the system. You can renew your instance by using the Manually Renew option.
+This topic describes how a Subscription instance can be manually or automatically renewed in the Renew center.
 
-The renewal operation is described as follows:
+When your Subscription instance expires:
 
-**Note:** 
+-   The Subscription projects associated with the instance are immediately locked by the system, and the instance enters the **Expiration** state. You can activate the instance only after you pay for it.
+-   If the instance is not renewed within the specified time period or the renewal fails, the resources in the projects associated with the instance are released and cannot be recovered.
 
--   If an instance is not renewed in the 15 days after the expiration date, the corresponding resources in the instance are released, and all MaxCompute project data associated with the instance cannot be recovered.
--   If your instance expires, the corresponding items in the expired instance are immediately frozen by the system, and the instance enters the **Expiration** status.
+## Procedure for manual renewal {#section_kfm_lxm_xdb .section}
 
-## Manual renewal {#section_kfm_lxm_xdb .section}
+To renew a Subscription instance manually, follow these steps:
 
-You can renew instances on the **renewal management** page or the **project list** page.
+1.  Log on to the [MaxCompute console](https://renew-intl.console.aliyun.com/?spm=a2c95.c0e1020.app.9.df741127W29Zuz#/renew/odpsplus_intl?_k=gcoojz) by using your Alibaba Cloud account, choose **Billing Management** \> **Renew** in the top navigation bar, and in the left-side navigation pane of the displayed page click **MaxCompute**.
 
-**Renewal management page**
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13800/156404878752765_en-US.jpg)
 
-1.  Log on to the [DTplus console](https://renew-intl.console.aliyun.com/). In the left-side navigation pane, click **MaxCompute**.
-2.  Go to **Bill Management** \> **Renew**.
-3.  Click **Manually Renew** and select **MaxCompute**, as shown in the following figure.
+2.  On the **Manually Renew** tab, find the instance you want to renew, and in the **Actions** column click **Renew**.
+3.  Drag the blue slider to specify a time period, and then click **Pay**.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13800/15507142303742_en-US.png)
+## Procedure for automatic renewal {#section_rfm_lxm_xdb .section}
 
-4.  Select the instance to renew, and click **Renew**.
-5.  Select the required renewal duration, and click **Pay**.
+To enable automatic renewal, follow these steps:
 
-**Manual renewal using the project list page**
+1.  Log on to the [MaxCompute console](https://renew-intl.console.aliyun.com/?spm=a2c95.c0e1020.app.9.df741127W29Zuz#/renew/odpsplus_intl?_k=gcoojz)by using your Alibaba Cloud account, choose **Billing Management** \> **Renew** in the top navigation bar, and in the left-side navigation pane of the displayed page click **MaxCompute**.
 
-1.  Log on to the [DTplus console](https://renew-intl.console.aliyun.com/). In the left-side navigation pane, click **MaxCompute**, Click Project List.
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13800/156404878752759_en-US.jpg)
 
-2.  In the **Subscribed service** column, select the service icon that is displayed red, which indicates an expired instance. Click **Renew**.
+2.  Find the instance you want to renew, and in the **Actions** column click **Enable Auto-Renew**.
+3.  In the Enable Auto-Renew dialog box, select a time period from the **Auto-Renew Cycle** drop-down list and click **Enable Auto-Renew**.
+4.  On the **Auto-Renew** tab, view information about the instance whose fees can be automatically paid.
 
-     
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13800/156404878752761_en-US.jpg)
 
-3.  Select the required renewal duration, and click **Pay**.
+5.  Optional. Click **Modify Auto-Renew** to change the automatic renewal cycle, or click **Don't Renew** to cancel automatic renewal.
 
-## Auto-Renew {#section_rfm_lxm_xdb .section}
+    **Note:** After you enable automatic renewal for the instance:
 
-You can select **Auto-Renew** to renew instances automatically.
+    -   After you enable automatic renewal for the instance, the system attempts to deduct fees from your account at 8:00 on the next day following the expiration date. If the deduction fails, the system attempts to deduct fees again on the sixth day. If the deduction still fails, the system attempts to deduct fees for the third time on the 14th day. If this third deduction fails, we recommend that you manually pay for the instance. If you do not pay for the instance, the instance stops on the 15th day.
+    -   If you want to manually pay for the instance, make sure that you complete the payment before 8:00 on the day before the instance expires.
+    -   If you select the **Don't Renew** option, the system does not send expiration reminders to you. However, three days before the instance expires, the system sends a reminder to you to verify that you do not want to renew the instance.
 
-**Procedure**
+## Additional information {#section_xs1_cwr_opv .section}
 
-1.  Log on to the [DTplus console](https://renew-intl.console.aliyun.com/). In the left-side navigation pane, click **MaxCompute**.
-2.  Go to **Bill Management** \> **Renew**.
-3.  Select **MaxCompute** in **Renew**,  click **Manually Renew**. 
-4.  Click **Enable Auto-Renew**, as shown in the following figure.
+When your Subscription instance expires, the Subscription projects associated with the instance are immediately locked by the system, and the instance enters the **Expiration** state. Therefore, you can only activate the instance after a payment is made to renew the instance.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13800/15507142303745_en-US.png)
-
-5.  Select the Auto-renewal period, and click **Activate auto-renewal**.
-
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13800/15507142303746_en-US.png)
-
-6.  After configuration is complete, the page displays the notification that the **Auto-renewal feature has been activated**. Enter the auto-renewal page to see the auto-renewal instance information.
-
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13800/15507142303747_en-US.png)
-
-7.  If you need to modify or cancel the Auto-Renew, click **Modify Auto-Renew** to **modify renewal cycle time**, click **Don’t Renew** to cancel the renewal activity, and click **OK**.
-
-    **Note:** 
-
-    -   The system attempts to process fees at three intervals: first, one day after expiration, second, the 6th day after expiration, and third, the 14th day after expiration. If all three deduction attempts fail, you must renew your instance manually, or your instance will be released and all MaxCompute data associated to the instance will be irrecoverable.
-
-    -   To enable auto-renewal of an instance, you must configure auto-renew before 08:00 a.m. at least one day before the instance’s expiration date.
-
-
-## No Renewal {#section_yfm_lxm_xdb .section}
-
-If you do not want to renew your instances, or if you want to renew your instances manually, go to the Don’t Renew tab, and in the **Actions column** click Enable Manually Renew.
-
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13800/15507142303748_en-US.png)
-
-**Note:** If you select the Don’t Renew option, the system does not send an expiration reminder. However, 3 days before expiration, the system will send a reminder to you to verify that the Don’t Renew option matches your requirements.
+**Note:** If the instance is not renewed within the specified time period or the renewal fails, the resources in the projects associated with the instance are released and cannot be recovered.
 
