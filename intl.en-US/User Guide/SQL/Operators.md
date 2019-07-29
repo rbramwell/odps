@@ -14,22 +14,22 @@ Operators are used to perform program code operations. This article introduces f
 |A\>=B|If A or B is NULL, NULL is returned; if A is not less than B, TRUE is returned; otherwise, FALSE is returned.|
 |A IS NULL|If A is NULL, TRUE is returned; otherwise, FALSE is returned.|
 |A IS NOT NULL|If A is NULL, TRUE is returned; otherwise FALSE is returned.|
-|A LIKE B|If A or B is NULL, NULL is returned. If String A matches the SQL simple regular B TRUE is returned; otherwise FALSE is returned. The \( %\) character in B matches an arbitrary number of characters and the \(\_\) character in B matches any character in A. To match \(%\) or\(\_\), use by the escape characters \('%'\)'and \('\_'\).```
+|A LIKE B|If A or B is NULL, NULL is returned. If String A matches the SQL simple regular B TRUE is returned; otherwise FALSE is returned. The \( %\) character in B matches an arbitrary number of characters and the \(\_\) character in B matches any character in A. To match \(%\) or\(\_\), use by the escape characters \('%'\)'and \('\_'\). ``` {#codeblock_qc3_lh1_56j}
 ‘aaa’ like‘a_’= TRUE 
 ‘aaa’ like‘a%’ = TRUE
 ‘aaa’ like‘aab’= FALSE 
-‘a%b’ like‘a\%b’= TRUE 
-‘axb’ like ‘a\%b’= FALSE               
+‘a%b’ like‘a\\%b’= TRUE 
+‘axb’ like ‘a\\%b’= FALSE               
 ```
 
-|
+ |
 |A RLIKE B|A is a string, and B is a string constant regular expression. If any substring of A matches the Java regular expression B, TRUE is returned; otherwise FALSE is returned. If expression B is empty, report an error and exit. If expression A or B is NULL, NULL is returned.|
 |A IN B|B is a set. If expression A is NULL, NULL is returned. If expression A is in expression B, TRUE is returned; otherwise FALSE is returned. If expression B has only one element NULL, that is, A IN \(NULL\), return NULL. If expression B contains NULL element, take NULL as the type of other elements in B set. B must be a constant and at least has one element; all types must be consistent.|
 |BETWEEN AND|The expression is `A [NOT] BETWEEN B AND C`. Empty if A, B, or C is empty. TRUE if A is larger than or equal to B and less than or equal to C; otherwise FALSE is returned.|
 
 The common use:
 
-```
+``` {#codeblock_q9s_w9s_wum}
 select * from user where user_id = '0001'; 
 select * from user where user_name <> 'maggie'; 
 select * from user where age > ‘50’; 
@@ -42,9 +42,9 @@ select * from user where user_name like 'M%';
 
 The Double values in MaxCompute are different in precision. For this reason, we do not recommend using the equal sign for comparison between two Double data. You can subtract two Double types, and then take the absolute value into consideration. When the absolute value is small enough, the two double values are considered equal.
 
-**Example:**
+**Example:** 
 
-```
+``` {#codeblock_eqv_sba_jw4}
 abs(0.9999999999 - 1.0000000000) < 0.000000001
  -- 0.9999999999 and 1.0000000000 have the precision of 10 decimal digits, while 0.000000001 has the precision of 9 decimal digits.
  -- It is considered that 0.9999999999 is equal to 1.0000000000.
@@ -69,7 +69,7 @@ abs(0.9999999999 - 1.0000000000) < 0.000000001
 
 The common use:
 
-```
+``` {#codeblock_g0r_vos_bk3}
 select age+10, age-10, age%10, -age, age*age, age/10 from user;
 ```
 
@@ -80,7 +80,7 @@ select age+10, age-10, age%10, -age, age*age, age/10 from user;
 -   If BIGINT and DOUBLE both are involved in arithmetic operation, the type BIGINT is converted into DOUBLE by implicit type conversion.
 -   When A and B are BIGINT types, the return result of A/B will be a DOUBLE type. For other arithmetic operations, the return value is also a BIGINT type.
 
-## Bitwise operators { .section}
+## Bitwise operators {#section_abw_cs4_gof .section}
 
 |Operator|Description|
 |:-------|:----------|
@@ -89,7 +89,7 @@ select age+10, age-10, age%10, -age, age*age, age/10 from user;
 
 **Note:** Bitwise operator does not support implicit conversions, only supports the type BIGINT.
 
-## Logical operators { .section}
+## Logical operators {#section_qcm_g6o_o17 .section}
 
 |Operator|Description|
 |--------|-----------|
