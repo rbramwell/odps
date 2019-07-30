@@ -16,8 +16,8 @@ MaxCompute records the storage used for each project on an hourly basis. The ave
 
 The daily MaxCompute fee is calculated by applying the tiered unit prices in the table below to the average storage used. Up to 1 GB of storage is free each day, while storage used between 1 GB and 100 GB costs 0.0028 USD for each gigabyte and so on. If you require more than 1 PB of storage per day, you can open a ticket to get a quote for the price.
 
-|Less than 1 GBUSD/GB/Day|1 GB to 100 GB USD/GB/Day|100 GB to 1 TB USD/GB/Day|1 TB to 10 TB USD/GB/Day|10 TB to 100 TB USD/GB/Day|100 TB to 1 PB USD/GB/Day|More than 1 PB USD/GB/Day|
-|:-----------------------|:------------------------|:------------------------|:-----------------------|:-------------------------|:------------------------|-------------------------|
+|Less than 1 GB USD/GB/Day|1 GB to 100 GB USD/GB/Day|100 GB to 1 TB USD/GB/Day|1 TB to 10 TB USD/GB/Day|10 TB to 100 TB USD/GB/Day|100 TB to 1 PB USD/GB/Day|More than 1 PB USD/GB/Day|
+|:------------------------|:------------------------|:------------------------|:-----------------------|:-------------------------|:------------------------|-------------------------|
 |Free|0.0028|0.0014|0.0013|0.0011|0.0009|Please contact us|
 
 For example, if you store 50 TB data in MaxCompute, the bill is calculated as follows.
@@ -184,7 +184,7 @@ After a Spark on MaxCompute task finishes, the system calculates the compute hou
 -   The fees for the same job vary depending on the size of resources you specify when submitting the job.
 -   If you purchase the MaxCompute \(Subscription\) service, then you can run Spark on MaxCompute tasks for free within the scope of the service. No additional fees are charged.
 -   If you have any questions about the fees charged for your Spark on MaxCompute tasks, you can open a ticket.
--   Spark on MaxCompute has been rolled out the Chian East 1 \(Hangzhou\), China North 2 \(Beijing\), China South 1 \(Shenzhen\), and EU Central 1 \(Frankfurt\) regions, and will be rolled out in the other regions soon.
+-   Spark on MaxCompute has been rolled out the Chian East 1 \(Hangzhou\), China North 2 \(Beijing\), China South 1 \(Shenzhen\), US West 1 \(Silicon Valley\), Hong Kong \(Hong Kong\), EU Central 1 \(Frankfurt\), Asia Pacific SE 1 \(Singapore\), and Asia Pacific SOU 1 \(Mumbai\) regions, and will be rolled out in the other regions soon.
 
 Subscription \(CU cost\)
 
