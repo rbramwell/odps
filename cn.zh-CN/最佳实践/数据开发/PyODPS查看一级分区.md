@@ -6,7 +6,7 @@
 
 1.  准备测试数据。 
     1.  单击[此处](http://t.cn/Rf8GeUq)下载鸢尾花数据集iris.csv文件。
-    2.  登录Dataworks控制台，以**DDL模式**创建分区表user\_detail。![创建分区表](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156462470452566_zh-CN.jpg)
+    2.  登录Dataworks控制台，以**DDL模式**创建分区表user\_detail。![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1161778/156462739754070_zh-CN.jpg)
 
  代码如下。
 
@@ -29,10 +29,10 @@
         0004,互联网,硕士,20190715,beijing
         ```
 
-    4.  将user\_detail.txt中的数据导入到表user\_detail。![数据导入](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156462470452373_zh-CN.jpg)
+    4.  将user\_detail.txt中的数据导入到表user\_detail。![数据导入](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1014080/156462739852373_zh-CN.jpg)
 
 
-2.  在**业务流程** \> **数据开发**中，新建PyODPS节点，并将节点命名为查看一级分区。![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1161778/156462470454007_zh-CN.jpg)
+2.  在**业务流程** \> **数据开发**中，新建PyODPS节点，并将节点命名为查看一级分区。![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1161778/156462739854007_zh-CN.jpg)
 
  代码如下。
 
@@ -59,10 +59,10 @@
     print pt_df.head(10)
     ```
 
-3.  单击运行按钮。![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1161778/156462470554008_zh-CN.jpg)
+3.  单击运行按钮。![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1161778/156462739954008_zh-CN.jpg)
 
 
-4.  在**运行日志**中查看运行结果。![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1161778/156462470554026_zh-CN.jpg)
+4.  在**运行日志**中查看运行结果。![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/1161778/156462739954026_zh-CN.jpg)
 
 
 
