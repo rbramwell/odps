@@ -1,6 +1,6 @@
 # Import or export data using the Data Integration {#concept_k5w_ybg_vdb .concept}
 
-Use [Data Integration](https://www.alibabacloud.com/help/doc-detail/47677.html) function of DataWorks to create data synchronization tasks and import and export MaxCompute data.
+Use [Data integration overview](../../../../reseller.en-US/User Guide/Data integration/Data integration introduction/Data integration overview.md#) function of DataWorks to create data synchronization tasks and import and export MaxCompute data.
 
 ## Prerequisites {#section_y1n_bcg_vdb .section}
 
@@ -32,7 +32,7 @@ Before importing or exporting data, complete the required operations first. For 
 5.  \(Optional\). Click **Test Connectivity** to test the connectivity after entering all the required information in the relevant fields.
 6.  If the connectivity test is successful, click **Save**.
 
-**Note:** For more information about the other data sources configurations, see [data source configuration](https://www.alibabacloud.com/help/doc-detail/60416.html).
+**Note:** For more information about the other data sources configurations, see [Supported data sources](../../../../reseller.en-US/User Guide/Data integration/Data source configuration/Supported data sources.md#).
 
 ## Import data through Data Integration {#section_zdw_1dg_vdb .section}
 
