@@ -6,17 +6,17 @@
 
 您可以通过以下几种方法导出SQL的运行结果：
 
--   如果数据比较少，可以直接用[SQL Task](../../../../../intl.zh-CN/SDK 参考/Java SDK.md)得到全部的查询结果。
--   如果只是想导出某个表或者分区，可以用 [Tunnel](../../../../../intl.zh-CN/用户指南/数据上传下载/Tunnel命令操作.md)直接导出数据。
+-   如果数据比较少，可以直接用[SQL Task](../../../../intl.zh-CN/SDK参考/Java SDK/Java SDK介绍.md)得到全部的查询结果。
+-   如果只是想导出某个表或者分区，可以用 [Tunnel](../../../../intl.zh-CN/开发/数据上传下载/Tunnel上传下载命令.md)直接导出数据。
 -   如果SQL比较复杂，需要Tunnel和SQL相互配合才行。
--   [DataWorks](https://data.aliyun.com/product/ide?) 可以方便地帮您运行SQL，[同步数据](https://www.alibabacloud.com/help/doc-detail/47677.htm)，并有定时调度，配置任务依赖的功能。
+-   [DataWorks](https://data.aliyun.com/product/ide?) 可以方便地帮您运行SQL，同步数据，并有定时调度，配置任务依赖的功能。
 -   开源工具**DataX** 可帮助您方便地把MaxCompute中的数据导出到目标数据源。
 
 ## SQLTask方式导出 {#section_pyd_ntc_5db .section}
 
-[SQLTask](../../../../../intl.zh-CN/SDK 参考/Java SDK.md) 是 SDK直接调用MaxCompute SQL的接口，能很方便地运行SQL并获得其返回结果。
+[SQLTask](../../../../intl.zh-CN/SDK参考/Java SDK/Java SDK介绍.md) 是 SDK直接调用MaxCompute SQL的接口，能很方便地运行SQL并获得其返回结果。
 
-从文档可以看到，SQLTask.getResult\(i\)返回的是一个 List，可以循环迭代这个List，获得完整的SQL计算返回结果。不过该方法有一个缺陷，详情请参见[Set操作](../../../../../intl.zh-CN/用户指南/常用命令/Set操作.md#)中的`SetProject READ_TABLE_MAX_ROW`功能。
+从文档可以看到，SQLTask.getResult\(i\)返回的是一个 List，可以循环迭代这个List，获得完整的SQL计算返回结果。不过该方法有一个缺陷，详情请参见[SET操作](../../../../intl.zh-CN/开发/常用命令/SET操作.md#)中的`SetProject READ_TABLE_MAX_ROW`功能。
 
 目前Select语句返回给客户端的数据条数最大可以调整到 **1万**。也即如果在客户端上（包括 SQLTask）直接进行Select操作，相当于查询结果上最后加上了Limit N参数（如果使用CREATE TABLE XX AS SELECT或者用INSERT INTO/OVERWRITE TABLE把结果固化到具体的表里则没有影响）。
 
@@ -24,11 +24,11 @@
 
 ## Tunnel 方式导出 {#section_ryd_ntc_5db .section}
 
-如果您需要导出的查询结果是某张表的全部内容（或者是具体的某个分区的全部内容），可以通过Tunnel来实现，详情请参见 [命令行工具](../../../../../intl.zh-CN/用户指南/数据上传下载/Tunnel命令操作.md) 和基于SDK编写的 [Tunnel SDK](../../../../../intl.zh-CN/用户指南/数据上传下载/批量数据通道SDK介绍/批量数据通道概要.md)。
+如果您需要导出的查询结果是某张表的全部内容（或者是具体的某个分区的全部内容），可以通过Tunnel来实现，详情请参见 [命令行工具](../../../../intl.zh-CN/开发/数据上传下载/Tunnel上传下载命令.md) 和基于SDK编写的 [Tunnel SDK](../../../../intl.zh-CN/开发/数据上传下载/批量数据通道SDK介绍/批量数据通道概要.md)。
 
-此处提供一个Tunnel命令行导出数据的简单示例，Tunnel SDK的编写适用于Tunnel命令行无法支持的场景，详情请参见 [批量数据通道概述](../../../../../intl.zh-CN/用户指南/数据上传下载/批量数据通道SDK介绍/批量数据通道概要.md)。
+此处提供一个Tunnel命令行导出数据的简单示例，Tunnel SDK的编写适用于Tunnel命令行无法支持的场景，详情请参见 [批量数据通道概述](../../../../intl.zh-CN/开发/数据上传下载/批量数据通道SDK介绍/批量数据通道概要.md)。
 
-```
+``` {#codeblock_7vy_nnv_30w}
 tunnel d wc_out c:\wc_out.dat;
 2016-12-16 19:32:08 - new session: 201612161932082d3c9b0a012f68e7 total lines: 3
 2016-12-16 19:32:08 - file [0]: [0, 3), c:\wc_out.dat
@@ -44,7 +44,7 @@ download OK
 
 代码实现的示例如下：
 
-```language-java
+``` {#codeblock_67j_khp_d74 .language-java}
 private static final String accessId = "userAccessId";
     private static final String accessKey = "userAccessKey";
     private static final String endPoint = "http://service.odps.aliyun.com/api";
@@ -127,11 +127,11 @@ private static final String accessId = "userAccessId";
 
 前面介绍的方式解决了数据下载后保存的问题，但是没解决数据的生成以及两个步骤之间的调度依赖的问题。
 
-[数加·DataWorks](https://data.aliyun.com/product/ide?) 可以运行SQL、[配置数据同步任务](https://www.alibabacloud.com/help/doc-detail/30269.htm)，还可以设置自动 [周期性运行](https://www.alibabacloud.com/help/doc-detail/50130.htm) 和 [多任务之间依赖](https://www.alibabacloud.com/help/doc-detail/50130.htm)，彻底解决了前面的烦恼。
+[数加·DataWorks](https://data.aliyun.com/product/ide?) 可以运行SQL、配置数据同步任务，还可以设置自动 [周期性运行](https://www.alibabacloud.com/help/doc-detail/50130.htm) 和 [多任务之间依赖](https://www.alibabacloud.com/help/doc-detail/50130.htm)，彻底解决了前面的烦恼。
 
 接下来将用一个简单示例，为您介绍如何通过大数据开发套件运行SQL并配置数据同步任务，以完成数据生成和导出需求。
 
-**操作步骤**
+ **操作步骤** 
 
 1.  创建一个工作流，工作流里创建一个SQL节点和一个数据同步节点，并将两个节点连线配置成依赖关系，SQL节点作为数据产出的节点，数据同步节点作为数据导出节点。
 2.  配置SQL节点。
@@ -146,7 +146,7 @@ private static final String accessId = "userAccessId";
     5.  预览保存。
 4.  工作流调度配置完成后（可以直接使用默认配置），保存并提交工作流，然后单击 **测试运行**。查看数据同步的运行日志，如下所示：
 
-    ```
+    ``` {#codeblock_9aj_mzh_gn7}
     2016-12-17 23:43:46.394 [job-15598025] INFO JobContainer - 
     任务启动时刻 : 2016-12-17 23:43:34
     任务结束时刻 : 2016-12-17 23:43:46
