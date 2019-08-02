@@ -14,7 +14,7 @@ For Hadoop data migration, either use Sqoop or DataWorks.
 
 To synchronize the data of a database to MaxCompute, select an appropriate tool based on the database type and synchronization rule.
 
--   For offline batch data synchronization, use DataWorks. It supports a wide range of database types, including MySQL, SQL Server, and PostgreSQL. For more information, see [Data synchronization introduction](https://www.alibabacloud.com/help/doc-detail/47677.html). For instance operation instructions, see [Create a synchronization task](https://www.alibabacloud.com/help/doc-detail/30269.htm).
+-   For offline batch data synchronization, use DataWorks. It supports a wide range of database types, including MySQL, SQL Server, and PostgreSQL. For more information, see [Data integration node](../../../../reseller.en-US/User Guide/Data development/Node type/Data integration node.md#). For instance operation instructions, see [Step 3: Create a synchronization task](../../../../reseller.en-US/Quick Start/Step 3: Create a synchronization task.md#).
 -   For real-time Oracle data synchronization, use OGG plug-in tools.
 -   For real-time RDS data synchronization, use DTS.
 
