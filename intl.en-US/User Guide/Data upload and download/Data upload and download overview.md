@@ -31,7 +31,6 @@ A wide range of data upload and download tools are applicable to most cloud data
 -   Tunnel commands cannot be used to upload or download the data types ARRAY, MAP, and STRUCT.
 -   By default, each project supports up to 2,000 concurrent Tunnel connections.
 -   On the server, the lifecycle for the session of each tunnel spans 24 hours. Each session can be shared among processes and threads on the server. During these sessions, you must ensure that each BlockId is unique.
--   When data is written concurrently, MaxCompute guarantees the concurrent sessions according to the Atomicity, Consistency, Isolation, Durability \(ACID\) principle. For more information, see [ACID semantics](../../../../reseller.en-US/.md#).
 
 **Limits to uploading data while using DataHub** 
 
