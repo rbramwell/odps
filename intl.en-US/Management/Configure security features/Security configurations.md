@@ -19,5 +19,5 @@ MaxCompute provides multiple methods of orthogonal authorization, including Acce
 
 **Note:** 
 
-You can also complete the security configuration of a project in a visualized technique using DataWorks. For more information, see [MaxCompute advanced settings](../../../../reseller.en-US/User Guide/Project management/MaxCompute advanced settings.md#).
+You can also complete the security configuration of a project in a visualized technique using DataWorks.
 
