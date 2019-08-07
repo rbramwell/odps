@@ -78,7 +78,6 @@ PARTITIONED BY (ds      STRING COMMENT '格式：YYYYMMDD')
 LIFECYCLE 400;
 
 
-s_users_extra
 CREATE TABLE IF NOT EXISTS s_users_extra
 (
     id                STRING COMMENT '用户id',
