@@ -26,7 +26,7 @@ PyODPS DataFrame支持MapReduce API，您可以分别编写`map`和`reduce`函�
 >>>         if done:
 >>>             yield keys[0], cnt[0]
 >>>     return h
->>>
+>>> # zx_word_count表只有一列，为STRING类型。
 >>> word_count = DataFrame(o.get_table('zx_word_count'))
 >>> table = word_count.map_reduce(mapper, reducer, group=['word', ],
                         mapper_output_names=['word', 'cnt'],
@@ -64,7 +64,7 @@ class reducer(object):
             yield row.word, self.cnt
 ```
 
-使用`output`进行注释会让代码更简单些。
+使用`output`进行注释会让代码更简单。
 
 ``` {#codeblock_dvu_4va_qbt}
 >>> from odps.df import output
@@ -76,7 +76,7 @@ class reducer(object):
 >>>
 >>> @output(['word', 'cnt'], ['string', 'int'])
 >>> def reducer(keys):
->>>     # 这里使用list而不是cnt=0，否则h内的cnt会被认为是局部变量，其中的赋值无法输出。
+>>>     # 此处使用list而不是cnt=0，否则h内的cnt会被认为是局部变量，其中的赋值无法输出。
 >>>     cnt = [0]
 >>>     def h(row, done):  # done表示这个key已经迭代结束。
 >>>         cnt[0] += row.cnt
@@ -102,7 +102,7 @@ class reducer(object):
 12        you    1
 ```
 
-在迭代的时候，可以使用`sort`参数实现按指定列排序，通过`ascending`参数指定升序降序。`ascending`参数可以是一个BOOL值，表示所有的`sort`字段是相同升序或降序， 也可以是一个列表，长度必须和`sort`字段长度相同。
+在迭代的时候，可以使用`sort`参数实现按指定列排序，通过`ascending`参数指定升序降序。`ascending`参数可以是一个BOOL值，表示所有的`sort`字段是相同升序或降序； 也可以是一个列表，长度必须和`sort`字段长度相同。
 
 ## 指定COMBINER {#section_lhr_f5n_cfb .section}
 
