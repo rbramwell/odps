@@ -24,7 +24,7 @@ ${ProjectRoot}/spark/spark-2.x/spark-examples/target/spark-examples_2.11-version
 
 ## DataWorks mode {#section_uqe_uwt_q0b .section}
 
-**Note:** Spark on MaxCompute is in the A/B phase of testing in DataWorks. If you want to call Spark on MaxCompute nodes in DataWorks, open a ticket or join the Alibaba Cloud DingTalk group 21969532 to troubleshoot with a representative of the customer service team.
+**Note:** Supported Region: China \(Hong Kong\), West USA 1, Central Europe 1, Asia Pacific SOU 1, Asia Pacific SE 1.
 
 In DataWorks, you can run offline Spark on MaxCompute jobs in cluster mode. This helps to integrate Spark on MaxCompute nodes with other types of nodes and better schedule these nodes. To run an offline Spark on MaxCompute job, follow these steps:undefined
 
