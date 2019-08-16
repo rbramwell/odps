@@ -8,7 +8,7 @@ Overview:
 -   Billable items include the storage, computing resources and data downloads of a project.
 -   MaxCompute fees are calculated daily.
 
-## Storage pricing {#section_efw_kpm_xdb .section}
+## Storage pricing {#section_zwe_06t_20i .section}
 
 The data that is stored in MaxCompute, including tables and resources, is billed according to the storage used. The billing cycle is **one day**.
 
@@ -22,7 +22,7 @@ The daily MaxCompute fee is calculated by applying the tiered unit prices in the
 
 For example, if you store 50 TB data in MaxCompute, the bill is calculated as follows.
 
-``` {#codeblock_vxb_qfi_73f}
+``` {#codeblock_hs8_d17_zhv}
 (100GB - 1) × 0.0028 USD/GB/day
 + (1024 - 100) GB × 0.0014 USD/GB/day
 + (10240 - 1024) GB × 0.0013 USD/GB/day
@@ -36,7 +36,7 @@ For example, if you store 50 TB data in MaxCompute, the bill is calculated as fo
 -   Generally, MaxCompute fees are deducted no more than 6 hours after the daily fee calculation is completed, and are automatically deducted from the corresponding account balance.
 -   On the MaxCompute console, you can view your consumption details under **Bill Management**.
 
-## Computation pricing {#section_lfw_kpm_xdb .section}
+## Computation pricing {#section_sg4_rz5_aaj .section}
 
 MaxCompute supports two kinds of billing methods.
 
@@ -57,7 +57,7 @@ The MaxCompute SQL task is charged according to I/O for each job. All daily meas
 
 The bill for SQL tasks is calculated as follows.
 
-``` {#codeblock_2iv_uc9_h9m}
+``` {#codeblock_pll_wwh_zyb}
  Computing Cost of One SQL Task = Data Input Size × SQL Complexity × SQL Price
 ```
 
@@ -80,13 +80,13 @@ The price is as follows.
 
 The input SQL statement for calculating **SQL Complexity** is as follows:
 
-``` {#codeblock_3nl_mw2_78z}
+``` {#codeblock_j4h_p4j_6hl}
 cost sql <SQL Sentence>;
 ```
 
 An example of a SQL statement is as follows:
 
-``` {#codeblock_u5t_0oq_7ha}
+``` {#codeblock_008_7l8_d95}
 odps@ $odps_project >cost sql SELECT DISTINCT total1 FROM
 (SELECT id1, COUNT(f1) AS total1 FROM in1 GROUP BY id1) tmp1
 ORDER BY total1 DESC LIMIT 100;
@@ -97,7 +97,7 @@ Complexity:1.5
 
 The preceding SQL includes 4 keywords \(one DISTINCT, one COUNT, one GROUP BY, and one ORDER\), so the SQL complexity is 1.5. If the data volume of table “in1” is 1.7 GB, then the actual consumption is as follows:
 
-``` {#codeblock_bqa_286_fsh}
+``` {#codeblock_s7h_2wu_lvj}
 1.7 × 1.5 × 0.0438 = 0.11 USD
 ```
 
@@ -110,7 +110,7 @@ The preceding SQL includes 4 keywords \(one DISTINCT, one COUNT, one GROUP BY, a
 
 The billing for MaxCompute SQL external tables commenced on 24th July, 2019. The billing for one external table SQL task is calculated as follows:
 
-``` {#codeblock_zvm_zft_ao6}
+``` {#codeblock_wui_177_269}
  Computing Cost of One SQL Task = Data Input Size × SQL Price
 ```
 
@@ -128,7 +128,7 @@ Pay-As-You-Go for MapReduce
 
 In December 19, 2017, MaxCompute began charging for MapReduce \(MR\) tasks. The billing of an MR task is calculated as follows:
 
-``` {#codeblock_8u4_xhi_tm9}
+``` {#codeblock_x8u_vci_yo0}
 Computation Cost of One MR task = Total Time × MR Price (USD)
 ```
 
@@ -154,7 +154,7 @@ Subscription \(Spark on MaxCompute\)
 
 The billing for running Spark on MaxCompute tasks commenced on 24th July, 2019. The overall computation cost for your [Spark on MaxCompute](../../../../reseller.en-US/User Guide/Spark/Spark on MaxCompute overview.md#) tasks is calculated as follows:
 
-``` {#codeblock_g9v_8b6_0lb}
+``` {#codeblock_75k_tgu_i6a}
 Overall computation cost for all Spark on MaxCompute tasks on a day = Total number of compute hours for all tasks on the day × Unit price (0.1041 USD/Hour/Task)
 ```
 
@@ -166,13 +166,13 @@ The term compute hour used in Spark on MaxCompute tasks is defined as follows:
 
 For example, if you consume 2 CPU cores and 5-GB memory space for running your Spark on MaxCompute tasks for 1 hour, then the compute hours you need to pay are calculated as follows:
 
-``` {#codeblock_zp4_ke8_5r8}
+``` {#codeblock_aaq_7dz_kqv}
 Max[2 × 1, roundup (5 × 1/4)] = 2
 ```
 
 If you consume 2 CPU cores and 10-GB memory space for running your Spark on MaxCompute tasks for 1 hour, then the compute hours you need to pay are calculated as follows:
 
-``` {#codeblock_gf4_97m_fxw}
+``` {#codeblock_k9y_8fl_4c8}
 Max [2 × 1, roundup (10 × 1/4)] = 3
 ```
 
@@ -184,7 +184,7 @@ After a Spark on MaxCompute task finishes, the system calculates the compute hou
 -   The fees for the same job vary depending on the size of resources you specify when submitting the job.
 -   If you purchase the MaxCompute \(Subscription\) service, then you can run Spark on MaxCompute tasks for free within the scope of the service. No additional fees are charged.
 -   If you have any questions about the fees charged for your Spark on MaxCompute tasks, you can open a ticket.
--   Spark on MaxCompute has been rolled out the Chian East 1 \(Hangzhou\), China North 2 \(Beijing\), China South 1 \(Shenzhen\), US West 1 \(Silicon Valley\), Hong Kong \(Hong Kong\), EU Central 1 \(Frankfurt\), Asia Pacific SE 1 \(Singapore\), and Asia Pacific SOU 1 \(Mumbai\) regions, and will be rolled out in the other regions soon.
+-   Spark on MaxCompute has been rolled out the Chian East 1 \(Hangzhou\), China North 2 \(Beijing\), China South 1 \(Shenzhen\), US West 1 \(Silicon Valley\), China \(Hong Kong\), EU Central 1 \(Frankfurt\), Asia Pacific SE 1 \(Singapore\), and Asia Pacific SOU 1 \(Mumbai\) regions, and will be rolled out in the other regions soon.
 
 Subscription \(CU cost\)
 
@@ -196,11 +196,11 @@ Payment by subscription is only available on the **Alibaba Cloud DTPlus Platform
 
 We recommend that new users use the Pay-As-You-Go billing method, because this allows you to gauge your resource usage without unnecessary costs. Payment by subscription is only available on the Alibaba Cloud DTPlus platform.
 
-## Download pricing {#section_fgw_kpm_xdb .section}
+## Download pricing {#section_v1x_wel_y9w .section}
 
 You can download data from the extranet through the MaxCompute Tunnel. The billing method for data downloads is Pay-As-You-Go. The calculation is as follows.
 
-``` {#codeblock_q1b_qq8_skx}
+``` {#codeblock_eph_t75_qi8}
 Download Cost from Extranet/time = Downloaded Data Volume x Download Price
 ```
 
