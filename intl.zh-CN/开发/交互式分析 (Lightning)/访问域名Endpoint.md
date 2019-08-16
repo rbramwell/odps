@@ -10,7 +10,7 @@ MaxCompute Lightning在公共云的不同Region及网络环境下的服务连接
 |华东2|已开服|lightning.cn-shanghai.maxcompute.aliyun.com|
 |华北2|已开服|lightning.cn-beijing.maxcompute.aliyun.com|
 |华南1|已开服|lightning.cn-shenzhen.maxcompute.aliyun.com|
-|香港|公测中|lightning.cn-hongkong.maxcompute.aliyun.com|
+|中国（香港）|公测中|lightning.cn-hongkong.maxcompute.aliyun.com|
 |亚太东南1|公测中|lightning.ap-southeast-1.maxcompute.aliyun.com|
 |其他区域|暂未开服|-|
 
@@ -20,7 +20,7 @@ MaxCompute Lightning在公共云的不同Region及网络环境下的服务连接
 |华东2|已开服|lightning.cn-shanghai.maxcompute.aliyun-inc.com|
 |华北2|已开服|lightning.cn-beijing.maxcompute.aliyun-inc.com|
 |华南1|已开服|lightning.cn-shenzhen.maxcompute.aliyun-inc.com|
-|香港|公测中|lightning.cn-hongkong.maxcompute.aliyun-inc.com|
+|中国（香港）|公测中|lightning.cn-hongkong.maxcompute.aliyun-inc.com|
 |亚太东南1|公测中|lightning.ap-southeast-1.maxcompute.aliyun-inc.com|
 |其他区域|暂未开服|-|
 
@@ -31,7 +31,7 @@ MaxCompute Lightning在公共云的不同Region及网络环境下的服务连接
 |华东2金融云|已开服|lightning.cn-shanghai-finance.maxcompute.aliyun-inc.com|
 |华北2|已开服|lightning.cn-beijing.maxcompute.aliyun-inc.com|
 |华南1|已开服|lightning.cn-shenzhen.maxcompute.aliyun-inc.com|
-|香港|公测中|lightning.cn-hongkong.maxcompute.aliyun-inc.com|
+|中国（香港）|公测中|lightning.cn-hongkong.maxcompute.aliyun-inc.com|
 |亚太东南1|公测中|lightning.ap-southeast-1.maxcompute.aliyun-inc.com|
 |其他区域|暂未开服|-|
 
