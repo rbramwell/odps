@@ -124,6 +124,12 @@ MaxCompute的非结构化框架支持通过INSERT方式将MaxCompute的数据直
         public void setup(ExecutionContext ctx, OutputStreamSet outputStreamSet, DataAttributes attributes) throws IOException {
             this.outputStream = outputStreamSet.next();
             this.attributes = attributes;
+            this.delimiter = this.attributes.getValueByKey("delimiter");
+            if ( this.delimiter == null)
+            {
+                this.delimiter=",";
+            }
+            System.out.println("Extractor using delimiter [" + this.delimiter + "].");
         }
         @Override
         public void close() {
