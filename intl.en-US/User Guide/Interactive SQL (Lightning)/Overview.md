@@ -2,7 +2,7 @@
 
 MaxCompute Lightning provides interactive query services for MaxCompute, and supports easy connection to MaxCompute projects based on the PostgreSQL protocol and syntax. This service allows you to quickly query and analyze MaxCompute project data using standard SQL and commonly used tools.
 
-You can use major BI tools, such as Tablueu and FineReport, to easily connect to MaxCompute projects, and perform BI analysis or ad hoc queries. The quick query feature in MaxCompute Lightning allows you to provide services by encapsulating project table data in APIs, supporting diverse application scenarios without data migration.
+You can use major BI tools, such as Tableau and FineReport, to easily connect to MaxCompute projects, and perform BI analysis or ad hoc queries. The quick query feature in MaxCompute Lightning allows you to provide services by encapsulating project table data in APIs, supporting diverse application scenarios without data migration.
 
 MaxCompute Lightning offers serverless computing services. No infrastructure is required and you pay only for queries.
 
@@ -24,7 +24,7 @@ MaxCompute Lightning offers serverless computing services. No infrastructure is 
 
     MaxCompute Lightning provides serverless computing services based on existing MaxCompute computing resources. To perform queries, you only need to establish connections to MaxCompute projects using MaxCompute Lightning.
 
-    You do not need to configure, manage, or maintain MaxCompute Lightning resources. When using MaxCompute Lightning, you only incur costs for the data amount processed for each query.
+    You do not need to configure, manage, or maintain MaxCompute Lightning resources.When using MaxCompute Lightning, you only incur costs for the data amount processed for each query.
 
 
 ## System architecture {#section_qqv_mjj_z2b .section}
@@ -33,7 +33,7 @@ MaxCompute Lightning provides a method of connecting endpoints, clients, or appl
 
 Query tasks, connected and submitted by JDBC or ODBC interfaces, use serverless computing resources of MaxCompute Lightning to ensure query service quality.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/20113/155049304111152_en-US.jpg)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/20113/156617780111152_en-US.jpg)
 
 ## Scenarios {#section_vdv_zjj_z2b .section}
 
