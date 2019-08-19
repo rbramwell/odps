@@ -2,7 +2,7 @@
 
 This topic lists updates to MaxCompute in descending chronological order.
 
-## August 21,2019 \(Beijing time\): External table is upgraded. {#section_ar1_3mj_o5s .section}
+## August 21, 2019 \(Beijing time\): External table is upgraded. {#section_ar1_3mj_o5s .section}
 
 An upgrade will be carried out on MaxCompute at 14:00-23:00, 21 August 2019 \(Beijing time\). During this upgrade, when you use external table custom storage handler to implement the outputer interface, the job may fail if column data is obtained through column names rather than digital subscriptions.
 
