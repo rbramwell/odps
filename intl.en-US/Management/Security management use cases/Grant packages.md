@@ -10,7 +10,7 @@ Service analysis personnel require to view production tables, but often may not 
 
 1.  Create packages in production projects.
 
-    ```
+    ``` {#codeblock_5b3_w2g_izm}
     CREATEPACKAGE PACKAGE_NAME;
     For example:
     CREATEPACKAGE prj_prod2bi; 
@@ -18,7 +18,7 @@ Service analysis personnel require to view production tables, but often may not 
 
 2.  Add resources to be shared to the packages in the production projects.
 
-    ```
+    ``` {#codeblock_ekd_923_gwi}
     ADD table TO PACKAGE [Package name]; 
     For example:
     ADD table adl_test_table TO PACKAGE prj_prod2bi;
@@ -26,15 +26,15 @@ Service analysis personnel require to view production tables, but often may not 
 
 3.  Create an independent analysis project.
 
-    ```
-    ALLOW PROJECT [Project in which packages can be installed] TO INSTALLPACKAGE [Package name];
+    ``` {#codeblock_dv6_2i4_wjg}
+    ALLOW PROJECT [Project in which packages can be installed] TO INSTALL PACKAGE [Package name];
     For example:
-    ALLOW PRJ_BI TO INSTALLPACKAGE prj_prod2bi;
+    ALLOW PRJ_BI TO INSTALL PACKAGE prj_prod2bi;
     ```
 
 4.  Install the packages in the analysis project.
 
-    ```
+    ``` {#codeblock_gp8_ww9_z7i}
     INSTALLPACKAGE [Application name].[Package name]; 
     For example:
     INSTALLPACKAGE prj_prod.prj_prod2bi;
@@ -42,7 +42,7 @@ Service analysis personnel require to view production tables, but often may not 
 
 5.  Grant the packages to specified users.
 
-    ```
+    ``` {#codeblock_jcx_df1_k5c}
     Grant the package to a user:
     GRANTreadonpackage prj_prod2bi TOUSER [Cloud account];
     Grant the package to a role:
