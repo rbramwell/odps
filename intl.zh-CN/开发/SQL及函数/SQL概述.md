@@ -6,13 +6,13 @@
 
 MaxCompute SQL适用于海量数据（GB、TB、EB级别），离线批量计算的场合。MaxCompute作业提交后会有几十秒到数分钟不等的排队调度，所以适合处理跑批作业，一次作业批量处理海量数据，不适合直接对接需要每秒处理几千至数万笔事务的前台业务系统。
 
-MaxCompute SQL采用的是类似于SQL的语法。它的语法是标准语法ANSI SQL92的一个子集，并有自己的扩展，但不能因此简单地把MaxCompute等价成一个数据库，它在很多方面并不具备数据库的特征，如事务、主键约束、索引等。目前在MaxCompute中允许的最大SQL长度是3MB。
+MaxCompute SQL采用的是类似于SQL的语法。它的语法是标准语法ANSI SQL92的一个子集，并有自己的扩展，但不能因此简单地把MaxCompute等价成一个数据库，它在很多方面并不具备数据库的特征，如事务、主键约束、索引等。目前在MaxCompute中允许的最大SQL长度是2MB。
 
 ## 关键字 {#section_nzx_m2l_vdb .section}
 
 MaxCompute将SQL语句的关键字作为保留字。在对表、列或是分区命名时如若使用关键字，需给关键字加````符号进行转义，否则会报错。保留字不区分大小写。下面只给出常用的保留字列表，完整的保留字列表请参见[MaxCompute SQL保留字](intl.zh-CN/开发/SQL及函数/附录/保留字与关键字.md#)。
 
-```
+``` {#codeblock_o2m_pi7_e68}
 %    &    &&    (    )    *    +  
  -    .    /    ;    <    <=    <>  
  =    >    >=    ?    ADD    ALL    ALTER  
@@ -35,7 +35,7 @@ MaxCompute SQL允许数据类型之间的转换，类型转换方式包括显式
 
 ## 分区表 {#section_m1n_qfl_vdb .section}
 
-MaxCompute SQL支持分区表。指定分区表会对您带来诸多便利，例如提高SQL运行效率、减少计费等。关于分区的详情请参见[基本概念\>分区](intl.zh-CN/开发/基本概念/分区.md#)。
+MaxCompute SQL支持分区表。指定分区表会对您带来诸多便利，例如提高SQL运行效率、减少计费等。关于分区的详情请参见[基本概念\>分区](intl.zh-CN/产品简介/基本概念/分区.md#)。
 
 ## UNION ALL {#section_n1n_qfl_vdb .section}
 
@@ -45,7 +45,7 @@ MaxCompute SQL支持分区表。指定分区表会对您带来诸多便利，例
 
 SQL限制项请参见[SQL限制项](intl.zh-CN/开发/SQL及函数/SQL限制项.md#)，不支持的DDL及DML语法请参见[与其他SQL语法的差异](intl.zh-CN/开发/SQL及函数/与其他SQL语法的差异.md#)。
 
-**说明：** 与其他SQL的差异和不兼容带来的限制，可参见[与标准SQL的主要区别及解决方法](../../../../intl.zh-CN/实践经验/SQL/与标准SQL的主要区别及解决方法.md#)及[修改不兼容SQL实战](../../../../intl.zh-CN/实践经验/SQL/修改不兼容SQL实战.md#)解决。
+**说明：** 与其他SQL的差异和不兼容带来的限制，可参见[与标准SQL的主要区别及解决方法](../../../../intl.zh-CN/最佳实践/SQL/与标准SQL的主要区别及解决方法.md#)及[修改不兼容SQL实战](../../../../intl.zh-CN/最佳实践/SQL/修改不兼容SQL实战.md#)解决。
 
 其他限制：
 
