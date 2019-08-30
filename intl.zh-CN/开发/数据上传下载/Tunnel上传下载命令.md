@@ -4,13 +4,11 @@ MaxCompute主要通过Tunnel功能支持数据上传下载命令。本文向您�
 
 ## Tunnel命令功能 {#section_hcs_btf_vdb .section}
 
-您可以通过[客户端](../../../../cn.zh-CN/工具及下载/客户端.md)提供的[Tunnel](cn.zh-CN/开发/数据上传下载/Tunnel上传下载命令.md)命令实现原有Dship工具的功能。
+您可以通过[客户端](../../../../intl.zh-CN/工具及下载/客户端.md)提供的[Tunnel](intl.zh-CN/开发/数据上传下载/Tunnel上传下载命令.md)命令实现原有Dship工具的功能。
 
 Tunnel命令主要用于数据的上传和下载等功能。
 
-**说明：** 使用Tunnel命令过程中遇到的各类问题与最佳实践可参考[Tunnel命令相关问题](https://help.aliyun.com/knowledge_list/106707.html)。
-
--   Upload：支持文件或目录（指一级目录）的上传，每一次上传只支持数据上传到一张表或表的一个[分区](cn.zh-CN/开发/SQL及函数/DDL语句/分区和列操作.md#)。有分区的表一定要指定上传的分区，多级分区一定要指定到末级分区。
+-   Upload：支持文件或目录（指一级目录）的上传，每一次上传只支持数据上传到一张表或表的一个[分区](intl.zh-CN/开发/SQL及函数/DDL语句/分区和列操作.md#)。有分区的表一定要指定上传的分区，多级分区一定要指定到末级分区。
 
     ``` {#codeblock_3m2_8w4_635}
     tunnel upload log.txt test_project.test_table/p1="b1",p2="b2";
@@ -51,9 +49,10 @@ Tunnel命令主要用于数据的上传和下载等功能。
 
 ## Tunnel上传下载限制 {#section_an5_42t_j2b .section}
 
--   Tunnel功能及Tunnel SDK当前不支持外部表操作。您可以通过Tunnel直接上传数据到MaxCompute内部表，或者是通过OSS Python SDK上传到OSS后，在MaxCompute使用外部表做映射。关于外部表详情请参见[外部表概述](cn.zh-CN/开发/外部表/外部表概述.md#)。
+-   Tunnel功能及Tunnel SDK当前不支持外部表操作。您可以通过Tunnel直接上传数据到MaxCompute内部表，或者是通过OSS Python SDK上传到OSS后，在MaxCompute使用外部表做映射。关于外部表详情请参见[外部表概述](intl.zh-CN/开发/外部表/外部表概述.md#)。
 -   Tunnel命令不支持上传下载ARRAY、MAP和STRUCT类型的数据。
 -   每个Tunnel的Session在服务端的生命周期为24小时，创建后24小时内均可使用，也可以跨进程/线程共享使用，但是必须保证同一个BlockId没有重复使用。
+-   如果您根据Session下载，请注意只有主账号创建的Session，可以被主账号及所属子账号下载。
 
 ## Tunnel命令使用说明 {#section_g2l_1wf_vdb .section}
 
@@ -135,7 +134,7 @@ Example:
 -   -dbr：是否忽略脏数据（多列、少列、列数据类型不匹配等情况）。
     -   值为true时，将全部不符合表定义的数据忽略。
     -   值为false时，若遇到脏数据，则给出错误提示信息，目标表内的原始数据不会被污染。
--   -dfp：DateTime类型数据格式，默认为yyyy-MM-dd HH:mm:ss。如果您想指定时间格式到毫秒级别，可以使用tunnel upload -dfp 'yyyy-MM-dd HH:mm:ss.SSS'，有关DateTime数据类型的详情请参见[数据类型](../../../../cn.zh-CN/开发/数据类型.md#)。
+-   -dfp：DateTime类型数据格式，默认为yyyy-MM-dd HH:mm:ss。如果您想指定时间格式到毫秒级别，可以使用tunnel upload -dfp 'yyyy-MM-dd HH:mm:ss.SSS'，有关DateTime数据类型的详情请参见[数据类型](../../../../intl.zh-CN/开发/数据类型.md#)。
 -   -fd：本地数据文件的列分割符，默认为逗号。
 -   -h：数据文件是否包括表头，如果为true，则dship会跳过表头从第二行开始上传数据。
 -   -mbr：默认情况下，当上传的脏数据超过1000条时，上传动作终止。通过此参数，可以调整可容忍的脏数据量。
@@ -204,8 +203,6 @@ Example:
 
     由于有脏数据，数据导入失败，表中无数据。
 
-
-**说明：** 当遇到并发写入时，MaxCompute会根据ACID进行并发写的保障。关于ACID的具体语义，请参见[ACID语义](../../../../cn.zh-CN/产品简介/基本概念/ACID语义.md#)。
 
 ## Show {#section_wzb_xxf_vdb .section}
 
@@ -452,7 +449,7 @@ teaa
 
 在MaxCompute Console中打开`use_instance_tunnel`选项后，执行的SELECT query会默认使用InstanceTunnel来下载结果，从而避免在MaxCompute平台获取SQL查询结果时所遇到的获取数据超时和获取数据量受限的问题。打开该配置有以下两种方法：
 
--   在最新版本的 [Console](../../../../cn.zh-CN/工具及下载/客户端.md#)中，odps\_config.ini文件里已经默认打开此选项，并且`instance_tunnel_max_record`被默认设置成了10000。
+-   在最新版本的 [Console](../../../../intl.zh-CN/工具及下载/客户端.md#)中，odps\_config.ini文件里已经默认打开此选项，并且`instance_tunnel_max_record`被默认设置成了10000。
 
     ``` {#codeblock_2cq_wye_6pb}
     # download sql results by instance tunnel
