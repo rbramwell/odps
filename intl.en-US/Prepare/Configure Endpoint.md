@@ -2,7 +2,7 @@
 
 This sections details the regions where MaxCompute is available, and connection methods. Problems such as network connectivity and downloading charges related to use of other Alibaba Cloud products \(such as ECS, TableStore, OSS, and so on\) are also detailed.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/11949/15554040691423_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/11949/15671474331423_en-US.png)
 
 MaxCompute provides two types of service connection addresses as follows:
 
@@ -14,7 +14,7 @@ MaxCompute provides two types of service connection addresses as follows:
     -   Because the deployment and network connection status for every region are different, the billing rules for downloading data through Tunnel are also different.
     -   If you do not configure a tunnel endpoint, your tunnel is automatically routed to a tunnel point associated with the network where your service endpoint resides. For example, if your service endpoint resides on the Internet, your tunnel is routed to a tunnel endpoint on the Internet. Additionally, if your service point resides on an Intranet, your tunnel is routed to a tunnel point on the Intranet. If you continue to manually configure a tunnel endpoint, the tunnel endpoint that you manually specify takes priority, and your tunnel is not automatically routed.
 
-## Accessing method and data downloading billing rule {#section_ydd_51y_5db .section}
+## Accessing method and data downloading billing rule {#section_q9q_4xs_m61 .section}
 
 According to the deployment and network conditions of Alibaba Cloud regions, it mainly contains three connection methods as follows:
 
@@ -38,16 +38,16 @@ According to the Tunnel service request to download data, and from which region 
     **Note:** Due to deployment and network conditions of cross-regional **access of Alibaba Cloud products and services**, MaxCompute cannot be **guaranteed** a permanent connection. Some fees may apply.
 
 
-## The connectivity configuration {#section_d2d_51y_5db .section}
+## The connectivity configuration {#section_1vg_9pq_q0w .section}
 
-MaxCompute 2.0 supports reading and writing OSS object, and also supports reading and writing tables of Table Store. For more information, see [Access OSS Unstructured Data](../../../../intl.en-US/User Guide/External table/Access OSS unstructured data.md) and [Access Table Store Data](../../../../intl.en-US/User Guide/External table/Access Table Store data.md).
+MaxCompute 2.0 supports reading and writing OSS object, and also supports reading and writing tables of Table Store. For more information, see [Access OSS Unstructured Data](../../../../intl.en-US/User Guide/External table/Access OSS unstructured data.md) and [Access Table Store Data](../../../../intl.en-US/User Guide/External table/Access Table Store (OTS) data.md).
 
 Configuration instructions about network connectivity are as follows:
 
 -   If MaxCompute and TableStore/OSS are in the same region, we recommend to configure the Alibaba Cloud classic network or VPC network connection method. The external network method can also be selected.
 -   If MaxCompute and TableStore/OSS are not in the same region, select the external network method to connect. In the case of cross-regional access, connectivity is not permanently guaranteed if you select the Alibaba Cloud classic network or VPC network method.
 
-## MaxCompute activation and service connections by region {#section_f2d_51y_5db .section}
+## MaxCompute activation and service connections by region {#section_9st_3hm_b7r .section}
 
 The table as follows gives information about deployment of MaxCompute in different regions. On the International Site, MaxCompute is currently only available in the following regions. You can apply to use MaxComputer in this region only. In this case, your data storage and computing consumption all occur in the Asia Pacific SE 1 \(Singapore\) region.
 
@@ -61,7 +61,7 @@ The table as follows gives information about deployment of MaxCompute in differe
     |China East 2|Shanghai|In service|http://service.cn.maxcompute.aliyun.com/api|http://dt.cn-shanghai.maxcompute.aliyun.com|
     |China North 2|Beijing|In service|http://service.cn.maxcompute.aliyun.com/api|http://dt.cn-beijing.maxcompute.aliyun.com|
     |China South 1|Shenzhen|In service|http://service.cn.maxcompute.aliyun.com/api|http://dt.cn-shenzhen.maxcompute.aliyun.com|
-    |Hong Kong|Hong Kong|In service|http://service.cn-hongkong.maxcompute.aliyun.com/api|http://dt.cn-hongkong.maxcompute.aliyun.com|
+    |China|Hong Kong|In service|http://service.cn-hongkong.maxcompute.aliyun.com/api|http://dt.cn-hongkong.maxcompute.aliyun.com|
     |Asia Pacific SE 1|Singapore|In service|http://service.ap-southeast-1.maxcompute.aliyun.com/api|http://dt.ap-southeast-1.maxcompute.aliyun.com|
     |Asia Pacific SE 2|Sydney|In service|http://service.ap-southeast-2.maxcompute.aliyun.com/api|http://dt.ap-southeast-2.maxcompute.aliyun.com|
     |Asia Pacific SE 3|Kuala Lumpur|In service|http://service.ap-southeast-3.maxcompute.aliyun.com/api|http://dt.ap-southeast-3.maxcompute.aliyun.com|
@@ -82,7 +82,7 @@ The table as follows gives information about deployment of MaxCompute in differe
     |China East 2|Shanghai|In service|http://service.cn.maxcompute.aliyun-inc.com/api|http://dt.cn-shanghai.maxcompute.aliyun-inc.com|
     |China North 2|Beijing|In service|http://service.cn.maxcompute.aliyun-inc.com/api|http://dt.cn-beijing.maxcompute.aliyun-inc.com|
     |China South 1|Shenzhen|In service|http://service.cn.maxcompute.aliyun-inc.com/api|http://dt.cn-shenzhen.maxcompute.aliyun-inc.com|
-    |Hong Kong|Hong Kong|In service|http://service.cn-hongkong.maxcompute.aliyun-inc.com/api|http://dt.cn-hongkong.maxcompute.aliyun-inc.com|
+    |China|Hong Kong|In service|http://service.cn-hongkong.maxcompute.aliyun-inc.com/api|http://dt.cn-hongkong.maxcompute.aliyun-inc.com|
     |Asia Pacific SE 1|Singapore|In service|http://service.ap-southeast-1.maxcompute.aliyun-inc.com/api|http://dt.ap-southeast-1.maxcompute.aliyun-inc.com|
     |Asia Pacific SE 2|Sydney|In service|http://service.ap-southeast-2.maxcompute.aliyun-inc.com/api|http://dt.ap-southeast-2.maxcompute.aliyun-inc.com|
     |Asia Pacific SE 3|Kuala Lumpur|In service|http://service.ap-southeast-3.maxcompute.aliyun-inc.com/api|http://dt.ap-southeast-3.maxcompute.aliyun-inc.com|
@@ -105,7 +105,7 @@ The table as follows gives information about deployment of MaxCompute in differe
     |China East 2|Shanghai|In service|http://service.cn.maxcompute.aliyun-inc.com/api|http://dt.cn-shanghai.maxcompute.aliyun-inc.com|
     |China North 2|Beijing|In service|http://service.cn.maxcompute.aliyun-inc.com/api|http://dt.cn-beijing.maxcompute.aliyun-inc.com|
     |China South 1|Shenzhen|In service|http://service.cn.maxcompute.aliyun-inc.com/api|http://dt.cn-shenzhen.maxcompute.aliyun-inc.com|
-    |Hong Kong|Hong Kong|In service|http://service.cn-hongkong.maxcompute.aliyun-inc.com/api|http://dt.cn-hongkong.maxcompute.aliyun-inc.com|
+    |China|Hong Kong|In service|http://service.cn-hongkong.maxcompute.aliyun-inc.com/api|http://dt.cn-hongkong.maxcompute.aliyun-inc.com|
     |Asia Pacific SE 1|Singapore|In service|http://service.ap-southeast-1.maxcompute.aliyun-inc.com/api|http://dt.ap-southeast-1.maxcompute.aliyun-inc.com|
     |Asia Pacific SE 2|Sydney|In service|http://service.ap-southeast-2.maxcompute.aliyun-inc.com/api|http://dt.ap-southeast-2.maxcompute.aliyun-inc.com|
     |Asia Pacific SE 3|Kuala Lumpur|In service|http://service.ap-southeast-3.maxcompute.aliyun-inc.com/api|http://dt.ap-southeast-3.maxcompute.aliyun-inc.com|
@@ -123,10 +123,10 @@ The table as follows gives information about deployment of MaxCompute in differe
 
 -   MaxCompute client \(console\) configuration. See[Install and configure client](../../../../intl.en-US/Tools and Downloads/MaxCompute Studio/Project space connection management.md#).
 -   MaxCompute studio project connection configuration. See[Project space management connection](../../../../intl.en-US/Tools and Downloads/Client.md#).
--   SDK connects to MaxCompute configuration. See[Java SDK](../../../../intl.en-US/SDK Reference /Java SDK.md#) and[Python SDK](../../../../intl.en-US/SDK Reference /Python SDK.md#) connect the MaxCompute interface configuration.
+-   SDK connects to MaxCompute configuration. See[Java SDK](../../../../intl.en-US/SDK Reference /Java SDK/Java SDK.md#) and[Python SDK](../../../../intl.en-US/SDK Reference /Python SDK.md#) connect the MaxCompute interface configuration.
 -   The DataWorks data integration script pattern connects the MaxComputer data source configuration and uses the DataX open source tool to connect the MaxComputer data source. See[Export SQL operation results](../../../../intl.en-US/Best Practices/SQL/Export SQL operation result.md#).
 
-## Access concepts { .section}
+## Access concepts {#section_8qo_ynr_5hh .section}
 
 -   In regions where the service is available, you can connect to the MaxCompute service through the Internet, classic network, or VPC.
 -   Fees will be charged for the data downloaded through the configured Internet tunnel endpoint, at a rate of 0.1166 USD/GB.
