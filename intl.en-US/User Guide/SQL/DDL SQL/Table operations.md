@@ -26,7 +26,7 @@ Consider the following points:
 -   When a table is created, an error is returned if another table has the same name, but the if not exists option is not specified. If the option is specified, no matter whether another table that has the same name exists or even if the source table structure and the target table structure are inconsistent, a success message is returned. The meta information of the existing table that has the same name remains unchanged.
 -   Both the table name and column name are not case sensitive. They can contain letters, numbers, and underscores \(\_\), but must begin with a letter. Neither of them can exceed 128 bytes in length.
 -   Up to 1,200 column definitions are allowed in a table.
--   Supported [data types](../../../../reseller.en-US/User Guide/Data types.md) include bigint, double, boolean, datetime, decimal, and string.
+-   Supported [data types](../../../../intl.en-US/User Guide/Data types.md) include bigint, double, boolean, datetime, decimal, and string.
 
     **Note:** If new data types \(such as TINYINT, SMALLINT, INT, FLOAT, VARCHAR, TIMESTAMP, and BINARY\) are used in a SQL statement, use the `set` statement to enable the new data type flag:
 
@@ -37,9 +37,9 @@ Consider the following points:
         setproject odps.sql.type.system.odps2=true;
         ```
 
-        For more information about the `setproject` command, see [Other operations](https://help.aliyun.com/document_detail/27834.html#concept_in2_nbd_5db). For precautions on enabling new data types for a project, see [Data types](reseller.en-US/User Guide/Data types.md#).
+        For more information about the `setproject` command, see[Other operations](intl.en-US/User Guide/Common commands/Other operations.md#) . For precautions on enabling new data types for a project, see [Data types](intl.en-US/User Guide/Data types.md#).
 
--   Use `partitioned by` to specify the [partition](../../../../reseller.en-US/Product Introduction/Definitions/Partition.md) field, which supports the following data types: tinyint, smallint, int, bigint, varchar, and string.
+-   Use `partitioned by` to specify the [partition](../../../../intl.en-US/Product Introduction/Definitions/Partition.md) field, which supports the following data types: tinyint, smallint, int, bigint, varchar, and string.
 
     The value of partition cannot have a double-byte character and must begin with a letter, followed by a letter or number. The name cannot exceed 128 bytes in length. Special characters can be used, including spaces, colons \(:\), underscores \(\_\), dollar signs \($\), pound signs \(\#\), periods \(.\), exclamation points \(!\), and at signs \(@\). Other characters, such as \(\\t\), \(\\n\), and \(/\) are considered undefined characters. If the partition field is used to partition a table, a full scan is not needed when you add a partition or update or read data in a partition. This makes table processing more efficient.
 
@@ -62,7 +62,7 @@ Consider the following points:
     -   Hash cluster tables are subject to the following limits:
         -   The `insert into` statement is not supported. You can add data only by using the `insert overwrite` statement.
         -   A tunnel cannot be uploaded to a range cluster table because data uploaded over a tunnel is unordered.
--   For more information about external tables, see [Access OSS unstructured data](reseller.en-US/User Guide/External table/Access OSS unstructured data.md#).
+-   For more information about external tables, see [Access OSS unstructured data](intl.en-US/User Guide/External table/Access OSS unstructured data.md#).
 
 Assume that the table `sale_detail` is created to store sales records. The table uses `sale_date` and `region` as partition columns. Table creation statements are described as follows:
 
@@ -235,13 +235,13 @@ For example:
     ```
 
 
-In preceding example, we can see that the attributes of `sale_detail_like` coincide with that of `sale_detail`, except for the lifecycle. For more information, see [Table operations](reseller.en-US/User Guide/Common commands/Table operations.md#).
+In preceding example, we can see that the attributes of `sale_detail_like` coincide with that of `sale_detail`, except for the lifecycle. For more information, see [Table operations](intl.en-US/User Guide/Common commands/Table operations.md#).
 
 **Note:** The data size you obtain by using the `describe table` command includes the size of data in the recycle bin. If you want to clear the recycle bin, run the command. Then, run the `describe table` command, and the returned data size no longer includes the size of data in the recycle bin. To obtain details about data in the recycle bin, run the `show recyclebin` command.
 
 Check the information of `sale_detail_ctas1`, you can find that `sale_date` and `region` are only normal columns and not partitions of the table.
 
--   As more data types are being added to MaxCompute, the types of data returned by the `desc` command increase. For details, see [Data types](reseller.en-US/User Guide/Data types.md#). If new data types are used in MaxCompute, you need to enable new data types when you execute SQL statements. However, you do not need to do so when you run the `desc` command.
+-   As more data types are being added to MaxCompute, the types of data returned by the `desc` command increase. For details, see [Data types](intl.en-US/User Guide/Data types.md#). If new data types are used in MaxCompute, you need to enable new data types when you execute SQL statements. However, you do not need to do so when you run the `desc` command.
 
     **Note:** If the output of SQL statements depends on the input of the `desc table` command, we recommend that you promptly update settings to parse new data types in MaxCompute.
 
@@ -337,7 +337,7 @@ If the table is a partitioned table that has the Clustering attribute, run the f
 DESC EXTENDED table_name partition(pt_spec);
 ```
 
-Use the `select` statement to view data in the table. For details, see [Introduction to the SELECT Syntax](reseller.en-US/User Guide/SQL/Select Operation/SELECT syntax.md#).
+Use the `select` statement to view data in the table. For details, see [Introduction to the SELECT Syntax](intl.en-US/User Guide/SQL/Select Operation/SELECT syntax.md#).
 
 ## View table creation statements {#section_yrs_q4u_47l .section}
 
@@ -422,7 +422,7 @@ For example:
 alter table sale_detail set comment 'new comments for table sale_detail';
 ```
 
-Use the command `desc` to view the comment modification in the table. For more information, see `describe table` in [Common commands \> Table operations](reseller.en-US/User Guide/Common commands/Table operations.md).
+Use the command `desc` to view the comment modification in the table. For more information, see `describe table` in [Common commands \> Table operations](intl.en-US/User Guide/Common commands/Table operations.md).
 
 ## Alter LastDataModifiedTime of a table {#section_gxl_5y1_wdb .section}
 
