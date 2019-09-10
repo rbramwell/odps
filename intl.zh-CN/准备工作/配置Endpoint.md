@@ -2,7 +2,7 @@
 
 本文将为您介绍MaxCompute Region的开通情况和连接方式，解答您在与其他云产品（ECS、TableStore、OSS）互访场景中遇到的网络连通性和下载数据收费等问题。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/11949/15671474221423_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/11949/15680856601423_zh-CN.png)
 
 从服务层面来看，MaxCompute为您提供了两大类服务连接地址：
 
@@ -52,16 +52,16 @@ MaxCompute 2.0版支持读写OSS对象存储数据，同时也支持读写TableS
 
 从Region部署情况来看，MaxCompute目前国内国外陆续开服，您可以申请使用对应区域的MaxCompute，您的数据存储和计算消耗均发生在开通使用的区域。
 
-**说明：** 公网Endpoint域名\(aliyun\)支持http和https，若需要请求加密，请用https。内网Endpoint域名\(aliyun-inc\)仅支持http，不支持https访问。
+**说明：** Endpoint域名\(aliyun\)支持http和https，若需要请求加密，请用https。
 
 -   **外网网络下Region和服务连接对照表** 
 
     |Region名称|所在城市|开服状态|外网Endpoint|外网Tunnel Endpoint|
     |:-------|:---|:---|:---------|:----------------|
-    |华东1|杭州|已开服|http://service.cn.maxcompute.aliyun.com/api|http://dt.cn-hangzhou.maxcompute.aliyun.com|
-    |华东2|上海|已开服|http://service.cn.maxcompute.aliyun.com/api|http://dt.cn-shanghai.maxcompute.aliyun.com|
-    |华北2|北京|已开服|http://service.cn.maxcompute.aliyun.com/api|http://dt.cn-beijing.maxcompute.aliyun.com|
-    |华南1|深圳|已开服|http://service.cn.maxcompute.aliyun.com/api|http://dt.cn-shenzhen.maxcompute.aliyun.com|
+    |华东1|杭州|已开服|http://service.cn-hangzhou.maxcompute.aliyun.com/api|http://dt.cn-hangzhou.maxcompute.aliyun.com|
+    |华东2|上海|已开服|http://service.cn-shanghai.maxcompute.aliyun.com/api|http://dt.cn-shanghai.maxcompute.aliyun.com|
+    |华北2|北京|已开服|http://service.cn-beijing.maxcompute.aliyun.com/api|http://dt.cn-beijing.maxcompute.aliyun.com|
+    |华南1|深圳|已开服|http://service.cn-shenzhen.maxcompute.aliyun.com/api|http://dt.cn-shenzhen.maxcompute.aliyun.com|
     |中国|香港|已开服|http://service.cn-hongkong.maxcompute.aliyun.com/api|http://dt.cn-hongkong.maxcompute.aliyun.com|
     |亚太东南1|新加坡|已开服|http://service.ap-southeast-1.maxcompute.aliyun.com/api|http://dt.ap-southeast-1.maxcompute.aliyun.com|
     |亚太东南2|悉尼|已开服|http://service.ap-southeast-2.maxcompute.aliyun.com/api|http://dt.ap-southeast-2.maxcompute.aliyun.com|
@@ -79,10 +79,10 @@ MaxCompute 2.0版支持读写OSS对象存储数据，同时也支持读写TableS
 
     |Region名称|所在城市|开服状态|经典网络Endpoint|经典网络Tunnel Endpoint|
     |--------|----|----|------------|-------------------|
-    |华东1|杭州|已开服|http://service.cn.maxcompute.aliyun-inc.com/api|http://dt.cn-hangzhou.maxcompute.aliyun-inc.com|
-    |华东2|上海|已开服|http://service.cn.maxcompute.aliyun-inc.com/api|http://dt.cn-shanghai.maxcompute.aliyun-inc.com|
-    |华北2|北京|已开服|http://service.cn.maxcompute.aliyun-inc.com/api|http://dt.cn-beijing.maxcompute.aliyun-inc.com|
-    |华南1|深圳|已开服|http://service.cn.maxcompute.aliyun-inc.com/api|http://dt.cn-shenzhen.maxcompute.aliyun-inc.com|
+    |华东1|杭州|已开服|http://service.cn-hangzhou.maxcompute.aliyun-inc.com/api|http://dt.cn-hangzhou.maxcompute.aliyun-inc.com|
+    |华东2|上海|已开服|http://service.cn-shanghai.maxcompute.aliyun-inc.com/api|http://dt.cn-shanghai.maxcompute.aliyun-inc.com|
+    |华北2|北京|已开服|http://service.cn-beijing.maxcompute.aliyun-inc.com/api|http://dt.cn-beijing.maxcompute.aliyun-inc.com|
+    |华南1|深圳|已开服|http://service.cn-shenzhen.maxcompute.aliyun-inc.com/api|http://dt.cn-shenzhen.maxcompute.aliyun-inc.com|
     |中国|香港|已开服|http://service.cn-hongkong.maxcompute.aliyun-inc.com/api|http://dt.cn-hongkong.maxcompute.aliyun-inc.com|
     |亚太东南1|新加坡|已开服|http://service.ap-southeast-1.maxcompute.aliyun-inc.com/api|http://dt.ap-southeast-1.maxcompute.aliyun-inc.com|
     |亚太东南2|悉尼|已开服|http://service.ap-southeast-2.maxcompute.aliyun-inc.com/api|http://dt.ap-southeast-2.maxcompute.aliyun-inc.com|
@@ -102,10 +102,10 @@ MaxCompute 2.0版支持读写OSS对象存储数据，同时也支持读写TableS
 
     |Region名称|所在城市|开服状态|VPC网络Endpoint|VPC网络Tunnel Endpoint|
     |:-------|:---|:---|:------------|:-------------------|
-    |华东1|杭州|已开服|http://service.cn.maxcompute.aliyun-inc.com/api|http://dt.cn-hangzhou.maxcompute.aliyun-inc.com|
-    |华东2|上海|已开服|http://service.cn.maxcompute.aliyun-inc.com/api|http://dt.cn-shanghai.maxcompute.aliyun-inc.com|
-    |华北2|北京|已开服|http://service.cn.maxcompute.aliyun-inc.com/api|http://dt.cn-beijing.maxcompute.aliyun-inc.com|
-    |华南1|深圳|已开服|http://service.cn.maxcompute.aliyun-inc.com/api|http://dt.cn-shenzhen.maxcompute.aliyun-inc.com|
+    |华东1|杭州|已开服|http://service.cn-hangzhou.maxcompute.aliyun-inc.com/api|http://dt.cn-hangzhou.maxcompute.aliyun-inc.com|
+    |华东2|上海|已开服|http://service.cn-shanghai.maxcompute.aliyun-inc.com/api|http://dt.cn-shanghai.maxcompute.aliyun-inc.com|
+    |华北2|北京|已开服|http://service.cn-beijing.maxcompute.aliyun-inc.com/api|http://dt.cn-beijing.maxcompute.aliyun-inc.com|
+    |华南1|深圳|已开服|http://service.cn-shenzhen.maxcompute.aliyun-inc.com/api|http://dt.cn-shenzhen.maxcompute.aliyun-inc.com|
     |中国|香港|已开服|http://service.cn-hongkong.maxcompute.aliyun-inc.com/api|http://dt.cn-hongkong.maxcompute.aliyun-inc.com|
     |亚太东南1|新加坡|已开服|http://service.ap-southeast-1.maxcompute.aliyun-inc.com/api|http://dt.ap-southeast-1.maxcompute.aliyun-inc.com|
     |亚太东南2|悉尼|已开服|http://service.ap-southeast-2.maxcompute.aliyun-inc.com/api|http://dt.ap-southeast-2.maxcompute.aliyun-inc.com|
