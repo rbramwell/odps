@@ -1018,11 +1018,3 @@ Return value:
 
 String type. If the input is null, return null.
 
-Example:-
-
-``` {#codeblock_n5r_rkr_fil}
-substring_index('https://help.aliyun.com', '.', 2)='https://help.aliyun'
-substring_index('https://help.aliyun.com', '.', -2)='aliyun.com'
-substring_index('https://help.aliyun.com', null, 2)=null
-```
-
