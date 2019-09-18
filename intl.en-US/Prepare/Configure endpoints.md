@@ -2,7 +2,7 @@
 
 This topic describes the regions that MaxCompute is available in, MaxCompute connection methods, and issues arising from use with other Alibaba Cloud services such as ECS, Table Store, and OSS.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/11949/15687033161423_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/11949/15687717541423_en-US.png)
 
 MaxCompute provides two types of endpoints:
 
@@ -40,7 +40,7 @@ The billing rules for downloading data through MaxCompute Tunnel depend on wheth
 
 ## Connectivity configurations for accessing external tables {#section_d2d_51y_5db .section}
 
-MaxCompute 2.0 supports reading and writing OSS data and Table Store data. For more information, see [Access OSS unstructured data](../../../../intl.en-US/User Guide/External table/Access OSS unstructured data.md) and [Access Table Store unstructured data](../../../../intl.en-US/User Guide/External table/Access Table Store (OTS) data.md).
+MaxCompute 2.0 supports reading and writing OSS data and Table Store data. For more information, see [Access OSS unstructured data](../../../../reseller.en-US/User Guide/External table/Access OSS unstructured data.md) and [Access Table Store unstructured data](../../../../reseller.en-US/User Guide/External table/Access Table Store (OTS) data.md).
 
 Connectivity configurations are as follows:
 
@@ -71,7 +71,7 @@ MaxCompute is available in regions both inside and outside Mainland China. You c
     |Germany \(Frankfurt\)|Frankfurt|Available|http://service.eu-central-1.maxcompute.aliyun.com/api|http://dt.eu-central-1.maxcompute.aliyun.com|
     |US \(Silicon Valley\)|Silicon Valley|Available|http://service.us-west-1.maxcompute.aliyun.com/api|http://dt.us-west-1.maxcompute.aliyun.com|
     |US \(Virginia\)|Virginia|Available|http://service.us-east-1.maxcompute.aliyun.com/api|http://dt.us-east-1.maxcompute.aliyun.com|
-    |India \(Mumbai\)|Mumbai |Available|http://service.ap-south-1.maxcompute.aliyun.com/api|http://dt.ap-south-1.maxcompute.aliyun.com|
+    |India \(Mumbai\)|Mumbai|Available|http://service.ap-south-1.maxcompute.aliyun.com/api|http://dt.ap-south-1.maxcompute.aliyun.com|
     |UAE \(Dubai\)|Dubai|Available|http://service.me-east-1.maxcompute.aliyun.com/api|http://dt.me-east-1.maxcompute.aliyun.com|
     |UK \(London\)|London|Available|http://service.eu-west-1.maxcompute.aliyun.com/api|http://dt.eu-west-1.maxcompute.aliyun.com|
 
@@ -92,7 +92,7 @@ MaxCompute is available in regions both inside and outside Mainland China. You c
     |Germany \(Frankfurt\)|Frankfurt|Available|http://service.eu-central-1.maxcompute.aliyun-inc.com/api|http://dt.eu-central-1.maxcompute.aliyun-inc.com|
     |US \(Silicon Valley\)|Silicon Valley|Available|http://service.us-west-1.maxcompute.aliyun-inc.com/api|http://dt.us-west-1.maxcompute.aliyun-inc.com|
     |US \(Virginia\)|Virginia|Available|http://service.us-east-1.maxcompute.aliyun-inc.com/api|http://dt.us-east-1.maxcompute.aliyun-inc.com|
-    |India \(Mumbai\)|Mumbai |Available|http://service.ap-south-1.maxcompute.aliyun-inc.com/api|http://dt.ap-south-1.maxcompute.aliyun-inc.com|
+    |India \(Mumbai\)|Mumbai|Available|http://service.ap-south-1.maxcompute.aliyun-inc.com/api|http://dt.ap-south-1.maxcompute.aliyun-inc.com|
     |UAE \(Dubai\)|Dubai|Available|http://service.me-east-1.maxcompute.aliyun-inc.com/api|http://dt.me-east-1.maxcompute.aliyun-inc.com|
     |UK \(London\)|London|Available|http://service.uk-all.maxcompute.aliyun-inc.com/api|http://dt.uk-all.maxcompute.aliyun-inc.com|
 
@@ -115,17 +115,17 @@ MaxCompute is available in regions both inside and outside Mainland China. You c
     |Germany \(Frankfurt\)|Frankfurt|Available|http://service.eu-central-1.maxcompute.aliyun-inc.com/api|http://dt.eu-central-1.maxcompute.aliyun-inc.com|
     |US \(Silicon Valley\)|Silicon Valley|Available|http://service.us-west-1.maxcompute.aliyun-inc.com/api|http://dt.us-west-1.maxcompute.aliyun-inc.com|
     |US \(Virginia\)|Virginia|Available|http://service.us-east-1.maxcompute.aliyun-inc.com/api|http://dt.us-east-1.maxcompute.aliyun-inc.com|
-    |India \(Mumbai\)|Mumbai |Available|http://service.ap-south-1.maxcompute.aliyun-inc.com/api|http://dt.ap-south-1.maxcompute.aliyun-inc.com|
+    |India \(Mumbai\)|Mumbai|Available|http://service.ap-south-1.maxcompute.aliyun-inc.com/api|http://dt.ap-south-1.maxcompute.aliyun-inc.com|
     |UAE \(Dubai\)|Dubai|Available|http://service.me-east-1.maxcompute.aliyun-inc.com/api|http://dt.me-east-1.maxcompute.aliyun-inc.com|
     |UK \(London\)|London|Available|http://service.uk-all.maxcompute.aliyun-inc.com/api|http://dt.uk-all.maxcompute.aliyun-inc.com|
 
 
 **Note:** Scenarios that require you to configure the MaxCompute endpoint and Tunnel endpoint:
 
--   MaxCompute client \(console\) configurations. For more information, see [Install and configure a client](intl.en-US/Prepare/Install and configure a client.md#).
--   MaxCompute Studio project connection configurations. For more information, see [Project space connection management](../../../../intl.en-US/Tools and Downloads/MaxCompute Studio/Project space connection management.md#).
--   MaxCompute SDK connection configurations. For more information, see MaxCompute connection configurations in [Java SDK](../../../../intl.en-US/SDK Reference /Java SDK/Java SDK.md#) and [Python SDK](../../../../intl.en-US/SDK Reference /Python SDK.md#).
--   Configurations for connecting to MaxCompute data sources from the DataWorks data integration script method or the DataX open-source tool. For more information, see [Configure a MaxCompute data source](https://www.alibabacloud.com/help/zh/faq-detail/74280.htm) and [Export SQL operation result](../../../../intl.en-US/Best Practices/SQL/Export SQL operation result.md#).
+-   MaxCompute client \(console\) configurations. For more information, see [Install and configure a client](reseller.en-US/Prepare/Install and configure a client.md#).
+-   MaxCompute Studio project connection configurations. For more information, see [Project space connection management](../../../../reseller.en-US/Tools and Downloads/MaxCompute Studio/Project space connection management.md#).
+-   MaxCompute SDK connection configurations. For more information, see MaxCompute connection configurations in [Java SDK](../../../../reseller.en-US/SDK Reference /Java SDK/Java SDK.md#) and [Python SDK](../../../../reseller.en-US/SDK Reference /Python SDK.md#).
+-   Configurations for connecting to MaxCompute data sources from the DataWorks data integration script method or the DataX open-source tool. For more information, see [Configure a MaxCompute data source](https://www.alibabacloud.com/help/zh/faq-detail/74280.htm) and [Export SQL operation result](../../../../reseller.en-US/Best Practices/SQL/Export SQL operation result.md#).
 
 ## Access rules {#section_pbt_7py_3s9 .section}
 
