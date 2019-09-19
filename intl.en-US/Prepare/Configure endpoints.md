@@ -2,7 +2,7 @@
 
 This topic describes the regions that MaxCompute is available in, MaxCompute connection methods, and issues arising from use with other Alibaba Cloud services such as ECS, Table Store, and OSS.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/11949/15687717541423_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/11949/15688846041423_en-US.png)
 
 MaxCompute provides two types of endpoints:
 
@@ -45,7 +45,7 @@ MaxCompute 2.0 supports reading and writing OSS data and Table Store data. For m
 Connectivity configurations are as follows:
 
 -   If MaxCompute is in the same region as Table Store or OSS, we recommend that you select the Alibaba Cloud classic network or VPC connection method. The public network can also be selected.
--   If MaxCompute is not in the same region as Table Store or OSS, we recommend that you select the public network connection method. We cannot guarantee permanent connectivity for MaxCompute Tunnel if MaxCompute is in the same region as Table Store or OSS and you select the Alibaba Cloud classic network or VPC.
+-   If MaxCompute is not in the same region as Table Store or OSS, we recommend that you select the public network connection method. We cannot guarantee permanent connectivity for MaxCompute Tunnel if MaxCompute is not in the same region as Table Store or OSS and you select the Alibaba Cloud classic network or VPC.
 -   However, you can use a physical connection to access a VPC to guarantee MaxCompute Tunnel connectivity. For more information, see [Access cloud services in VPC through physical connections](https://www.alibabacloud.com/help/zh/doc-detail/57195.html).
 
 ## Regions where MaxCompute is available and corresponding endpoints {#section_f2d_51y_5db .section}
