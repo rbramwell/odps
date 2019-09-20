@@ -2,7 +2,11 @@
 
 本文从实例、资源、表、函数等几个方面为您介绍Java SDK。
 
-**说明：** 使用SDK调用MaxCompute产生的计算、存储等费用与直接使用MaxCompute产生的费用一致，详情请参见[计量计费说明](../../../../intl.zh-CN/产品定价/计量计费说明.md#)。
+**说明：** 使用SDK调用MaxCompute产生的计算、存储等费用与直接使用MaxCompute产生的费用一致，详情请参见
+
+[存储计费（按量计费）](../../../../intl.zh-CN/产品定价/存储计费（按量计费）.md#)、[计算计费](../../../../intl.zh-CN/产品定价/计算计费.md#)、[下载计费（按量计费）](../../../../intl.zh-CN/产品定价/下载计费（按量计费）.md#)
+
+。
 
 本文将为您介绍较为常用的MaxCompute核心接口，更多详情请参见 [SDK Java Doc](http://www.javadoc.io/doc/com.aliyun.odps/odps-sdk-core/)。
 
@@ -50,7 +54,7 @@ String odpsUrl = "<your odps endpoint>";
 odps.setEndpoint(odpsUrl);
 odps.setDefaultProject("my_project");
 for (Table t : odps.tables()) {
-	....
+    ....
 }              
 ```
 
@@ -98,28 +102,28 @@ import com.aliyun.odps.data.Record;
 import com.aliyun.odps.task.SQLTask;
 public class testSql {
         private static final String accessId = "";
-	private static final String accessKey = "";       
+    private static final String accessKey = "";       
         private static final String endPoint = "http://service.odps.aliyun.com/api";
         private static final String project = "";
         private static final String sql = "select category from iris;";
-	public static void
-		main(String[] args) {
-		Account account = new AliyunAccount(accessId, accessKey);
-		Odps odps = new Odps(account);
-		odps.setEndpoint(endPoint);
-		odps.setDefaultProject(project);
-		Instance i;
-		try {
-			i = SQLTask.run(odps, sql);
-			i.waitForSuccess();
-			List<Record> records = SQLTask.getResult(i);
-			for(Record r:records){
-				System.out.println(r.get(0).toString());
-			}
-		} catch (OdpsException e) {
-			e.printStackTrace();
-		}
-	}
+    public static void
+        main(String[] args) {
+        Account account = new AliyunAccount(accessId, accessKey);
+        Odps odps = new Odps(account);
+        odps.setEndpoint(endPoint);
+        odps.setDefaultProject(project);
+        Instance i;
+        try {
+            i = SQLTask.run(odps, sql);
+            i.waitForSuccess();
+            List<Record> records = SQLTask.getResult(i);
+            for(Record r:records){
+                System.out.println(r.get(0).toString());
+            }
+        } catch (OdpsException e) {
+            e.printStackTrace();
+        }
+    }
 }
 ```
 
@@ -136,7 +140,7 @@ String odpsUrl = "<your odps endpoint>";
 odps.setEndpoint(odpsUrl);
 odps.setDefaultProject("my_project");
 for (Instance i : odps.instances()) {
-	....
+    ....
 }
 ```
 
@@ -153,22 +157,22 @@ Instance instance= odps.instances().get("instance id");
 Date startTime = instance.getStartTime();
 Date endTime = instance.getEndTime();
 ...
-	Status instanceStatus = instance.getStatus();
+    Status instanceStatus = instance.getStatus();
 String instanceStatusStr = null;
 if (instanceStatus == Status.TERMINATED) {
-	instanceStatusStr = TaskStatus.Status.SUCCESS.toString();
-	Map<String, TaskStatus> taskStatus = instance.getTaskStatus();
-	for (Entry<String, TaskStatus> status : taskStatus.entrySet()) {
-		if (status.getValue().getStatus() != TaskStatus.Status.SUCCESS) {
-			instanceStatusStr = status.getValue().getStatus().toString();
-			break;
-		}
-	}
+    instanceStatusStr = TaskStatus.Status.SUCCESS.toString();
+    Map<String, TaskStatus> taskStatus = instance.getTaskStatus();
+    for (Entry<String, TaskStatus> status : taskStatus.entrySet()) {
+        if (status.getValue().getStatus() != TaskStatus.Status.SUCCESS) {
+            instanceStatusStr = status.getValue().getStatus().toString();
+            break;
+        }
+    }
 } else {
-	instanceStatusStr = instanceStatus.toString();
+    instanceStatusStr = instanceStatus.toString();
 }
 ...
-	TaskSummary summary = instance.getTaskSummary("task name");
+    TaskSummary summary = instance.getTaskSummary("task name");
 String s = summary.getSummaryText();
 ```
 
@@ -183,7 +187,7 @@ String odpsUrl = "<your odps endpoint>";
 odps.setEndpoint(odpsUrl);
 odps.setDefaultProject("my_project");
 for (Table t : odps.tables()) {
-	....
+    ....
 }
 ```
 
@@ -214,7 +218,7 @@ String odpsUrl = "<your odps endpoint>";
 odps.setEndpoint(odpsUrl);
 odps.setDefaultProject("my_project");
 for (Resource r : odps.resources()) {
-	....
+    ....
 }
 ```
 
@@ -230,14 +234,14 @@ odps.setEndpoint(odpsUrl);
 Resource r = odps.resources().get("resource name");
 r.reload();
 if (r.getType() == Resource.Type.TABLE) {
-	TableResource tr = new TableResource(r);
-	String tableSource = tr.getSourceTable().getProject() + "."
-		+ tr.getSourceTable().getName();
-	if (tr.getSourceTablePartition() != null) {
-		tableSource += " partition(" + tr.getSourceTablePartition().toString()
-			+ ")";
-	}
-	....
+    TableResource tr = new TableResource(r);
+    String tableSource = tr.getSourceTable().getProject() + "."
+        + tr.getSourceTable().getName();
+    if (tr.getSourceTablePartition() != null) {
+        tableSource += " partition(" + tr.getSourceTablePartition().toString()
+            + ")";
+    }
+    ....
 }
 ```
 
@@ -274,7 +278,7 @@ String odpsUrl = "<your odps endpoint>";
 odps.setEndpoint(odpsUrl);
 odps.setDefaultProject("my_project");
 for (Function f : odps.functions()) {
-	....
+    ....
 }                
 ```
 
@@ -298,7 +302,7 @@ String resources = "xxx:xxx";
 String classType = "com.aliyun.odps.mapred.open.example.WordCount";
 ArrayList<String> resourceList = new ArrayList<String>();
 for (String r : resources.split(":")) {
-	resourceList.add(r);
+    resourceList.add(r);
 }
 Function func = new Function();
 func.setName(name);
