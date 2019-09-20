@@ -6,19 +6,19 @@ If you are using DTplus products and DataWorks for the first time, you must log 
 2.  Go to the home page of [MaxCompute](https://www.alibabacloud.com/product/maxcompute) and click **Buy Now**.
 3.  Select a payment method, and click **Buy Now**. 
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/11943/15680957601383_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/11943/15689458731383_en-US.png)
 
-    MaxCompute provides two payment options: Subscription and Pay-As-You-Go. You can select a method as needed. For more information, see [Billing](https://www.alibabacloud.com/help/doc-detail/74873.htm).
+    MaxCompute provides two payment options: Subscription and Pay-As-You-Go. You can select a method as needed. For more information, see [Computation pricing](../../../../intl.en-US/Pricing/Computation pricing.md#).
 
     You can select a region according to your current setup. We recommend that you take into consideration the regions of related Alibaba Cloud products \(such as ECS\) and your actual data.
 
 4.  Confirm the order details and click **Activate**. 
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/11943/15680957601379_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/11943/15689458741379_en-US.png)
 
     The following page is displayed, indicating that MaxCompute is activated.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/11943/15680957601382_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/11943/15689458741382_en-US.png)
 
     After, you can create MaxCompute projects as needed. For more information, see [Create a project](intl.en-US/Prepare/Create a project.md#).
 
