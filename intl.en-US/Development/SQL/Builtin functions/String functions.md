@@ -1095,7 +1095,6 @@ set odps.sql.type.system.odps2 = true; -- Enable new data types.
 -   Examples
 
     ```
-    URL_DECODE('%E7%A4%BA%E4%BE%8Bfor+URL_DECODE%3A%2F%2F+%28fdsf%29')= "示例for URL_DECODE:// (fdsf)"
     URL_DECODE('Example+for+URL_DECODE+%3A%2F%2F+dsf%28fasfs%29', 'GBK') = "Example for URL_DECODE:// dsf(fasfs)"
     ```
 
