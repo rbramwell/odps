@@ -175,7 +175,7 @@ Fuxi Sensor是展示MaxCompute作业全维度的资源视图。您可以通过Fu
 
     -   内存详情
 
-        ![内存](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/9653089951/p161869.png)
+        ![内存](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/7570289951/p161869.png)
 
     -   RSS内存使用量
 
