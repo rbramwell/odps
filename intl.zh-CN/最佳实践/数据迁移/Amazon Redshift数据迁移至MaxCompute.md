@@ -33,7 +33,7 @@ keyword: [Amazon Redshift, MaxCompute]
 
 将Amazon Redshift数据迁移至MaxCompute的流程如下。
 
-![迁移流程](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/5659559951/p139418.png)
+![迁移流程](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/2731410061/p139418.png)
 
 |序号|描述|
 |--|--|
