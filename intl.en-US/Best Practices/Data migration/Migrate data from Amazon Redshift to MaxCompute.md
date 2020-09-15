@@ -33,7 +33,7 @@ This topic describes how to migrate data from Amazon Redshift to MaxCompute over
 
 The following figure shows the process to migrate data from Amazon Redshift to MaxCompute.
 
-![Migration process](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/4559559951/p139418.png)
+![Migration process](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/7931410061/p139418.png)
 
 |No.|Description|
 |---|-----------|
