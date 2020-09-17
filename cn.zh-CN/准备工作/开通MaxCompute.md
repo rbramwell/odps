@@ -7,7 +7,7 @@ keyword: 开通MaxCompute
 完成准备账号操作后，您需要开通MaxCompute服务，才可以使用MaxCompute。本文为您介绍如何开通MaxCompute服务。
 
 -   如果您是第一次使用大数据产品，建议使用阿里云账号开通MaxCompute服务。
--   如果您需要使用RAM用户账号登录阿里云官网和创建项目，请检查账号是否已可用并授权，详情请参见[t1951990.md\#]()。如果验证无误，可继续开通MaxCompute服务。
+-   如果您需要使用RAM用户账号登录阿里云官网和创建项目，请检查账号是否已可用并授权，详情请参见[创建RAM用户](/cn.zh-CN/准备工作/创建RAM用户.md)。如果验证无误，可继续开通MaxCompute服务。
 
 1.  登录[阿里云官网](https://account.aliyun.com/login/login.htm)。
 
