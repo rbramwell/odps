@@ -8,7 +8,7 @@ MaxCompute Studio allows you to develop Python programs, such as user defined fu
 
 ## Install PyODPS
 
-1.  Install PyODPS. For more information, see [t21143.md\#]().
+1.  Install PyODPS. For more information, see [Installation guide and limits](/intl.en-US/Development/PyODPS/Installation guide and limits.md).
 
 2.  Start Intellij IDEA. In the top navigation bar, choose **File** \> **Settings**.
 
