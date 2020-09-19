@@ -108,7 +108,7 @@ usage: tunnel upload [options] <path> <[project.]table[/partition]>
  -rd,-record-delimiter <ARG> specify record delimiter, support
                                      unicode, eg \u0001. default "\r\n"
  -s,-scan <ARG> specify scan file
-                                     action(true|false|only), default true
+                                     action(true|false|only), default false
  -sd,-session-dir <ARG> set session dir, default
                                      D:\software\odpscmd_public\plugins\ds
                                      hip
@@ -519,7 +519,7 @@ For example:
 |Type|Required|
 |:---|:-------|
 |STRING|String type data. The length cannot exceed 8MB.|
-|BOOLEN|Upload values only support true, false, 0, and 1. Only the values true or false \(not case-sensitive\) are supported for downloading.|
+|BOOLEAN|Upload values only support true, false, 0, and 1. Only the values true or false \(not case-sensitive\) are supported for downloading.|
 |BIGINT|Value range: \[-9223372036854775807, 9223372036854775807\].|
 |DOUBLE| -   16-bit valid.
 -   Uploads support expression in scientific notation.
