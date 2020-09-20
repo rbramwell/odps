@@ -36,7 +36,7 @@ In some cases, the data in specified partitions do not need to be recycled by th
 **Statement format:**
 
 ```
-ALTER TABLE table_name [partition_spec] ENABLE|DISABLE LIFECYCLE;
+ALTER TABLE table_name [PARTITION partition_spec] ENABLE|DISABLE LIFECYCLE;
 ```
 
 An example is shown as follows.
